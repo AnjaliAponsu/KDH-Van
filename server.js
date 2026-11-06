@@ -4,10 +4,10 @@ const path = require('path');
 
 const PORT = process.env.PORT || 8080;
 const MIME_TYPES = {
-  '.html': 'text/html',
-  '.css': 'text/css',
-  '.js': 'text/javascript',
-  '.json': 'application/json',
+  '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
@@ -19,7 +19,9 @@ const MIME_TYPES = {
 
 const server = http.createServer((req, res) => {
   let reqPath = decodeURI(req.url.split('?')[0]);
-  if (reqPath === '/') reqPath = '/index.html';
+  if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
+  if (reqPath === '/services' || reqPath === '/services/') reqPath = '/services.html';
+  if (reqPath === '/book' || reqPath === '/book/') reqPath = '/index.html';
   
   const filePath = path.join(__dirname, reqPath);
   const ext = path.extname(filePath).toLowerCase();

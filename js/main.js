@@ -439,6 +439,105 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `
+    },
+    'airport-transfers': {
+      title: 'Airport Transfers (BIA Pickups & Drop-offs)',
+      content: `
+        <h4 class="info-section-title">Hassle-Free Colombo Airport (BIA) Transfers</h4>
+        <p class="info-text">Travel seamlessly between Bandaranaike International Airport (CMB / BIA) and your hotel, villa, or residence anywhere in Sri Lanka. Our licensed tourist chauffeur greets you inside the arrivals hall with a personalized name-board.</p>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin: 16px 0;">
+          <h5 style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Service Highlights:</h5>
+          <ul style="padding-left: 20px; font-size: 13.5px; line-height: 1.8; color: #334155; margin: 0;">
+            <li><strong>Live Flight Tracking:</strong> Complimentary 90 minutes waiting time from flight touchdown.</li>
+            <li><strong>Expressway Included:</strong> Direct toll expressway routing to Colombo, Galle, Bentota, or Kandy.</li>
+            <li><strong>Vehicle Capacity:</strong> Up to 12-14 passengers + 10 large suitcases comfortably loaded.</li>
+            <li><strong>Meet & Greet:</strong> Chauffeur paging assistance inside the air-conditioned terminal.</li>
+          </ul>
+        </div>
+        <div style="display: flex; gap: 12px; margin-top: 14px; font-size: 13.5px; color: #0f172a; font-weight: 600;">
+          <span>Rates start at: <span style="color: #b45309; font-weight: 800;">$45 (Colombo)</span></span> | 
+          <span><span style="color: #b45309; font-weight: 800;">$95 (Galle / Mirissa)</span></span> | 
+          <span><span style="color: #b45309; font-weight: 800;">$115 (Kandy)</span></span>
+        </div>
+      `
+    },
+    'point-to-point': {
+      title: 'Point to Point Van Hire',
+      content: `
+        <h4 class="info-section-title">Direct Intercity Private Travel</h4>
+        <p class="info-text">Reliable, comfortable point-to-point transfers between any two cities or towns in Sri Lanka. Avoid crowded public transport and enjoy the privacy of your own air-conditioned Toyota KDH van.</p>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin: 16px 0;">
+          <h5 style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Service Highlights:</h5>
+          <ul style="padding-left: 20px; font-size: 13.5px; line-height: 1.8; color: #334155; margin: 0;">
+            <li><strong>Door-to-Door Pickup:</strong> Direct pickup from any hotel, residence, or landmark.</li>
+            <li><strong>Scenic Refreshment Stops:</strong> Stop for fresh king coconuts, tea plantations, or dining on your schedule.</li>
+            <li><strong>Transparent Pricing:</strong> Fixed upfront quote including vehicle, fuel, driver, and expressway fees.</li>
+            <li><strong>Professional Chauffeur:</strong> Experienced long-distance driver with defensive driving certification.</li>
+          </ul>
+        </div>
+      `
+    },
+    'daily-hire': {
+      title: 'Full-Day KDH Van Hire with Driver',
+      content: `
+        <h4 class="info-section-title">Flexible Full-Day Van Package (Up to 12 Hours)</h4>
+        <p class="info-text">Enjoy complete freedom to explore Sri Lanka at your own pace. Hire a dedicated Toyota KDH van and driver for a full day of sightseeing, shopping, meetings, or beach hopping.</p>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin: 16px 0;">
+          <h5 style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Package Details:</h5>
+          <ul style="padding-left: 20px; font-size: 13.5px; line-height: 1.8; color: #334155; margin: 0;">
+            <li><strong>Included Mileage:</strong> 100 km included per day (additional km at affordable rates).</li>
+            <li><strong>Dedicated Time:</strong> Up to 12 hours of chauffeur service per day.</li>
+            <li><strong>Flexible Itinerary:</strong> Add as many stops and detours as you wish.</li>
+            <li><strong>All Inclusions:</strong> Chauffeur batta/meals, air-conditioning, fuel, and parking assistance.</li>
+          </ul>
+        </div>
+      `
+    },
+    'multi-day-tours': {
+      title: 'Custom Multi-Day Sri Lanka Tours',
+      content: `
+        <h4 class="info-section-title">Island-Wide Tour Packages (3 to 14+ Days)</h4>
+        <p class="info-text">Explore Sri Lanka's breathtaking cultural heritage, misty tea hills, wildlife national parks, and golden beaches with a dedicated luxury KDH passenger van and experienced driver-guide throughout your journey.</p>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin: 16px 0;">
+          <h5 style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Tour Highlights:</h5>
+          <ul style="padding-left: 20px; font-size: 13.5px; line-height: 1.8; color: #334155; margin: 0;">
+            <li><strong>Popular Circuits:</strong> Sigiriya & Cultural Triangle, Kandy & Ella Hill Country, Yala Safari, Southern Coast.</li>
+            <li><strong>Custom Tailoring:</strong> We help customize daily driving routes, photography stops, and timing.</li>
+            <li><strong>Chauffeur Accommodation:</strong> Driver accommodation and meal allowances are fully covered.</li>
+            <li><strong>Continuous Support:</strong> 24/7 travel coordination support via WhatsApp.</li>
+          </ul>
+        </div>
+      `
+    },
+    'events-weddings': {
+      title: 'Events, Weddings & Group Shuttles',
+      content: `
+        <h4 class="info-section-title">Comfortable Guest Transportation for Special Occasions</h4>
+        <p class="info-text">Make your wedding day, family reunion, religious pilgrimage, or celebration effortless. We provide immaculate, beautifully detailed Toyota KDH passenger vans for seamless group transfers.</p>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin: 16px 0;">
+          <h5 style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Event Features:</h5>
+          <ul style="padding-left: 20px; font-size: 13.5px; line-height: 1.8; color: #334155; margin: 0;">
+            <li><strong>Pristine Presentation:</strong> Showroom-clean white vehicles with uniformed, courteous drivers.</li>
+            <li><strong>Multi-Van Coordination:</strong> Coordinate multiple vans for large guest contingents.</li>
+            <li><strong>Flexible Dispatch:</strong> Venue-to-hotel continuous shuttles throughout the ceremony and reception.</li>
+          </ul>
+        </div>
+      `
+    },
+    'corporate-transport': {
+      title: 'Corporate & Executive Transport',
+      content: `
+        <h4 class="info-section-title">Professional Transport for Corporate Teams & Delegations</h4>
+        <p class="info-text">Reliable corporate mobility solutions for executive transfers, visiting business delegations, factory inspections, conference shuttles, and company retreats across Sri Lanka.</p>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin: 16px 0;">
+          <h5 style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Corporate Benefits:</h5>
+          <ul style="padding-left: 20px; font-size: 13.5px; line-height: 1.8; color: #334155; margin: 0;">
+            <li><strong>Punctuality Guarantee:</strong> On-time arrivals for business schedules and flight departures.</li>
+            <li><strong>Corporate Invoicing:</strong> Official GST/VAT receipts and corporate payment terms available.</li>
+            <li><strong>On-Board Comfort:</strong> High-roof cabin, ergonomic seating, mobile device charging points.</li>
+          </ul>
+        </div>
+      `
     }
   };
 
@@ -446,6 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const topic = INFO_TOPICS[topicKey] || INFO_TOPICS.pricing;
     if (infoModalTitle) infoModalTitle.textContent = topic.title;
     if (infoModalBody) infoModalBody.innerHTML = topic.content;
+    if (infoModalActionBtn) infoModalActionBtn.dataset.service = topicKey;
     if (generalInfoModal) generalInfoModal.classList.add('open');
   }
 
@@ -461,14 +561,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  document.querySelectorAll('.btn-open-service-modal').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const serviceKey = btn.dataset.serviceKey || 'airport-transfers';
+      openInfoModal(serviceKey);
+    });
+  });
+
   if (infoModalCloseBtn) {
     infoModalCloseBtn.addEventListener('click', closeInfoModal);
   }
 
   if (infoModalActionBtn) {
     infoModalActionBtn.addEventListener('click', () => {
+      const serviceKey = infoModalActionBtn.dataset.service || '';
       closeInfoModal();
-      openBookingModal();
+      const serviceMap = {
+        'airport-transfers': 'Airport Transfer',
+        'point-to-point': 'Point to Point',
+        'daily-hire': 'Daily Hire',
+        'multi-day-tours': 'Multi-Day Tour',
+        'events-weddings': 'Events & Weddings',
+        'corporate-transport': 'Corporate Transport'
+      };
+      openBookingModal(serviceMap[serviceKey] || 'Airport Transfer');
     });
   }
 

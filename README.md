@@ -30,24 +30,40 @@ Simply double-click [`index.html`](index.html) to open the website directly in a
 
 ```text
 d:\KDH Van\
-├── index.html                           # Semantic landing page structure & metadata
+├── index.html                           # Page 1: Homepage (100% Mockup Fidelity)
+├── services.html                        # Page 2: Our Services (100% Mockup Fidelity)
 ├── server.js                            # Standalone preview server (zero dependencies)
 ├── README.md                            # Project documentation & configuration guide
+├── app/
+│   └── services/
+│       └── page.tsx                     # Next.js App Router Page 2 Component
+├── components/
+│   └── services/                        # Modular React / TypeScript Components
+│       ├── SiteHeader.tsx               # Sticky header with active Services underline
+│       ├── ServicesHero.tsx             # Hero banner with breadcrumb & coastal van
+│       ├── ServiceCard.tsx              # Reusable service card with badge & dual actions
+│       ├── ServicesGrid.tsx             # Responsive 3x2 services grid
+│       ├── WhyChooseUs.tsx              # 4-card horizontal benefit highlights
+│       ├── CustomTravelCTA.tsx          # Panoramic mountain CTA banner
+│       └── SiteFooter.tsx               # 5-column navy footer with legal links
+├── data/
+│   └── servicesData.ts                  # Typed service definitions, pricing & inclusions
 ├── css/
 │   └── styles.css                       # Complete custom styles, variables & media queries
 ├── js/
 │   └── main.js                          # Interactive booking engine, tabs, modals & slider
 └── assets/
-    └── home-page/                       # High-resolution generated photography & icons
-        ├── hero-van.jpg                 # Hero background van on Sri Lanka mountain road
-        ├── vehicle-kdh200-smooth.png    # Authentic KDH 200 series transparent van
-        ├── vehicle-kdh-van.jpg          # High-resolution studio photograph
-        ├── service-airport-transfers.jpg# BIA Colombo airport terminal & palm entrance
-        ├── service-point-to-point.jpg   # Van along Sri Lanka coastal road
-        ├── service-daily-hire.jpg       # Nuwara Eliya / Ella lush tea plantations
-        ├── service-multi-day-tours.jpg  # Sigiriya Lion Rock Fortress
-        ├── customer-daniel.jpg          # Daniel M. testimonial avatar
-        ├── customer-sarah.jpg           # Sarah P. testimonial avatar
+    ├── home-page/                       # Page 1 assets & vehicle studio cutouts
+    └── services/                        # Page 2 assets (high-resolution photography)
+        ├── services-hero-bg.jpg         # Coastal scenic road with Toyota HiAce van
+        ├── service-airport-transfers.jpg# BIA Colombo airport terminal
+        ├── service-point-to-point.jpg   # Coastal highway private transfer
+        ├── service-daily-hire.jpg       # Hill country lush tea plantations
+        ├── service-multi-day-tours.jpg  # Demodara Nine Arch Bridge with blue train
+        ├── service-events-weddings.jpg  # Wedding floral arch & group lawn
+        ├── service-corporate-transport.jpg # Executive glass tower & business travelers
+        └── custom-travel-cta-bg.jpg     # Panoramic mountain highway backdrop
+```
         ├── customer-ruwan.jpg           # Ruwan D. testimonial avatar
         ├── cta-banner-bg.jpg            # Panoramic mountain road golden hour banner
         ├── logo.svg                     # Primary vector brand logo
@@ -93,3 +109,4 @@ Fares are defined in `js/main.js` within `calculateDynamicEstimate()` and in the
    * Slide-out mobile navigation drawer.
 5. **SEO & Social Sharing Ready**:
    * Pre-configured OpenGraph tags, Twitter Card metadata, and `Schema.org` `AutoRental` structured data.
+
