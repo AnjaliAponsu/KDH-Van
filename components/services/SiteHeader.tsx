@@ -113,3 +113,4 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ onBookClick }) => {
     </header>
   );
 };
+

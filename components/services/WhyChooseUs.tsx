@@ -54,3 +54,4 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ benefits }) => {
     </section>
   );
 };
+

@@ -59,3 +59,4 @@ export const CustomTravelCTA: React.FC<CustomTravelCTAProps> = ({ onBookClick })
     </section>
   );
 };
+

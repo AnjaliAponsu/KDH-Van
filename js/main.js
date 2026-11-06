@@ -250,8 +250,19 @@ document.addEventListener('DOMContentLoaded', () => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', (e) => {
       const titleEl = card.querySelector('.service-card-title');
-      const serviceName = titleEl ? titleEl.textContent.trim() : 'Airport Transfer';
-      openBookingModal(serviceName);
+      const serviceName = titleEl ? titleEl.textContent.trim() : 'Airport Transfers';
+      const keyMap = {
+        'Airport Transfers': 'airport-transfers',
+        'Point to Point Hire': 'point-to-point',
+        'Daily Hire': 'daily-hire',
+        'Multi-Day Tours': 'multi-day-tours'
+      };
+      const key = keyMap[serviceName];
+      if (key) {
+        openInfoModal(key);
+      } else {
+        openBookingModal(serviceName);
+      }
     });
   });
 
@@ -541,11 +552,298 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Dedicated Rich Structured Data for Service Details Popup
+  const SERVICE_POPUP_DATA = {
+    'airport-transfers': {
+      serviceName: 'Airport Transfer',
+      title: 'Airport Transfers (BIA Pickups & Drop-offs)',
+      eyebrow: 'AIRPORT TRANSFERS • SRI LANKA',
+      image: 'assets/home-page/service-airport-transfers.jpg',
+      desc: 'Seamless, VIP airport passenger transfers between Bandaranaike International Airport (CMB / BIA) and any hotel, villa, or resort in Sri Lanka. Your experienced chauffeur monitors flight arrivals in real time and welcomes you in the air-conditioned arrival hall with a personalized name-board.',
+      specs: [
+        { icon: '👥', title: 'Capacity', val: 'Up to 14 Pax' },
+        { icon: '🧳', title: 'Luggage', val: '10 Large Bags' },
+        { icon: '❄️', title: 'Climate', val: 'Dual High A/C' },
+        { icon: '👨‍✈️', title: 'Chauffeur', val: 'Licensed & Vetted' }
+      ],
+      inclusions: [
+        'Complimentary 90-min wait time from touchdown',
+        'All expressway toll charges included',
+        'Meet & Greet paging inside arrivals hall',
+        'Luggage loading & door-to-door assistance',
+        'Full passenger liability travel insurance',
+        'Free bottled water & mobile phone charging'
+      ],
+      pricing: {
+        from: 'From $45 USD',
+        sub: 'Approx. LKR 14,850 • All-inclusive',
+        routes: 'Colombo City ($45) • Bentota ($85) • Galle/Mirissa ($95) • Kandy ($115)'
+      },
+      waMessage: 'Hi KDH Van Hire, I would like to book an Airport Transfer to/from BIA Airport.'
+    },
+    'point-to-point': {
+      serviceName: 'Point to Point',
+      title: 'Point to Point City Transfers',
+      eyebrow: 'INTERCITY TRAVEL • SRI LANKA',
+      image: 'assets/home-page/service-point-to-point.jpg',
+      desc: 'Comfortable, direct intercity private van travel between any two cities in Sri Lanka on your schedule. Avoid crowded public transit and travel in air-conditioned privacy with your family or group directly to your destination.',
+      specs: [
+        { icon: '👥', title: 'Capacity', val: 'Up to 14 Pax' },
+        { icon: '🧳', title: 'Luggage', val: '10 Large Bags' },
+        { icon: '🛣️', title: 'Route', val: 'Expressway Route' },
+        { icon: '⭐', title: 'Comfort', val: 'Reclining Seats' }
+      ],
+      inclusions: [
+        'Door-to-door hotel & residence pickup',
+        'Scenic photography & refreshment stops',
+        'Expressway toll fees & parking included',
+        'Professional driver with defensive driving license',
+        'Zero luggage surcharges or hidden fees',
+        'Flexible departure timing of your choice'
+      ],
+      pricing: {
+        from: 'From $0.55 / KM',
+        sub: 'Fixed transparent per-KM calculation',
+        routes: 'Colombo ⇄ Galle • Kandy ⇄ Sigiriya • Ella ⇄ Mirissa • Nuwara Eliya ⇄ Ella'
+      },
+      waMessage: 'Hi KDH Van Hire, I would like to inquire about a Point-to-Point city transfer.'
+    },
+    'daily-hire': {
+      serviceName: 'Daily Hire',
+      title: 'Full-Day KDH Van Hire with Driver',
+      eyebrow: 'FULL DAY PACKAGES • SRI LANKA',
+      image: 'assets/home-page/service-daily-hire.jpg',
+      desc: 'Complete freedom to explore Sri Lanka at your own pace. Hire a private Toyota KDH van and experienced English-speaking chauffeur for up to 12 hours with 100 km included mileage for sightseeing, meetings, dining, and shopping.',
+      specs: [
+        { icon: '⏱️', title: 'Duration', val: 'Up to 12 Hours' },
+        { icon: '🚗', title: 'Included KM', val: '100 km / Day' },
+        { icon: '👥', title: 'Capacity', val: 'Up to 14 Pax' },
+        { icon: '👨‍✈️', title: 'Driver Guide', val: 'Local Expert' }
+      ],
+      inclusions: [
+        '100 km included mileage allowance per day',
+        'Experienced English-speaking tourist chauffeur',
+        'Full vehicle air conditioning & fuel covered',
+        'Chauffeur meals & allowance included',
+        'Unlimited stops & flexible daily itinerary',
+        'Parking fees & passenger insurance covered'
+      ],
+      pricing: {
+        from: 'From $85 / Day',
+        sub: 'Approx. LKR 28,000 / day all-inclusive',
+        routes: 'Western Province ($85/day) • Hill Country ($95/day) • Extra km only $0.45/km'
+      },
+      waMessage: 'Hi KDH Van Hire, I would like to book a Full-Day KDH Van Hire package.'
+    },
+    'multi-day-tours': {
+      serviceName: 'Multi-Day Tour',
+      title: 'Custom Multi-Day Sri Lanka Tours',
+      eyebrow: 'ISLAND-WIDE EXPEDITIONS • SRI LANKA',
+      image: 'assets/services/service-multi-day-tours.jpg',
+      desc: 'Explore Sri Lanka’s UNESCO world heritage sites, misty tea plantations, wildlife safari parks, and golden southern beaches. Enjoy a dedicated luxury Toyota KDH passenger van and experienced driver-guide for the full duration of your vacation.',
+      specs: [
+        { icon: '🗺️', title: 'Tour Length', val: '3 to 14+ Days' },
+        { icon: '👥', title: 'Capacity', val: 'Up to 14 Pax' },
+        { icon: '⛰️', title: 'Coverage', val: 'All Island' },
+        { icon: '🏨', title: 'Chauffeur', val: 'Batta Included' }
+      ],
+      inclusions: [
+        'Dedicated van & chauffeur for your entire trip',
+        'Personalized route planning & itinerary support',
+        'Driver accommodation & meals 100% covered',
+        'All toll fees, fuel & comprehensive insurance',
+        '24/7 dedicated travel support via WhatsApp',
+        'Airport pickup on day 1 & departure drop-off'
+      ],
+      pricing: {
+        from: 'From $95 / Day',
+        sub: 'Special multi-day discounted package',
+        routes: 'Cultural Triangle • Kandy & Ella Hills • Yala Safari • South Coast Beaches'
+      },
+      waMessage: 'Hi KDH Van Hire, I would like to plan a Multi-Day Tour across Sri Lanka.'
+    },
+    'events-weddings': {
+      serviceName: 'Events & Weddings',
+      title: 'Events, Weddings & Group Shuttles',
+      eyebrow: 'VIP GROUP TRANSPORT • SRI LANKA',
+      image: 'assets/services/service-events-weddings.jpg',
+      desc: 'Flawless group logistics for wedding parties, family celebrations, corporate events, and religious ceremonies. We provide showroom-clean white Toyota KDH vans with uniformed, polite chauffeurs for stress-free guest shuttles.',
+      specs: [
+        { icon: '👥', title: 'Capacity', val: 'Up to 14 Pax / Van' },
+        { icon: '✨', title: 'Condition', val: 'Showroom Clean' },
+        { icon: '🚐', title: 'Fleet', val: 'Multi-Van Convoy' },
+        { icon: '👔', title: 'Driver', val: 'Uniformed Staff' }
+      ],
+      inclusions: [
+        'Immaculately detailed and sanitized vehicle',
+        'Polite, uniformed, punctual chauffeur',
+        'Hotel to ceremony & reception continuous shuttles',
+        'Coordinated dispatch for multi-van bookings',
+        'Ribbon decoration assistance upon request',
+        'Flexible hourly and full-day event packages'
+      ],
+      pricing: {
+        from: 'Custom Quote',
+        sub: 'Hourly & multi-van packages available',
+        routes: 'Wedding venues in Colombo, Negombo, Galle, Kandy, Bentota & outstation'
+      },
+      waMessage: 'Hi KDH Van Hire, I would like to inquire about wedding and event transport.'
+    },
+    'corporate-transport': {
+      serviceName: 'Corporate Transport',
+      title: 'Corporate & Executive Transport',
+      eyebrow: 'EXECUTIVE LOGISTICS • SRI LANKA',
+      image: 'assets/services/service-corporate-transport.jpg',
+      desc: 'Punctual, professional mobility solutions for business delegations, executive team travel, airport VIP meet-and-greets, factory visits, and company offsite conferences across Sri Lanka.',
+      specs: [
+        { icon: '💼', title: 'Service', val: 'Executive Grade' },
+        { icon: '📶', title: 'Connectivity', val: 'USB Charging' },
+        { icon: '⏱️', title: 'Punctuality', val: '100% Guaranteed' },
+        { icon: '📄', title: 'Billing', val: 'Corporate Invoices' }
+      ],
+      inclusions: [
+        'Punctuality guarantee for tight corporate schedules',
+        'Official corporate VAT/tax receipts & invoicing',
+        'High-roof luxury cabin with mobile charging ports',
+        'Strict passenger privacy & non-disclosure assured',
+        'Dedicated corporate account manager',
+        'Clean bottled water & mints provided'
+      ],
+      pricing: {
+        from: 'Corporate Rates',
+        sub: 'Direct invoicing & corporate credit available',
+        routes: 'Port City, Colombo CBD, Biyagama/Katunayake EPZ, Airport & Outstation'
+      },
+      waMessage: 'Hi KDH Van Hire, I would like to inquire about corporate transport accounts.'
+    }
+  };
+
+  const infoModalHeader = document.getElementById('infoModalHeader');
+  const infoModalFooter = document.getElementById('infoModalFooter');
+
   function openInfoModal(topicKey) {
-    const topic = INFO_TOPICS[topicKey] || INFO_TOPICS.pricing;
-    if (infoModalTitle) infoModalTitle.textContent = topic.title;
-    if (infoModalBody) infoModalBody.innerHTML = topic.content;
-    if (infoModalActionBtn) infoModalActionBtn.dataset.service = topicKey;
+    if (SERVICE_POPUP_DATA[topicKey]) {
+      const s = SERVICE_POPUP_DATA[topicKey];
+      if (infoModalHeader) infoModalHeader.style.display = 'none';
+
+      const specsHtml = s.specs.map(spec => `
+        <div class="service-spec-badge">
+          <span class="service-spec-icon">${spec.icon}</span>
+          <span class="service-spec-title">${spec.title}</span>
+          <span class="service-spec-val">${spec.val}</span>
+        </div>
+      `).join('');
+
+      const inclusionsHtml = s.inclusions.map(inc => `
+        <div class="service-inclusion-item">
+          <span class="service-inclusion-check">✓</span>
+          <span>${inc}</span>
+        </div>
+      `).join('');
+
+      if (infoModalBody) {
+        infoModalBody.style.padding = '0';
+        infoModalBody.innerHTML = `
+          <div class="service-popup-container">
+            <div class="service-popup-hero" style="background-image: url('${s.image}');">
+              <button class="service-popup-close-btn" id="servicePopupCloseHeroBtn" aria-label="Close modal">&times;</button>
+              <div class="service-popup-hero-overlay">
+                <span class="service-popup-eyebrow">${s.eyebrow}</span>
+                <h3 class="service-popup-title">${s.title}</h3>
+              </div>
+            </div>
+
+            <div class="service-popup-body">
+              <div class="service-popup-specs">
+                ${specsHtml}
+              </div>
+
+              <p class="service-popup-desc">${s.desc}</p>
+
+              <div class="service-inclusions-box">
+                <div class="service-inclusions-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  What's Included in This Service
+                </div>
+                <div class="service-inclusions-grid">
+                  ${inclusionsHtml}
+                </div>
+              </div>
+
+              <div class="service-pricing-banner">
+                <div class="service-pricing-left">
+                  <span class="service-pricing-label">Transparent Pricing Matrix</span>
+                  <span class="service-pricing-routes">${s.pricing.routes}</span>
+                </div>
+                <div class="service-pricing-badge">
+                  <span class="service-pricing-amount">${s.pricing.from}</span>
+                  <div class="service-pricing-note">${s.pricing.sub}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        const heroClose = document.getElementById('servicePopupCloseHeroBtn');
+        if (heroClose) heroClose.addEventListener('click', closeInfoModal);
+      }
+
+      if (infoModalFooter) {
+        infoModalFooter.style.display = 'block';
+        infoModalFooter.innerHTML = `
+          <div class="service-popup-actions">
+            <button class="btn-popup-primary" id="btnPopupBookService">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Book This Service &rarr;
+            </button>
+            <a href="https://wa.me/94771234567?text=${encodeURIComponent(s.waMessage)}" target="_blank" rel="noopener noreferrer" class="btn-popup-whatsapp">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.697c.97.531 1.808.819 2.806.819l.005-.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.767-5.766zm3.376 8.21c-.144.405-.837.774-1.17.824-.312.045-.694.06-2.18-.557-1.9-0.788-3.122-2.73-3.217-2.855-.095-.125-.769-1.025-.769-1.954 0-.929.489-1.386.663-1.577.174-.191.38-.239.507-.239.127 0 .253.001.365.006.118.006.277-.045.433.329.16.38.547 1.332.594 1.43.048.098.079.213.016.34-.064.127-.095.206-.191.317-.095.111-.201.248-.287.333-.095.095-.195.198-.084.388.111.19.493.813 1.056 1.315.725.645 1.336.845 1.527.939.19.095.302.079.413-.048.111-.127.476-.556.603-.746.127-.19.254-.159.428-.095.175.063 1.11.523 1.301.618.19.095.317.143.365.222.048.079.048.46-.096.865z"/>
+              </svg>
+              Chat on WhatsApp
+            </a>
+          </div>
+          <div class="service-popup-guarantee" style="margin-top: 8px;">
+            <span>✓ Free Cancellation up to 24h</span>
+            <span>•</span>
+            <span>100% English-Speaking Licensed Driver Guaranteed</span>
+          </div>
+        `;
+
+        const bookBtn = document.getElementById('btnPopupBookService');
+        if (bookBtn) {
+          bookBtn.addEventListener('click', () => {
+            closeInfoModal();
+            openBookingModal(s.serviceName);
+          });
+        }
+      }
+    } else {
+      // General Info fallback
+      if (infoModalHeader) infoModalHeader.style.display = 'flex';
+      const topic = INFO_TOPICS[topicKey] || INFO_TOPICS.pricing;
+      if (infoModalTitle) infoModalTitle.textContent = topic.title;
+      if (infoModalBody) {
+        infoModalBody.style.padding = '24px';
+        infoModalBody.innerHTML = topic.content;
+      }
+      if (infoModalFooter) {
+        infoModalFooter.style.display = 'flex';
+        infoModalFooter.innerHTML = `
+          <button class="btn-check-availability" id="infoModalActionBtn" style="min-height: 42px; padding: 10px 22px;">
+            Book a Van Now &rarr;
+          </button>
+        `;
+        const actionBtn = document.getElementById('infoModalActionBtn');
+        if (actionBtn) {
+          actionBtn.addEventListener('click', () => {
+            closeInfoModal();
+            openBookingModal();
+          });
+        }
+      }
+    }
+
     if (generalInfoModal) generalInfoModal.classList.add('open');
   }
 
@@ -571,22 +869,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (infoModalCloseBtn) {
     infoModalCloseBtn.addEventListener('click', closeInfoModal);
-  }
-
-  if (infoModalActionBtn) {
-    infoModalActionBtn.addEventListener('click', () => {
-      const serviceKey = infoModalActionBtn.dataset.service || '';
-      closeInfoModal();
-      const serviceMap = {
-        'airport-transfers': 'Airport Transfer',
-        'point-to-point': 'Point to Point',
-        'daily-hire': 'Daily Hire',
-        'multi-day-tours': 'Multi-Day Tour',
-        'events-weddings': 'Events & Weddings',
-        'corporate-transport': 'Corporate Transport'
-      };
-      openBookingModal(serviceMap[serviceKey] || 'Airport Transfer');
-    });
   }
 
   if (generalInfoModal) {

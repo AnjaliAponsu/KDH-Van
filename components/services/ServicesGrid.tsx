@@ -31,3 +31,4 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
     </section>
   );
 };
+
