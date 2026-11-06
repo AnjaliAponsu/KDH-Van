@@ -411,6 +411,34 @@ document.addEventListener('DOMContentLoaded', () => {
           <li><strong>Date Rescheduling:</strong> Trip dates can be moved free of charge subject to vehicle availability.</li>
         </ul>
       `
+    },
+    faq: {
+      title: 'Frequently Asked Questions (FAQs)',
+      content: `
+        <h4 class="info-section-title">Answers to Your Common Questions</h4>
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 14px;">
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px;">
+            <p style="font-weight: 700; color: #0f172a; margin-bottom: 6px; font-size: 14px;">1. Is a driver included with the KDH van?</p>
+            <p style="font-size: 13.5px; line-height: 1.6; color: #475569; margin: 0;">Yes, every rental includes an experienced, professional English-speaking driver certified by the Sri Lanka Tourism Development Authority. For passenger safety, local traffic familiarity, and insurance compliance, we do not provide self-drive van rentals.</p>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px;">
+            <p style="font-weight: 700; color: #0f172a; margin-bottom: 6px; font-size: 14px;">2. How is the per-kilometre / route price calculated?</p>
+            <p style="font-size: 13.5px; line-height: 1.6; color: #475569; margin: 0;">Route fares are based on point-to-point journey distance utilizing modern expressways. All quotations are transparent and all-inclusive: vehicle rental, driver fee, fuel, expressway tolls, and passenger liability insurance. There are zero hidden fees.</p>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px;">
+            <p style="font-weight: 700; color: #0f172a; margin-bottom: 6px; font-size: 14px;">3. Can I arrange an airport pickup at Bandaranaike International Airport (BIA)?</p>
+            <p style="font-size: 13.5px; line-height: 1.6; color: #475569; margin: 0;">Yes, airport pickups and drop-offs are our core specialty. Your assigned chauffeur will be waiting inside the arrival paging hall with a personalized name-board to assist you directly to your air-conditioned KDH van.</p>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px;">
+            <p style="font-weight: 700; color: #0f172a; margin-bottom: 6px; font-size: 14px;">4. What happens if my incoming flight is delayed?</p>
+            <p style="font-size: 13.5px; line-height: 1.6; color: #475569; margin: 0;">Flight delays are covered completely free of charge. We monitor all incoming flight schedules via live airport radar tracking and adjust your driver's arrival time automatically without waiting charges.</p>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px;">
+            <p style="font-weight: 700; color: #0f172a; margin-bottom: 6px; font-size: 14px;">5. How do I confirm or cancel my booking?</p>
+            <p style="font-size: 13.5px; line-height: 1.6; color: #475569; margin: 0;">You can submit your trip request online or directly via WhatsApp. Once availability is confirmed, you receive an official booking reservation. We offer 100% free cancellation up to 24 hours before your scheduled pickup time.</p>
+          </div>
+        </div>
+      `
     }
   };
 
