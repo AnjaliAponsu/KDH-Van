@@ -135,8 +135,10 @@ button, input, select {
 }
 
 .logo-van-icon {
-  width: 44px;
+  width: 50px;
   height: auto;
+  flex-shrink: 0;
+  display: block;
 }
 
 .brand-text {
@@ -145,20 +147,21 @@ button, input, select {
 }
 
 .brand-name {
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   line-height: 1.15;
 }
 
 .brand-sub {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--color-gold);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  line-height: 1.2;
+  margin-top: 1px;
 }
 
 /* Nav Menu */
