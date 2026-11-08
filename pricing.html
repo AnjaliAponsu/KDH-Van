@@ -98,7 +98,7 @@
         </a>
 
         <!-- Book Now Button -->
-        <button class="btn-book-header btn-trigger-booking" data-service="Multi-Day Tours" data-vehicle="Toyota KDH Passenger Van">
+        <button class="btn-book-header btn-trigger-plan-modal" data-plan="daily-hire" data-service="Daily Hire" data-vehicle="Toyota KDH Passenger Van">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -136,7 +136,7 @@
           </svg>
           WhatsApp Inquiry
         </a>
-        <button class="btn-hero-primary mobile-book-btn btn-trigger-booking" data-service="Multi-Day Tours" data-vehicle="Toyota KDH Passenger Van">
+        <button class="btn-hero-primary mobile-book-btn btn-trigger-plan-modal" data-plan="daily-hire" data-service="Daily Hire" data-vehicle="Toyota KDH Passenger Van">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -228,7 +228,7 @@
             </li>
           </ul>
 
-          <button class="pricing-btn-outline btn-trigger-booking" data-service="Airport Transfers" data-vehicle="Toyota KDH Passenger Van" data-rate="LKR 12,500">
+          <button class="pricing-btn-outline btn-trigger-plan-modal" data-plan="airport-transfer" data-service="Airport Transfers" data-vehicle="Toyota KDH Passenger Van" data-rate="LKR 12,500">
             Book Airport Transfer &rarr;
           </button>
         </div>
@@ -275,7 +275,7 @@
             </li>
           </ul>
 
-          <button class="pricing-btn-outline btn-trigger-booking" data-service="Daily Hire" data-vehicle="Toyota KDH Passenger Van" data-rate="LKR 18,000 / day">
+          <button class="pricing-btn-outline btn-trigger-plan-modal" data-plan="daily-hire" data-service="Daily Hire" data-vehicle="Toyota KDH Passenger Van" data-rate="LKR 18,000 / day">
             Book Daily Hire &rarr;
           </button>
         </div>
@@ -327,7 +327,7 @@
             </li>
           </ul>
 
-          <button class="pricing-btn-gold btn-trigger-booking" data-service="Multi-Day Tours" data-vehicle="Toyota KDH Passenger Van" data-rate="LKR 16,500 / day">
+          <button class="pricing-btn-gold btn-trigger-plan-modal" data-plan="multi-day" data-service="Multi-Day Tours" data-vehicle="Toyota KDH Passenger Van" data-rate="LKR 16,500 / day">
             Book Multi-Day Tour &rarr;
           </button>
         </div>
@@ -398,7 +398,7 @@
             <h3 class="pricing-quote-heading">Need a Custom Quote?</h3>
             <p class="pricing-quote-desc">Tell us your travel plan and get a personalized price today.</p>
           </div>
-          <button class="pricing-btn-get-quote btn-trigger-booking" data-service="Custom Quote Inquiry" data-vehicle="Toyota KDH Passenger Van">
+          <button class="pricing-btn-get-quote btn-trigger-plan-modal" data-plan="multi-day" data-service="Custom Quote Inquiry" data-vehicle="Toyota KDH Passenger Van">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="4" width="20" height="16" rx="2"/>
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
@@ -493,7 +493,72 @@
   </footer>
 
   <!-- =========================================================================
-       5. INSTANT BOOKING MODAL
+       5. PRICE PLAN BOOKING POPUP MODALS (100% Mockup Fidelity)
+       ========================================================================= -->
+  <div class="plan-modal-overlay" id="pricePlanModal" role="dialog" aria-modal="true" aria-labelledby="planModalTitle">
+    <div class="plan-modal-container">
+      <!-- Modal Header -->
+      <div class="plan-modal-header">
+        <div class="plan-modal-header-left">
+          <div class="plan-modal-header-icon" id="planModalIcon">
+            <!-- Dynamic Icon -->
+          </div>
+          <div class="plan-modal-header-divider"></div>
+          <div class="plan-modal-header-text">
+            <h3 class="plan-modal-title" id="planModalTitle">Book Daily Hire</h3>
+            <p class="plan-modal-sub" id="planModalSub">Hire a KDH van with driver for a full day (e.g. up to 8–10 hours).</p>
+          </div>
+        </div>
+        <button class="plan-modal-close" id="planModalCloseBtn" aria-label="Close dialog">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Banner Image -->
+      <div class="plan-modal-banner">
+        <img id="planModalBannerImg" src="assets/home-page/service-daily-hire.jpg" alt="Service Van Banner">
+      </div>
+
+      <!-- Form Content (Injected dynamically) -->
+      <form class="plan-modal-form" id="planModalForm" onsubmit="return false;">
+        <div id="planModalFields">
+          <!-- Injected dynamic fields -->
+        </div>
+
+        <!-- Info Tag Box -->
+        <div class="plan-info-box">
+          <svg class="plan-info-tag-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8 8a2 2 0 0 0 2.828 0l7.172-7.172a2 2 0 0 0 0-2.828l-8-8zM7 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+          </svg>
+          <div class="plan-info-divider"></div>
+          <div class="plan-info-content">
+            <h4 class="plan-info-heading" id="planInfoHeading">Final price will be confirmed based on duration, itinerary, and availability.</h4>
+            <p class="plan-info-desc" id="planInfoDesc"></p>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="plan-modal-actions">
+          <button type="button" class="plan-btn-cancel" id="planBtnCancel">Cancel</button>
+          <button type="button" class="plan-btn-submit" id="planBtnSubmit">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span id="planBtnSubmitText">Check Availability</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       6. INSTANT BOOKING MODAL (Fallback)
        ========================================================================= -->
   <div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">

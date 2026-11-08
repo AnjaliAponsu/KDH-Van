@@ -4403,3 +4403,415 @@ input:checked + .return-toggle-slider:before {
     padding: 95px 0 40px 0;
   }
 }
+
+/* =========================================================================
+   PRICE PLAN POPUPS (100% FIDELITY TO DESIGN MOCKUPS)
+   ========================================================================= */
+
+.plan-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(11, 32, 56, 0.68);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.plan-modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.plan-modal-container {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 550px;
+  max-height: 94vh;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(11, 32, 56, 0.35);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  position: relative;
+  padding: 24px 26px 22px 26px;
+  transform: translateY(16px) scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.plan-modal-container::-webkit-scrollbar {
+  width: 6px;
+}
+.plan-modal-container::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 6px;
+}
+.plan-modal-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.plan-modal-overlay.open .plan-modal-container {
+  transform: translateY(0) scale(1);
+}
+
+/* Modal Header */
+.plan-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.plan-modal-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.plan-modal-header-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #0b2038;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.plan-modal-header-divider {
+  width: 3px;
+  height: 32px;
+  background-color: #FFB900;
+  border-radius: 2px;
+  margin: 0 12px;
+  flex-shrink: 0;
+}
+
+.plan-modal-header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-modal-title {
+  font-size: 19.5px;
+  font-weight: 800;
+  color: #0b2038;
+  margin: 0;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.plan-modal-sub {
+  font-size: 12px;
+  color: #64748b;
+  margin: 2px 0 0 0;
+  line-height: 1.3;
+}
+
+.plan-modal-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.plan-modal-close:hover {
+  background-color: #f1f5f9;
+  color: #0b2038;
+  border-color: #cbd5e1;
+}
+
+/* Modal Banner Image */
+.plan-modal-banner {
+  width: 100%;
+  height: 144px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  border: 1px solid #f1f5f9;
+}
+
+.plan-modal-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Modal Form Grid */
+.plan-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.plan-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 11px 12px;
+}
+
+.plan-form-full {
+  grid-column: span 2;
+}
+
+.plan-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-form-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.plan-form-label .req {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+.plan-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.plan-input-icon {
+  position: absolute;
+  left: 11px;
+  color: #64748b;
+  pointer-events: none;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plan-input-control {
+  width: 100%;
+  height: 36px;
+  padding: 0 10px 0 34px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: #0f172a;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.plan-input-control:focus {
+  border-color: #0b2038;
+  box-shadow: 0 0 0 3px rgba(11, 32, 56, 0.08);
+}
+
+.plan-select-control {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+
+/* Radio Pills for Point to Point */
+.plan-radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  height: 36px;
+}
+
+.plan-radio-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1e293b;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.plan-radio-pill input[type="radio"] {
+  accent-color: #FFB900;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.plan-radio-pill.active {
+  border-color: #FFB900;
+  background-color: #fffdf5;
+  box-shadow: 0 0 0 1px #FFB900;
+}
+
+/* Textarea */
+.plan-textarea-control {
+  width: 100%;
+  height: 60px;
+  padding: 8px 10px 8px 34px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #0f172a;
+  background-color: #ffffff;
+  outline: none;
+  resize: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  line-height: 1.4;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.plan-textarea-control:focus {
+  border-color: #0b2038;
+  box-shadow: 0 0 0 3px rgba(11, 32, 56, 0.08);
+}
+
+.plan-input-wrap.textarea-wrap .plan-input-icon {
+  top: 10px;
+}
+
+/* Info Tag Box */
+.plan-info-box {
+  background-color: #fffdf2;
+  border: 1px solid #fef3c7;
+  border-left: 3.5px solid #FFB900;
+  border-radius: 8px;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 3px;
+}
+
+.plan-info-tag-icon {
+  color: #d97706;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.plan-info-divider {
+  width: 2px;
+  height: 24px;
+  background-color: #fde68a;
+  flex-shrink: 0;
+}
+
+.plan-info-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-info-heading {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0b2038;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.plan-info-desc {
+  font-size: 11px;
+  color: #64748b;
+  margin: 2px 0 0 0;
+  line-height: 1.25;
+}
+
+/* Modal Actions */
+.plan-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.plan-btn-cancel {
+  padding: 9px 20px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0b2038;
+  background-color: #ffffff;
+  border: 1.5px solid #0b2038;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.plan-btn-cancel:hover {
+  background-color: #0b2038;
+  color: #ffffff;
+}
+
+.plan-btn-submit {
+  padding: 9px 22px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0b2038;
+  background-color: #FFB900;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: 0 4px 14px rgba(255, 185, 0, 0.35);
+  transition: all 0.2s ease;
+}
+
+.plan-btn-submit:hover {
+  background-color: #f5b000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(255, 185, 0, 0.45);
+}
+
+@media (max-width: 580px) {
+  .plan-form-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .plan-form-full {
+    grid-column: span 1;
+  }
+  .plan-modal-container {
+    padding: 16px 14px;
+    max-height: 96vh;
+  }
+  .plan-modal-banner {
+    height: 110px;
+  }
+}
+
