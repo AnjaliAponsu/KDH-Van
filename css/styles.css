@@ -2773,16 +2773,26 @@ input:checked + .return-toggle-slider:before {
   position: absolute;
   bottom: 12px;
   left: 16px;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background-color: #143d6c;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #16446B 0%, #0B2038 100%);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 14px rgba(11, 32, 56, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
   z-index: 2;
+  transition: all 0.25s ease;
+}
+
+.service-card-item:hover .service-card-icon-badge {
+  transform: translateY(-2px) scale(1.06);
+  background: #0B2038;
+  border-color: #FFB900;
+  color: #FFB900;
+  box-shadow: 0 6px 18px rgba(11, 32, 56, 0.45), 0 0 12px rgba(255, 185, 0, 0.25);
 }
 
 .service-card-content {
