@@ -10,18 +10,7 @@ export const SiteFooter: React.FC = () => {
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-4 text-decoration-none">
-              <svg className="w-8 h-6" viewBox="0 0 56 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 6 34 L 46 34 M 15 34 A 5 5 0 0 0 25 34 M 35 34 A 5 5 0 0 0 45 34" stroke="#FFB900" strokeWidth="2.5" strokeLinecap="round"/>
-                <circle cx="15" cy="33.5" r="4" fill="#0b1528" stroke="#FFB900" strokeWidth="2.5"/>
-                <circle cx="15" cy="33.5" r="1.5" fill="#FFB900"/>
-                <circle cx="41" cy="33.5" r="4" fill="#0b1528" stroke="#FFB900" strokeWidth="2.5"/>
-                <circle cx="41" cy="33.5" r="1.5" fill="#FFB900"/>
-                <path d="M 4 30 L 6 30 C 6 26 8 24 10 24 L 14 24 C 16 24 18 19 22 14 C 26 10 30 9 37 9 L 47 9 C 50 9 51 11 51 14 L 51 28 C 51 30 49 31 47 31 L 44 31" stroke="#FFB900" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <div>
-                <span className="text-[16px] font-extrabold text-white block">KDH Van Hire</span>
-                <span className="text-[10px] font-semibold text-[#FFB900] tracking-widest uppercase block">Sri Lanka</span>
-              </div>
+              <img src="/assets/logo.png" alt="KDH Van Hire Sri Lanka" className="h-[38px] w-auto object-contain" />
             </Link>
             <p className="text-[13px] leading-relaxed text-slate-400">
               Reliable KDH van hire with professional drivers for airport transfers, private tours, and everyday travel across Sri Lanka.

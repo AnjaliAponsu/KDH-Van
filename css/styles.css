@@ -132,6 +132,22 @@ button, input, select {
   display: flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;
+}
+
+.brand-logo-img {
+  height: 38px;
+  width: auto;
+  max-width: 230px;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .brand-logo-img {
+    height: 32px;
+    max-width: 190px;
+  }
 }
 
 .logo-van-icon {
@@ -2632,6 +2648,101 @@ input:checked + .return-toggle-slider:before {
   align-items: center;
   padding: 108px 0 54px 0;
   overflow: hidden;
+}
+
+/* Fleet Hero Section */
+.fleet-hero-section {
+  position: relative;
+  background-color: #0b1f36;
+  background-image: url('../assets/fleet/fleet-hero-bg.jpg');
+  background-size: cover;
+  background-position: center right;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  padding: 110px 0 54px 0;
+  overflow: hidden;
+}
+
+.fleet-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg, 
+    rgba(11, 31, 54, 0.95) 0%, 
+    rgba(11, 31, 54, 0.88) 40%, 
+    rgba(11, 31, 54, 0.65) 65%, 
+    rgba(11, 31, 54, 0.20) 100%
+  );
+  z-index: 1;
+}
+
+.fleet-hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.fleet-hero-content {
+  max-width: 600px;
+}
+
+.fleet-hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 8px;
+}
+
+.fleet-hero-title {
+  font-size: 46px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.fleet-hero-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e2e8f0;
+  margin-bottom: 20px;
+}
+
+.fleet-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.fleet-breadcrumb a {
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.fleet-breadcrumb a:hover {
+  color: var(--color-gold);
+}
+
+.fleet-breadcrumb-sep {
+  color: #64748b;
+}
+
+.fleet-breadcrumb-current {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .services-hero-section::before {
