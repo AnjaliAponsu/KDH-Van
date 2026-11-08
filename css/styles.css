@@ -2617,9 +2617,10 @@ input:checked + .return-toggle-slider:before {
    PAGE 2: OUR SERVICES STYLES (Mockup Exact Fidelity)
    ========================================================================== */
 
-/* Header Nav Active Underline for Services & Fleet */
+/* Header Nav Active Underline for Services, Fleet & Pricing */
 .nav-link.services-nav-active,
-.nav-link.fleet-nav-active {
+.nav-link.fleet-nav-active,
+.nav-link.pricing-nav-active {
   position: relative;
   color: #ffffff;
   font-weight: 600;
@@ -2627,7 +2628,8 @@ input:checked + .return-toggle-slider:before {
 }
 
 .nav-link.services-nav-active::after,
-.nav-link.fleet-nav-active::after {
+.nav-link.fleet-nav-active::after,
+.nav-link.pricing-nav-active::after {
   content: '';
   position: absolute;
   bottom: 2px;
@@ -3850,5 +3852,554 @@ input:checked + .return-toggle-slider:before {
   }
   .floating-whatsapp-tooltip {
     display: none;
+  }
+}
+
+/* =========================================================================
+   PAGE 4 - PRICING PAGE STYLES (100% ACCURACY TO MOCKUP)
+   ========================================================================= */
+
+/* Pricing Hero Section */
+.pricing-hero-section {
+  position: relative;
+  background-color: #0b1f36;
+  background-image: url('../assets/fleet/fleet-hero-bg.jpg?v=3');
+  background-size: cover;
+  background-position: right center;
+  min-height: 255px;
+  display: flex;
+  align-items: center;
+  padding: 88px 0 34px 0;
+  overflow: hidden;
+}
+
+.pricing-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg, 
+    rgba(11, 31, 54, 0.94) 0%, 
+    rgba(11, 31, 54, 0.85) 42%, 
+    rgba(11, 31, 54, 0.35) 64%, 
+    rgba(11, 31, 54, 0.00) 84%
+  );
+  z-index: 1;
+}
+
+.pricing-hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.pricing-hero-content {
+  max-width: 760px;
+}
+
+.pricing-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.pricing-hero-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background-color: var(--color-gold);
+  border-radius: 2px;
+}
+
+.pricing-hero-title {
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  margin-bottom: 10px;
+}
+
+.pricing-hero-title .text-gold {
+  color: #FFB900;
+}
+
+.pricing-hero-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e2e8f0;
+  margin-bottom: 18px;
+}
+
+.pricing-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.pricing-breadcrumb a {
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.pricing-breadcrumb a:hover {
+  color: var(--color-gold);
+}
+
+.pricing-breadcrumb-sep {
+  color: #64748b;
+}
+
+.pricing-breadcrumb-current {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Pricing Plans Section */
+.pricing-plans-section {
+  padding: 48px 0 36px 0;
+  background-color: #ffffff;
+}
+
+.pricing-section-title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.pricing-title-line {
+  width: 44px;
+  height: 2.5px;
+  background-color: #FFB900;
+  border-radius: 2px;
+}
+
+.pricing-section-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: #0b2038;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.pricing-section-subtitle {
+  text-align: center;
+  font-size: 14.5px;
+  color: #64748b;
+  margin: 0 0 38px 0;
+}
+
+.pricing-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 34px;
+}
+
+/* Pricing Card Base */
+.pricing-plan-card {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 30px 26px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(11, 32, 56, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.pricing-plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(11, 32, 56, 0.10);
+}
+
+/* Popular Highlighted Card (Multi-Day Tour) */
+.pricing-plan-card.popular-plan {
+  background-color: #fffdf5;
+  border: 2px solid #FFB900;
+  box-shadow: 0 6px 24px rgba(255, 185, 0, 0.18);
+}
+
+.pricing-popular-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background-color: #f59e0b;
+  color: #0b2038;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+  z-index: 2;
+}
+
+.pricing-popular-badge svg {
+  color: #ea580c;
+  flex-shrink: 0;
+}
+
+/* Card Header: Icon + Titles */
+.pricing-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.pricing-card-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pricing-card-icon-box.icon-blue {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.pricing-card-icon-box.icon-gold {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.pricing-card-icon-box.icon-green {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.pricing-card-title-group {
+  flex: 1;
+}
+
+.pricing-card-plan-name {
+  font-size: 21px;
+  font-weight: 800;
+  color: #0b2038;
+  margin: 0 0 3px 0;
+  line-height: 1.2;
+}
+
+.pricing-card-plan-desc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.4;
+  margin: 0;
+  min-height: 38px;
+}
+
+/* Price Display */
+.pricing-card-rate-wrap {
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pricing-rate-from {
+  font-size: 15px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.pricing-rate-amount {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0b2038;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.pricing-rate-period {
+  font-size: 15px;
+  color: #475569;
+  font-weight: 500;
+}
+
+/* Checklist */
+.pricing-card-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  flex: 1;
+}
+
+.pricing-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.pricing-feature-check,
+.pricing-check-svg {
+  color: #16a34a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+}
+
+/* Action Buttons */
+.pricing-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #ffffff;
+  color: #0b2038;
+  font-size: 14.5px;
+  font-weight: 700;
+  padding: 13px 20px;
+  border-radius: 8px;
+  border: 1.5px solid #0b2038;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pricing-btn-outline:hover {
+  background-color: #0b2038;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.pricing-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #FFB900;
+  color: #0b2038;
+  font-size: 14.5px;
+  font-weight: 700;
+  padding: 13px 20px;
+  border-radius: 8px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 14px rgba(255, 185, 0, 0.32);
+}
+
+.pricing-btn-gold:hover {
+  background-color: #f5b000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 185, 0, 0.42);
+}
+
+/* Trust Badges Strip */
+.pricing-trust-strip {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 22px 28px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 34px;
+  box-shadow: 0 2px 12px rgba(11, 32, 56, 0.04);
+}
+
+.pricing-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 16px;
+}
+
+.pricing-trust-item:not(:last-child) {
+  border-right: 1px solid #f1f5f9;
+}
+
+.pricing-trust-icon {
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.pricing-trust-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.pricing-trust-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pricing-trust-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0b2038;
+  line-height: 1.2;
+}
+
+.pricing-trust-sub {
+  font-size: 12.5px;
+  color: #64748b;
+  line-height: 1.2;
+}
+
+/* Custom Quote Banner */
+.pricing-quote-banner-card {
+  position: relative;
+  border-radius: 16px;
+  background-image: url('../assets/home-page/cta-banner-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 28px 38px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(11, 32, 56, 0.14);
+  margin-bottom: 50px;
+}
+
+.pricing-quote-banner-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(11, 32, 56, 0.94) 0%, rgba(11, 32, 56, 0.88) 55%, rgba(11, 32, 56, 0.40) 100%);
+  z-index: 1;
+}
+
+.pricing-quote-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.pricing-quote-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pricing-quote-heading {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.pricing-quote-desc {
+  font-size: 14.5px;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.pricing-btn-get-quote {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #FFB900;
+  color: #0b2038;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(255, 185, 0, 0.32);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.pricing-btn-get-quote:hover {
+  background-color: #f5b000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 185, 0, 0.42);
+}
+
+/* Pricing Responsive */
+@media (max-width: 991px) {
+  .pricing-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .pricing-trust-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .pricing-trust-item:nth-child(2) {
+    border-right: none;
+  }
+  .pricing-quote-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .pricing-hero-title {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 640px) {
+  .pricing-trust-strip {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 16px;
+  }
+  .pricing-trust-item {
+    border-right: none !important;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 12px;
+  }
+  .pricing-trust-item:last-child {
+    border-bottom: none;
+  }
+  .pricing-hero-title {
+    font-size: 30px;
+  }
+  .pricing-hero-section {
+    min-height: 280px;
+    padding: 95px 0 40px 0;
   }
 }

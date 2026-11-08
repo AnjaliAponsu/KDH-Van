@@ -22,6 +22,7 @@ export const SiteFooter: React.FC = () => {
             <h4 className="text-[14px] font-bold text-white uppercase tracking-wider mb-4">Quick Links</h4>
             <ul className="space-y-2 text-[13px]">
               <li><Link href="/" className="hover:text-[#FFB900] transition-colors">› Home</Link></li>
+              <li><Link href="/services" className="hover:text-[#FFB900] transition-colors">› Services</Link></li>
               <li><Link href="/fleet" className="hover:text-[#FFB900] transition-colors">› Our Fleet</Link></li>
               <li><Link href="/pricing" className="hover:text-[#FFB900] transition-colors">› Pricing</Link></li>
               <li><Link href="/about" className="hover:text-[#FFB900] transition-colors">› About Us</Link></li>

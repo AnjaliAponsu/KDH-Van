@@ -41,7 +41,10 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ onBookClick, activeNav =
           >
             Our Fleet
           </Link>
-          <Link href="/pricing" className="text-[14px] font-medium text-slate-300 hover:text-white transition-colors">
+          <Link 
+            href="/pricing" 
+            className={`text-[14px] transition-colors ${activeNav === 'pricing' ? 'font-semibold text-white relative pb-1 after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2.5px] after:bg-[#FFB900] after:rounded-full' : 'font-medium text-slate-300 hover:text-white'}`}
+          >
             Pricing
           </Link>
           <Link href="/about" className="text-[14px] font-medium text-slate-300 hover:text-white transition-colors">
@@ -86,7 +89,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ onBookClick, activeNav =
           <Link href="/" className={`${activeNav === 'home' ? 'text-[#FFB900] font-semibold' : 'text-slate-300'} py-2`}>Home</Link>
           <Link href="/services" className={`${activeNav === 'services' ? 'text-[#FFB900] font-semibold' : 'text-slate-300'} py-2`}>Services</Link>
           <Link href="/fleet" className={`${activeNav === 'fleet' ? 'text-[#FFB900] font-semibold' : 'text-slate-300'} py-2`}>Our Fleet</Link>
-          <Link href="/pricing" className="text-slate-300 py-2">Pricing</Link>
+          <Link href="/pricing" className={`${activeNav === 'pricing' ? 'text-[#FFB900] font-semibold' : 'text-slate-300'} py-2`}>Pricing</Link>
           <Link href="/about" className="text-slate-300 py-2">About</Link>
           <Link href="/contact" className="text-slate-300 py-2">Contact</Link>
           <button
