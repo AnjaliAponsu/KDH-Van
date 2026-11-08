@@ -4,9 +4,10 @@ import { Calendar, PhoneCall, Menu, X, ChevronDown } from 'lucide-react';
 
 interface SiteHeaderProps {
   onBookClick?: () => void;
+  activeNav?: 'home' | 'services' | 'fleet' | 'pricing' | 'about' | 'contact';
 }
 
-export const SiteHeader: React.FC<SiteHeaderProps> = ({ onBookClick }) => {
+export const SiteHeader: React.FC<SiteHeaderProps> = ({ onBookClick, activeNav = 'services' }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -19,19 +20,25 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ onBookClick }) => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-7">
-          <Link href="/" className="text-[14px] font-medium text-slate-300 hover:text-white transition-colors">
+          <Link 
+            href="/" 
+            className={`text-[14px] transition-colors ${activeNav === 'home' ? 'font-semibold text-white relative pb-1 after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2.5px] after:bg-[#FFB900] after:rounded-full' : 'font-medium text-slate-300 hover:text-white'}`}
+          >
             Home
           </Link>
           <div className="relative group py-2">
             <Link 
               href="/services" 
-              className="relative text-[14px] font-semibold text-white flex items-center gap-1 pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2.5px] after:bg-[#FFB900] after:rounded-full"
+              className={`relative text-[14px] flex items-center gap-1 pb-1 transition-colors ${activeNav === 'services' ? 'font-semibold text-white after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2.5px] after:bg-[#FFB900] after:rounded-full' : 'font-medium text-slate-300 hover:text-white'}`}
             >
               Services
               <ChevronDown className="w-3.5 h-3.5" />
             </Link>
           </div>
-          <Link href="/fleet" className="text-[14px] font-medium text-slate-300 hover:text-white transition-colors">
+          <Link 
+            href="/fleet" 
+            className={`text-[14px] transition-colors ${activeNav === 'fleet' ? 'font-semibold text-white relative pb-1 after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2.5px] after:bg-[#FFB900] after:rounded-full' : 'font-medium text-slate-300 hover:text-white'}`}
+          >
             Our Fleet
           </Link>
           <Link href="/pricing" className="text-[14px] font-medium text-slate-300 hover:text-white transition-colors">
@@ -76,9 +83,9 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ onBookClick }) => {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#071524] border-t border-slate-800 px-6 py-4 flex flex-col gap-3">
-          <Link href="/" className="text-slate-300 py-2">Home</Link>
-          <Link href="/services" className="text-[#FFB900] font-semibold py-2">Services</Link>
-          <Link href="/fleet" className="text-slate-300 py-2">Our Fleet</Link>
+          <Link href="/" className={`${activeNav === 'home' ? 'text-[#FFB900] font-semibold' : 'text-slate-300'} py-2`}>Home</Link>
+          <Link href="/services" className={`${activeNav === 'services' ? 'text-[#FFB900] font-semibold' : 'text-slate-300'} py-2`}>Services</Link>
+          <Link href="/fleet" className={`${activeNav === 'fleet' ? 'text-[#FFB900] font-semibold' : 'text-slate-300'} py-2`}>Our Fleet</Link>
           <Link href="/pricing" className="text-slate-300 py-2">Pricing</Link>
           <Link href="/about" className="text-slate-300 py-2">About</Link>
           <Link href="/contact" className="text-slate-300 py-2">Contact</Link>

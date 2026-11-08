@@ -971,4 +971,157 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // 13. Fleet Vehicle Gallery & Fullscreen Lightbox
+  const galleryMainImg = document.getElementById('galleryMainImg');
+  const galleryMainWrapper = document.getElementById('galleryMainWrapper');
+  const btnOpenLightbox = document.getElementById('btnOpenLightbox');
+  const thumbBtns = document.querySelectorAll('.gallery-thumb-btn');
+
+  const fleetLightbox = document.getElementById('fleetLightboxModal');
+  const lightboxMainImg = document.getElementById('lightboxMainImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+  const lightboxPrevBtn = document.getElementById('lightboxPrevBtn');
+  const lightboxNextBtn = document.getElementById('lightboxNextBtn');
+  const lightboxThumbItems = document.querySelectorAll('.fleet-lightbox-thumb-item');
+
+  if (galleryMainImg && thumbBtns.length > 0) {
+    let currentGalleryIndex = 0;
+    const galleryItems = Array.from(thumbBtns).map(btn => ({
+      src: btn.getAttribute('data-src') || '',
+      alt: btn.getAttribute('data-alt') || '',
+      caption: btn.getAttribute('data-caption') || ''
+    }));
+
+    function setGalleryImage(index) {
+      if (index < 0 || index >= galleryItems.length) return;
+      currentGalleryIndex = index;
+      const item = galleryItems[index];
+
+      // Update main gallery image with smooth fade
+      galleryMainImg.style.opacity = '0.3';
+      setTimeout(() => {
+        galleryMainImg.src = item.src;
+        galleryMainImg.alt = item.alt;
+        galleryMainImg.style.opacity = '1';
+      }, 150);
+
+      // Update active thumbnail
+      thumbBtns.forEach((btn, i) => {
+        if (i === index) {
+          btn.classList.add('active');
+          btn.setAttribute('aria-current', 'true');
+        } else {
+          btn.classList.remove('active');
+          btn.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    thumbBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        setGalleryImage(idx);
+      });
+    });
+
+    // Lightbox open / close / navigate
+    function openLightbox(index) {
+      if (!fleetLightbox) return;
+      currentGalleryIndex = index;
+      updateLightboxDisplay(index);
+      fleetLightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      if (!fleetLightbox) return;
+      fleetLightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function updateLightboxDisplay(index) {
+      if (!lightboxMainImg || index < 0 || index >= galleryItems.length) return;
+      const item = galleryItems[index];
+      lightboxMainImg.style.opacity = '0.3';
+      setTimeout(() => {
+        lightboxMainImg.src = item.src;
+        lightboxMainImg.alt = item.alt;
+        lightboxMainImg.style.opacity = '1';
+      }, 120);
+
+      if (lightboxCaption) {
+        lightboxCaption.textContent = item.caption;
+      }
+      if (lightboxCounter) {
+        lightboxCounter.textContent = `${index + 1} / ${galleryItems.length}`;
+      }
+
+      lightboxThumbItems.forEach((tb, i) => {
+        if (i === index) {
+          tb.classList.add('active');
+        } else {
+          tb.classList.remove('active');
+        }
+      });
+    }
+
+    function nextLightboxImage() {
+      const nextIdx = (currentGalleryIndex + 1) % galleryItems.length;
+      currentGalleryIndex = nextIdx;
+      updateLightboxDisplay(nextIdx);
+      setGalleryImage(nextIdx);
+    }
+
+    function prevLightboxImage() {
+      const prevIdx = (currentGalleryIndex - 1 + galleryItems.length) % galleryItems.length;
+      currentGalleryIndex = prevIdx;
+      updateLightboxDisplay(prevIdx);
+      setGalleryImage(prevIdx);
+    }
+
+    if (galleryMainWrapper) {
+      galleryMainWrapper.addEventListener('click', () => openLightbox(currentGalleryIndex));
+    }
+    if (btnOpenLightbox) {
+      btnOpenLightbox.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightbox(currentGalleryIndex);
+      });
+    }
+    if (lightboxCloseBtn) {
+      lightboxCloseBtn.addEventListener('click', closeLightbox);
+    }
+    if (lightboxNextBtn) {
+      lightboxNextBtn.addEventListener('click', nextLightboxImage);
+    }
+    if (lightboxPrevBtn) {
+      lightboxPrevBtn.addEventListener('click', prevLightboxImage);
+    }
+
+    lightboxThumbItems.forEach((tb, idx) => {
+      tb.addEventListener('click', () => {
+        currentGalleryIndex = idx;
+        updateLightboxDisplay(idx);
+        setGalleryImage(idx);
+      });
+    });
+
+    if (fleetLightbox) {
+      fleetLightbox.addEventListener('click', (e) => {
+        if (e.target === fleetLightbox) {
+          closeLightbox();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (!fleetLightbox || !fleetLightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextLightboxImage();
+      if (e.key === 'ArrowLeft') prevLightboxImage();
+    });
+  }
 });
