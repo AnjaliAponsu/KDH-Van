@@ -1292,6 +1292,34 @@ document.addEventListener('DOMContentLoaded', () => {
            (fd.get('specialNotes') ? `*Notes:* ${fd.get('specialNotes')}\n` : '');
   });
 
+  // Contact Page Form Submission Handler
+  const contactForm = document.getElementById('contactPageForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fullName = (document.getElementById('contactFullName')?.value || '').trim();
+      const email = (document.getElementById('contactEmail')?.value || '').trim();
+      const phone = (document.getElementById('contactPhone')?.value || '').trim();
+      const enquiryType = (document.getElementById('contactEnquiryType')?.value || '').trim();
+      const message = (document.getElementById('contactMessage')?.value || '').trim();
+
+      const waText = encodeURIComponent(
+        `*New KDH Van Hire Inquiry (Contact Page)*\n\n` +
+        `*Name:* ${fullName}\n` +
+        `*Email:* ${email}\n` +
+        `*Phone / WhatsApp:* ${phone}\n` +
+        `*Enquiry Type:* ${enquiryType}\n` +
+        `*Message:* ${message}\n\n` +
+        `Please get back to me as soon as possible.`
+      );
+
+      showToast('Thank you! Connecting your enquiry via WhatsApp...');
+      setTimeout(() => {
+        window.open(`https://wa.me/94771234567?text=${waText}`, '_blank');
+      }, 700);
+    });
+  }
+
   // Escape key closes open popups
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
