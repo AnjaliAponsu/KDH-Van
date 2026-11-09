@@ -168,6 +168,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function openBookingModal(customService) {
+    if (document.getElementById('modalAirportTransfer')) {
+      const sLower = (customService || '').toLowerCase();
+      if (sLower.includes('airport')) {
+        openPricePlanPopup('modalAirportTransfer');
+        return;
+      }
+      if (sLower.includes('daily') || sLower.includes('day hire')) {
+        openPricePlanPopup('modalDailyHire');
+        return;
+      }
+      if (sLower.includes('point') || sLower.includes('p2p')) {
+        openPricePlanPopup('modalPointToPoint');
+        return;
+      }
+      if (sLower.includes('tour') || sLower.includes('multi')) {
+        openPricePlanPopup('modalMultiDayTour');
+        return;
+      }
+    }
+
     if (customService) {
       selectServiceTab(customService);
     }
@@ -266,736 +286,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // =========================================================================
-  // 9. PRICE PLAN POPUP MODALS (100% Mockup Fidelity)
-  // =========================================================================
-  const PRICE_PLAN_TEMPLATES = {
-    'airport-transfer': {
-      title: 'Book Airport Transfer',
-      subtitle: 'Plan your airport pickup or drop-off in a few simple steps.',
-      bannerImg: 'assets/modals/banner-airport-transfer.jpg',
-      iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>`,
-      fieldsHtml: `
-        <div class="plan-form-grid">
-          <div class="plan-form-group">
-            <label class="plan-form-label">Airport <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planAirportSelect">
-                <option value="Bandaranaike Intl. Airport (CMB)" selected>Bandaranaike Intl. Airport (CMB)</option>
-                <option value="Mattala Rajapaksa Intl. Airport (HRI)">Mattala Rajapaksa Intl. Airport (HRI)</option>
-                <option value="Jaffna International Airport (JAF)">Jaffna International Airport (JAF)</option>
-                <option value="Ratmalana Airport (RML)">Ratmalana Airport (RML)</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Pickup / Drop-off <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 5h18"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 19H3"></path></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planTransferTypeSelect">
-                <option value="Airport Pickup" selected>Airport Pickup</option>
-                <option value="Airport Drop-off">Airport Drop-off</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Destination <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </span>
-              <input type="text" class="plan-input-control" id="planDestination" value="Colombo" placeholder="e.g. Colombo, Kandy, Galle">
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Date <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              </span>
-              <input type="text" class="plan-input-control" id="planDate" value="Tue, 28 Jan 2025" placeholder="Select Date">
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Time <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planTime">
-                <option value="6:00 AM">6:00 AM</option>
-                <option value="8:00 AM">8:00 AM</option>
-                <option value="10:00 AM" selected>10:00 AM</option>
-                <option value="12:00 PM">12:00 PM</option>
-                <option value="2:00 PM">2:00 PM</option>
-                <option value="4:00 PM">4:00 PM</option>
-                <option value="6:00 PM">6:00 PM</option>
-                <option value="8:00 PM">8:00 PM</option>
-                <option value="10:00 PM">10:00 PM</option>
-                <option value="Midnight">12:00 AM (Midnight)</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Passengers <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planPassengers">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4" selected>4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10-14">10–14</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Luggage</label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planLuggage">
-                <option value="1-2 bags">1–2 bags</option>
-                <option value="4 bags" selected>4 bags</option>
-                <option value="6 bags">6 bags</option>
-                <option value="8+ bags">8+ Large Bags</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Flight Number</label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>
-              </span>
-              <input type="text" class="plan-input-control" id="planFlightNo" value="UL 403" placeholder="e.g. UL 403 / EK 650">
-            </div>
-          </div>
-          <div class="plan-form-group plan-form-full">
-            <label class="plan-form-label">Contact Number <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              </span>
-              <input type="tel" class="plan-input-control" id="planPhone" value="+94 77 123 4567" placeholder="+94 77 123 4567">
-            </div>
-          </div>
-        </div>
-      `,
-      infoHeading: 'Estimated fare shown after confirmation.',
-      infoDesc: 'The final fare will be shared based on your trip details, date, and availability.',
-      submitText: 'Request Booking'
-    },
-
-    'daily-hire': {
-      title: 'Book Daily Hire',
-      subtitle: 'Hire a KDH van with driver for a full day (e.g. up to 8–10 hours).',
-      bannerImg: 'assets/modals/banner-daily-hire.jpg',
-      iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>`,
-      fieldsHtml: `
-        <div class="plan-form-grid">
-          <div class="plan-form-group">
-            <label class="plan-form-label">Pickup Location <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planPickupLoc">
-                <option value="Colombo" selected>Colombo</option>
-                <option value="Negombo">Negombo</option>
-                <option value="Kandy">Kandy</option>
-                <option value="Galle">Galle</option>
-                <option value="Bentota">Bentota</option>
-                <option value="Nuwara Eliya">Nuwara Eliya</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Travel Date <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              </span>
-              <input type="text" class="plan-input-control" id="planDate" value="Tue, 28 Jan 2025" placeholder="Select Date">
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Start Time <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planStartTime">
-                <option value="7:00 AM">7:00 AM</option>
-                <option value="8:00 AM">8:00 AM</option>
-                <option value="8:30 AM">8:30 AM</option>
-                <option value="9:00 AM" selected>9:00 AM</option>
-                <option value="9:30 AM">9:30 AM</option>
-                <option value="10:00 AM">10:00 AM</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Estimated Hours <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 14 10"></polyline></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planEstimatedHours">
-                <option value="4 Hours (Half Day)">4 Hours (Half Day)</option>
-                <option value="8 Hours (Full Day)" selected>8 Hours (Full Day)</option>
-                <option value="10 Hours (Extended)">10 Hours (Extended)</option>
-                <option value="12 Hours (Max)">12 Hours</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Passengers <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planPassengers">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4" selected>4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10-14">10–14</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Trip Plan / Destination <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </span>
-              <input type="text" class="plan-input-control" id="planTripPlan" value="Kandy Sightseeing (Kandy, Peradeniya, ...)" placeholder="e.g. City Tour, Kandy, Galle">
-            </div>
-          </div>
-          <div class="plan-form-group plan-form-full">
-            <label class="plan-form-label">Contact Number <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              </span>
-              <input type="tel" class="plan-input-control" id="planPhone" value="+94 77 123 4567" placeholder="+94 77 123 4567">
-            </div>
-          </div>
-        </div>
-      `,
-      infoHeading: 'Final price will be confirmed based on duration, itinerary, and availability.',
-      infoDesc: '',
-      submitText: 'Check Availability'
-    },
-
-    'multi-day': {
-      title: 'Plan Your Multi-Day Tour',
-      subtitle: 'Customized Sri Lanka tours with a professional driver.',
-      bannerImg: 'assets/modals/banner-multi-day.jpg',
-      iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"></path><path d="M4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19"></path></svg>`,
-      fieldsHtml: `
-        <div class="plan-form-grid">
-          <div class="plan-form-group">
-            <label class="plan-form-label">Start Location <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planStartLoc">
-                <option value="Colombo" selected>Colombo</option>
-                <option value="Bandaranaike Intl. Airport (Negombo)">Bandaranaike Intl. Airport (Negombo)</option>
-                <option value="Kandy">Kandy</option>
-                <option value="Galle">Galle</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Travel Start Date <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              </span>
-              <input type="text" class="plan-input-control" id="planDate" value="Tue, 28 Jan 2025" placeholder="Select Date">
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Tour Duration <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planDuration">
-                <option value="2 Days / 1 Night">2 Days / 1 Night</option>
-                <option value="3 Days / 2 Nights" selected>3 Days / 2 Nights</option>
-                <option value="4 Days / 3 Nights">4 Days / 3 Nights</option>
-                <option value="5 Days / 4 Nights">5 Days / 4 Nights</option>
-                <option value="7 Days / 6 Nights">7 Days / 6 Nights</option>
-                <option value="10+ Days">10+ Days (Full Island)</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Passengers <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planPassengers">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4" selected>4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10-14">10–14</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group plan-form-full">
-            <label class="plan-form-label">Preferred Destinations <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planDestinations">
-                <option value="Kandy, Ella, Sigiriya" selected>Kandy, Ella, Sigiriya</option>
-                <option value="Cultural Triangle (Sigiriya, Dambulla, Polonnaruwa)">Cultural Triangle (Sigiriya, Dambulla, Polonnaruwa)</option>
-                <option value="Hill Country & Tea Country (Nuwara Eliya, Ella)">Hill Country &amp; Tea Country (Nuwara Eliya, Ella)</option>
-                <option value="South Coast & Wildlife (Galle, Mirissa, Yala)">South Coast &amp; Wildlife (Galle, Mirissa, Yala)</option>
-                <option value="Custom Itinerary (Flexible)">Custom Itinerary (Flexible)</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group plan-form-full">
-            <label class="plan-form-label">Notes / Special Requests</label>
-            <div class="plan-input-wrap textarea-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-              </span>
-              <textarea class="plan-textarea-control" id="planNotes" placeholder="e.g., hotel locations, places to visit, or any special arrangements ..."></textarea>
-            </div>
-          </div>
-          <div class="plan-form-group plan-form-full">
-            <label class="plan-form-label">Contact Number <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              </span>
-              <input type="tel" class="plan-input-control" id="planPhone" value="+94 77 123 4567" placeholder="+94 77 123 4567">
-            </div>
-          </div>
-        </div>
-      `,
-      infoHeading: 'A tailored tour quote will be prepared for you.',
-      infoDesc: 'The quote will be based on your itinerary, number of days, and travel plan.',
-      submitText: 'Request Tour Quote'
-    },
-
-    'point-to-point': {
-      title: 'Book Point to Point Hire',
-      subtitle: 'Enjoy comfortable city-to-city and town-to-town travel across Sri Lanka.',
-      bannerImg: 'assets/modals/banner-point-to-point.jpg',
-      iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11l1.5-5.5A2 2 0 0 1 8.4 4h7.2a2 2 0 0 1 1.9 1.5L19 11v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1H8v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7z"></path><circle cx="7.5" cy="14.5" r="1.5"></circle><circle cx="16.5" cy="14.5" r="1.5"></circle></svg>`,
-      fieldsHtml: `
-        <div class="plan-form-grid">
-          <div class="plan-form-group">
-            <label class="plan-form-label">Pickup Location <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planPickupLoc">
-                <option value="Colombo" selected>Colombo</option>
-                <option value="Negombo">Negombo</option>
-                <option value="Kandy">Kandy</option>
-                <option value="Galle">Galle</option>
-                <option value="Bentota">Bentota</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Destination <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planDestLoc">
-                <option value="Kandy" selected>Kandy</option>
-                <option value="Galle">Galle</option>
-                <option value="Nuwara Eliya">Nuwara Eliya</option>
-                <option value="Ella">Ella</option>
-                <option value="Sigiriya">Sigiriya</option>
-                <option value="Colombo">Colombo</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Travel Date <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              </span>
-              <input type="text" class="plan-input-control" id="planDate" value="Tue, 28 Jan 2025" placeholder="Select Date">
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Pickup Time <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planPickupTime">
-                <option value="6:00 AM">6:00 AM</option>
-                <option value="8:00 AM">8:00 AM</option>
-                <option value="10:00 AM" selected>10:00 AM</option>
-                <option value="12:00 PM">12:00 PM</option>
-                <option value="2:00 PM">2:00 PM</option>
-                <option value="4:00 PM">4:00 PM</option>
-                <option value="6:00 PM">6:00 PM</option>
-                <option value="8:00 PM">8:00 PM</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Passengers <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-              </span>
-              <select class="plan-input-control plan-select-control" id="planPassengers">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4" selected>4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10-14">10–14</option>
-              </select>
-            </div>
-          </div>
-          <div class="plan-form-group">
-            <label class="plan-form-label">Trip Type <span class="req">*</span></label>
-            <div class="plan-radio-group">
-              <label class="plan-radio-pill active" id="radioPillOneWay">
-                <input type="radio" name="planTripTypeRadio" value="One Way" checked>
-                One Way
-              </label>
-              <label class="plan-radio-pill" id="radioPillReturn">
-                <input type="radio" name="planTripTypeRadio" value="Return">
-                Return
-              </label>
-            </div>
-          </div>
-          <div class="plan-form-group plan-form-full">
-            <label class="plan-form-label">Additional Stops (Optional)</label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle><line x1="12" y1="7" x2="12" y2="13"></line><line x1="9" y1="10" x2="15" y2="10"></line></svg>
-              </span>
-              <input type="text" class="plan-input-control" id="planStops" placeholder="Add stop(s) (e.g., Matale, Peradeniya)">
-            </div>
-          </div>
-          <div class="plan-form-group plan-form-full">
-            <label class="plan-form-label">Contact Number <span class="req">*</span></label>
-            <div class="plan-input-wrap">
-              <span class="plan-input-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              </span>
-              <input type="tel" class="plan-input-control" id="planPhone" value="+94 77 123 4567" placeholder="+94 77 123 4567">
-            </div>
-          </div>
-        </div>
-      `,
-      infoHeading: 'Final pricing will be confirmed based on your route and trip details.',
-      infoDesc: "We'll review your request and share the best available rate shortly.",
-      submitText: 'Request Trip Quote'
-    }
-  };
-
-  let activePlanKey = 'daily-hire';
-
-  function ensurePricePlanModalExists() {
-    let planModal = document.getElementById('pricePlanModal');
-    if (!planModal) {
-      planModal = document.createElement('div');
-      planModal.className = 'plan-modal-overlay';
-      planModal.id = 'pricePlanModal';
-      planModal.setAttribute('role', 'dialog');
-      planModal.setAttribute('aria-modal', 'true');
-      planModal.innerHTML = `
-        <div class="plan-modal-container">
-          <div class="plan-modal-header">
-            <div class="plan-modal-header-left">
-              <div class="plan-modal-header-icon" id="planModalIcon"></div>
-              <div class="plan-modal-header-divider"></div>
-              <div class="plan-modal-header-text">
-                <h3 class="plan-modal-title" id="planModalTitle"></h3>
-                <p class="plan-modal-sub" id="planModalSub"></p>
-              </div>
-            </div>
-            <button class="plan-modal-close" id="planModalCloseBtn" aria-label="Close dialog">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-          </div>
-          <div class="plan-modal-banner">
-            <img id="planModalBannerImg" src="" alt="Service Banner">
-          </div>
-          <form class="plan-modal-form" id="planModalForm" onsubmit="return false;">
-            <div id="planModalFields"></div>
-            <div class="plan-info-box">
-              <svg class="plan-info-tag-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8 8a2 2 0 0 0 2.828 0l7.172-7.172a2 2 0 0 0 0-2.828l-8-8zM7 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
-              </svg>
-              <div class="plan-info-divider"></div>
-              <div class="plan-info-content">
-                <h4 class="plan-info-heading" id="planInfoHeading"></h4>
-                <p class="plan-info-desc" id="planInfoDesc"></p>
-              </div>
-            </div>
-            <div class="plan-modal-actions">
-              <button type="button" class="plan-btn-cancel" id="planBtnCancel">Cancel</button>
-              <button type="button" class="plan-btn-submit" id="planBtnSubmit">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                <span id="planBtnSubmitText"></span>
-              </button>
-            </div>
-          </form>
-        </div>
-      `;
-      document.body.appendChild(planModal);
-    }
-    return planModal;
-  }
-
-  function openPricePlanModal(planKey) {
-    const key = PRICE_PLAN_TEMPLATES[planKey] ? planKey : 'daily-hire';
-    activePlanKey = key;
-    const tpl = PRICE_PLAN_TEMPLATES[key];
-    const planModal = ensurePricePlanModalExists();
-
-    const titleEl = planModal.querySelector('#planModalTitle');
-    const subEl = planModal.querySelector('#planModalSub');
-    const iconEl = planModal.querySelector('#planModalIcon');
-    const bannerEl = planModal.querySelector('#planModalBannerImg');
-    const fieldsEl = planModal.querySelector('#planModalFields');
-    const headingEl = planModal.querySelector('#planInfoHeading');
-    const descEl = planModal.querySelector('#planInfoDesc');
-    const submitTextEl = planModal.querySelector('#planBtnSubmitText');
-
-    if (titleEl) titleEl.textContent = tpl.title;
-    if (subEl) subEl.textContent = tpl.subtitle;
-    if (iconEl) iconEl.innerHTML = tpl.iconSvg;
-    if (bannerEl) bannerEl.src = tpl.bannerImg;
-    if (fieldsEl) fieldsEl.innerHTML = tpl.fieldsHtml;
-    if (headingEl) headingEl.textContent = tpl.infoHeading;
-    if (descEl) descEl.textContent = tpl.infoDesc;
-    if (submitTextEl) submitTextEl.textContent = tpl.submitText;
-
-    // Attach Point-to-Point Radio Pills behavior
-    if (key === 'point-to-point') {
-      const radioPills = planModal.querySelectorAll('.plan-radio-pill');
-      radioPills.forEach(pill => {
-        pill.addEventListener('click', () => {
-          radioPills.forEach(p => p.classList.remove('active'));
-          pill.classList.add('active');
-          const input = pill.querySelector('input');
-          if (input) input.checked = true;
-        });
-      });
-    }
-
-    // Attach Close & Cancel
-    const closeBtn = planModal.querySelector('#planModalCloseBtn');
-    const cancelBtn = planModal.querySelector('#planBtnCancel');
-    if (closeBtn) closeBtn.onclick = closePricePlanModal;
-    if (cancelBtn) cancelBtn.onclick = closePricePlanModal;
-
-    planModal.onclick = (e) => {
-      if (e.target === planModal) closePricePlanModal();
-    };
-
-    // Attach Submit WhatsApp handler
-    const submitBtn = planModal.querySelector('#planBtnSubmit');
-    if (submitBtn) {
-      submitBtn.onclick = () => handlePricePlanSubmit(key);
-    }
-
-    planModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  window.openPricePlanModal = openPricePlanModal;
-  window.closePricePlanModal = closePricePlanModal;
-
-  function closePricePlanModal() {
-    const planModal = document.getElementById('pricePlanModal');
-    if (planModal) {
-      planModal.classList.remove('open');
-    }
-    document.body.style.overflow = '';
-  }
-
-  function handlePricePlanSubmit(key) {
-    const tpl = PRICE_PLAN_TEMPLATES[key];
-    const phoneInput = document.getElementById('planPhone');
-    const phone = phoneInput && phoneInput.value.trim() ? phoneInput.value.trim() : '+94 77 123 4567';
-
-    let detailsText = '';
-
-    if (key === 'airport-transfer') {
-      const airport = document.getElementById('planAirportSelect')?.value || 'Bandaranaike Intl. Airport (CMB)';
-      const type = document.getElementById('planTransferTypeSelect')?.value || 'Airport Pickup';
-      const dest = document.getElementById('planDestination')?.value || 'Colombo';
-      const date = document.getElementById('planDate')?.value || 'Flexible';
-      const time = document.getElementById('planTime')?.value || '10:00 AM';
-      const pass = document.getElementById('planPassengers')?.value || '4';
-      const luggage = document.getElementById('planLuggage')?.value || '4 bags';
-      const flight = document.getElementById('planFlightNo')?.value || 'N/A';
-
-      detailsText = 
-        `• *Airport:* ${airport}%0A` +
-        `• *Transfer Type:* ${type}%0A` +
-        `• *Destination / Pickup:* ${dest}%0A` +
-        `• *Date & Time:* ${date} at ${time}%0A` +
-        `• *Passengers:* ${pass}%0A` +
-        `• *Luggage:* ${luggage}%0A` +
-        `• *Flight No:* ${flight}`;
-    } else if (key === 'daily-hire') {
-      const pickup = document.getElementById('planPickupLoc')?.value || 'Colombo';
-      const date = document.getElementById('planDate')?.value || 'Flexible';
-      const time = document.getElementById('planStartTime')?.value || '9:00 AM';
-      const hours = document.getElementById('planEstimatedHours')?.value || '8 Hours (Full Day)';
-      const pass = document.getElementById('planPassengers')?.value || '4';
-      const plan = document.getElementById('planTripPlan')?.value || 'City Tour';
-
-      detailsText = 
-        `• *Pickup Location:* ${pickup}%0A` +
-        `• *Travel Date:* ${date}%0A` +
-        `• *Start Time:* ${time}%0A` +
-        `• *Duration:* ${hours}%0A` +
-        `• *Passengers:* ${pass}%0A` +
-        `• *Itinerary Plan:* ${plan}`;
-    } else if (key === 'multi-day') {
-      const start = document.getElementById('planStartLoc')?.value || 'Colombo';
-      const date = document.getElementById('planDate')?.value || 'Flexible';
-      const duration = document.getElementById('planDuration')?.value || '3 Days / 2 Nights';
-      const pass = document.getElementById('planPassengers')?.value || '4';
-      const dests = document.getElementById('planDestinations')?.value || 'Kandy, Ella, Sigiriya';
-      const notes = document.getElementById('planNotes')?.value || 'None';
-
-      detailsText = 
-        `• *Start Location:* ${start}%0A` +
-        `• *Start Date:* ${date}%0A` +
-        `• *Tour Duration:* ${duration}%0A` +
-        `• *Passengers:* ${pass}%0A` +
-        `• *Preferred Destinations:* ${dests}%0A` +
-        `• *Special Notes:* ${notes}`;
-    } else if (key === 'point-to-point') {
-      const pickup = document.getElementById('planPickupLoc')?.value || 'Colombo';
-      const dest = document.getElementById('planDestLoc')?.value || 'Kandy';
-      const date = document.getElementById('planDate')?.value || 'Flexible';
-      const time = document.getElementById('planPickupTime')?.value || '10:00 AM';
-      const pass = document.getElementById('planPassengers')?.value || '4';
-      const tripType = document.querySelector('input[name="planTripTypeRadio"]:checked')?.value || 'One Way';
-      const stops = document.getElementById('planStops')?.value || 'None';
-
-      detailsText = 
-        `• *Pickup Location:* ${pickup}%0A` +
-        `• *Destination:* ${dest}%0A` +
-        `• *Trip Type:* ${tripType}%0A` +
-        `• *Date & Time:* ${date} at ${time}%0A` +
-        `• *Passengers:* ${pass}%0A` +
-        `• *Additional Stops:* ${stops}`;
-    }
-
-    const message = `*KDH Van Hire Sri Lanka - Booking Inquiry*%0A` +
-      `----------------------------------------%0A` +
-      `*Service:* ${encodeURIComponent(tpl.title)}%0A` +
-      `*Assigned Van:* Toyota HiAce KDH 200 Series Commuter%0A` +
-      `----------------------------------------%0A` +
-      detailsText + `%0A` +
-      `• *Contact Phone:* ${encodeURIComponent(phone)}%0A` +
-      `----------------------------------------%0A` +
-      `Please confirm availability & current rate. Thank you!`;
-
-    showToast(`Sending ${tpl.title} inquiry via WhatsApp...`);
-    setTimeout(() => {
-      window.open(`https://wa.me/94771234567?text=${message}`, '_blank');
-      closePricePlanModal();
-    }, 400);
-  }
-
-  // Hook up plan modal triggers across the page
-  document.querySelectorAll('.btn-trigger-plan-modal').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const plan = btn.dataset.plan || 'daily-hire';
-      openPricePlanModal(plan);
-    });
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closePricePlanModal();
-    }
-  });
-
-  // 10. General "Book Your Van" or "Book Now" buttons
+  // 9. General "Book Your Van" or "Book Now" buttons
   document.querySelectorAll('.btn-trigger-booking').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const plan = btn.dataset.plan;
-      if (plan && PRICE_PLAN_TEMPLATES[plan]) {
-        openPricePlanModal(plan);
-        return;
-      }
       const service = btn.dataset.service || currentServiceType;
-      const planMap = {
-        'Airport Transfers': 'airport-transfer',
-        'Daily Hire': 'daily-hire',
-        'Multi-Day Tours': 'multi-day',
-        'Point to Point Hire': 'point-to-point',
-        'Point to Point': 'point-to-point',
-        'Custom Quote Inquiry': 'multi-day'
-      };
-      if (planMap[service]) {
-        openPricePlanModal(planMap[service]);
-      } else {
-        openBookingModal(service);
-      }
+      openBookingModal(service);
     });
   });
 
@@ -1848,4 +1144,147 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowLeft') prevLightboxImage();
     });
   }
+
+  /* =========================================================================
+     PAGE 4 - PRICE PLANS POPUPS LOGIC (100% FAITHFUL TO MOCKUPS)
+     ========================================================================= */
+  const pricePlanPopups = ['modalDailyHire', 'modalPointToPoint', 'modalAirportTransfer', 'modalMultiDayTour'];
+
+  function openPricePlanPopup(popupId) {
+    closeAllPricePlanPopups();
+    if (modal) modal.classList.remove('open');
+    if (generalInfoModal) generalInfoModal.classList.remove('open');
+
+    const target = document.getElementById(popupId);
+    if (target) {
+      target.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeAllPricePlanPopups() {
+    pricePlanPopups.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+
+  // Open on button click (.btn-open-pricing-popup)
+  document.querySelectorAll('.btn-open-pricing-popup').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const popupId = btn.dataset.popup || 'modalDailyHire';
+      openPricePlanPopup(popupId);
+    });
+  });
+
+  // Close buttons, Cancel buttons, and Backdrop clicks
+  pricePlanPopups.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const closeBtn = el.querySelector('.price-plan-modal-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => closeAllPricePlanPopups());
+    }
+
+    const cancelBtn = el.querySelector('.price-plan-btn-cancel');
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', () => closeAllPricePlanPopups());
+    }
+
+    el.addEventListener('click', (e) => {
+      if (e.target === el) {
+        closeAllPricePlanPopups();
+      }
+    });
+  });
+
+  // Radio button pills for Point to Point (One Way / Return)
+  document.querySelectorAll('.price-plan-radio-label').forEach(label => {
+    label.addEventListener('click', () => {
+      const parent = label.closest('.price-plan-radio-group');
+      if (parent) {
+        parent.querySelectorAll('.price-plan-radio-label').forEach(l => l.classList.remove('active'));
+        label.classList.add('active');
+        const radio = label.querySelector('input[type="radio"]');
+        if (radio) radio.checked = true;
+      }
+    });
+  });
+
+  // Form submit handlers with formatted WhatsApp message
+  function setupPopupFormSubmit(formId, serviceTitle, detailsGetter) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const details = detailsGetter(formData);
+      
+      const phone = formData.get('contactNumber') || '+94 77 123 4567';
+      const waMessage = encodeURIComponent(
+        `*New KDH Van Hire Inquiry*\n` +
+        `*Service:* ${serviceTitle}\n` +
+        `*Vehicle:* Toyota KDH Passenger Van (12-15 Seats)\n` +
+        details +
+        `*Customer Contact:* ${phone}\n\n` +
+        `Please confirm vehicle availability and best rates!`
+      );
+
+      showToast(`Booking request received! Connecting via WhatsApp...`);
+      closeAllPricePlanPopups();
+      setTimeout(() => {
+        window.open(`https://wa.me/94771234567?text=${waMessage}`, '_blank');
+      }, 700);
+    });
+  }
+
+  setupPopupFormSubmit('formDailyHire', 'Daily Van Hire', (fd) => {
+    return `*Pickup Location:* ${fd.get('pickupLocation')}\n` +
+           `*Travel Date:* ${fd.get('travelDate')}\n` +
+           `*Start Time:* ${fd.get('startTime')}\n` +
+           `*Estimated Hours:* ${fd.get('estimatedHours')}\n` +
+           `*Passengers:* ${fd.get('passengers')}\n` +
+           `*Trip Plan / Destination:* ${fd.get('tripPlan')}\n`;
+  });
+
+  setupPopupFormSubmit('formPointToPoint', 'Point-to-Point Transfer', (fd) => {
+    return `*Pickup Location:* ${fd.get('pickupLocation')}\n` +
+           `*Destination:* ${fd.get('destination')}\n` +
+           `*Travel Date:* ${fd.get('travelDate')}\n` +
+           `*Pickup Time:* ${fd.get('pickupTime')}\n` +
+           `*Passengers:* ${fd.get('passengers')}\n` +
+           `*Trip Type:* ${fd.get('p2pTripType') || 'One Way'}\n` +
+           (fd.get('additionalStops') ? `*Stops:* ${fd.get('additionalStops')}\n` : '');
+  });
+
+  setupPopupFormSubmit('formAirportTransfer', 'Airport Transfer', (fd) => {
+    return `*Airport:* ${fd.get('airport')}\n` +
+           `*Service:* ${fd.get('pickupDropoff')}\n` +
+           `*Destination:* ${fd.get('destination')}\n` +
+           `*Date:* ${fd.get('travelDate')}\n` +
+           `*Time:* ${fd.get('transferTime')}\n` +
+           `*Passengers:* ${fd.get('passengers')}\n` +
+           (fd.get('luggage') ? `*Luggage:* ${fd.get('luggage')}\n` : '') +
+           (fd.get('flightNumber') ? `*Flight #:* ${fd.get('flightNumber')}\n` : '');
+  });
+
+  setupPopupFormSubmit('formMultiDayTour', 'Multi-Day Sri Lanka Tour', (fd) => {
+    return `*Start Location:* ${fd.get('startLocation')}\n` +
+           `*Start Date:* ${fd.get('travelStartDate')}\n` +
+           `*Duration:* ${fd.get('tourDuration')}\n` +
+           `*Passengers:* ${fd.get('passengers')}\n` +
+           `*Preferred Destinations:* ${fd.get('preferredDestinations')}\n` +
+           (fd.get('specialNotes') ? `*Notes:* ${fd.get('specialNotes')}\n` : '');
+  });
+
+  // Escape key closes open popups
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllPricePlanPopups();
+    }
+  });
 });

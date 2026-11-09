@@ -98,7 +98,7 @@
         </a>
 
         <!-- Book Now Button -->
-        <button class="btn-book-header btn-trigger-plan-modal" data-plan="daily-hire" data-service="Daily Hire" data-vehicle="Toyota KDH Passenger Van">
+        <button class="btn-book-header btn-open-pricing-popup" data-popup="modalDailyHire">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -136,7 +136,7 @@
           </svg>
           WhatsApp Inquiry
         </a>
-        <button class="btn-hero-primary mobile-book-btn btn-trigger-plan-modal" data-plan="daily-hire" data-service="Daily Hire" data-vehicle="Toyota KDH Passenger Van">
+        <button class="btn-hero-primary mobile-book-btn btn-open-pricing-popup" data-popup="modalDailyHire">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -228,7 +228,7 @@
             </li>
           </ul>
 
-          <button class="pricing-btn-outline btn-trigger-plan-modal" data-plan="airport-transfer" data-service="Airport Transfers" data-vehicle="Toyota KDH Passenger Van" data-rate="LKR 12,500">
+          <button class="pricing-btn-outline btn-open-pricing-popup" data-popup="modalAirportTransfer">
             Book Airport Transfer &rarr;
           </button>
         </div>
@@ -275,7 +275,7 @@
             </li>
           </ul>
 
-          <button class="pricing-btn-outline btn-trigger-plan-modal" data-plan="daily-hire" data-service="Daily Hire" data-vehicle="Toyota KDH Passenger Van" data-rate="LKR 18,000 / day">
+          <button class="pricing-btn-outline btn-open-pricing-popup" data-popup="modalDailyHire">
             Book Daily Hire &rarr;
           </button>
         </div>
@@ -327,7 +327,7 @@
             </li>
           </ul>
 
-          <button class="pricing-btn-gold btn-trigger-plan-modal" data-plan="multi-day" data-service="Multi-Day Tours" data-vehicle="Toyota KDH Passenger Van" data-rate="LKR 16,500 / day">
+          <button class="pricing-btn-gold btn-open-pricing-popup" data-popup="modalMultiDayTour">
             Book Multi-Day Tour &rarr;
           </button>
         </div>
@@ -398,7 +398,7 @@
             <h3 class="pricing-quote-heading">Need a Custom Quote?</h3>
             <p class="pricing-quote-desc">Tell us your travel plan and get a personalized price today.</p>
           </div>
-          <button class="pricing-btn-get-quote btn-trigger-plan-modal" data-plan="multi-day" data-service="Custom Quote Inquiry" data-vehicle="Toyota KDH Passenger Van">
+          <button class="pricing-btn-get-quote btn-open-pricing-popup" data-popup="modalMultiDayTour">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="4" width="20" height="16" rx="2"/>
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
@@ -493,72 +493,759 @@
   </footer>
 
   <!-- =========================================================================
-       5. PRICE PLAN BOOKING POPUP MODALS (100% Mockup Fidelity)
+       5. PRICE PLANS POPUPS (4 MODALS)
        ========================================================================= -->
-  <div class="plan-modal-overlay" id="pricePlanModal" role="dialog" aria-modal="true" aria-labelledby="planModalTitle">
-    <div class="plan-modal-container">
-      <!-- Modal Header -->
-      <div class="plan-modal-header">
-        <div class="plan-modal-header-left">
-          <div class="plan-modal-header-icon" id="planModalIcon">
-            <!-- Dynamic Icon -->
-          </div>
-          <div class="plan-modal-header-divider"></div>
-          <div class="plan-modal-header-text">
-            <h3 class="plan-modal-title" id="planModalTitle">Book Daily Hire</h3>
-            <p class="plan-modal-sub" id="planModalSub">Hire a KDH van with driver for a full day (e.g. up to 8–10 hours).</p>
-          </div>
-        </div>
-        <button class="plan-modal-close" id="planModalCloseBtn" aria-label="Close dialog">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
 
-      <!-- Banner Image -->
-      <div class="plan-modal-banner">
-        <img id="planModalBannerImg" src="assets/home-page/service-daily-hire.jpg" alt="Service Van Banner">
-      </div>
-
-      <!-- Form Content (Injected dynamically) -->
-      <form class="plan-modal-form" id="planModalForm" onsubmit="return false;">
-        <div id="planModalFields">
-          <!-- Injected dynamic fields -->
-        </div>
-
-        <!-- Info Tag Box -->
-        <div class="plan-info-box">
-          <svg class="plan-info-tag-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8 8a2 2 0 0 0 2.828 0l7.172-7.172a2 2 0 0 0 0-2.828l-8-8zM7 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
-          </svg>
-          <div class="plan-info-divider"></div>
-          <div class="plan-info-content">
-            <h4 class="plan-info-heading" id="planInfoHeading">Final price will be confirmed based on duration, itinerary, and availability.</h4>
-            <p class="plan-info-desc" id="planInfoDesc"></p>
-          </div>
-        </div>
-
-        <!-- Actions -->
-        <div class="plan-modal-actions">
-          <button type="button" class="plan-btn-cancel" id="planBtnCancel">Cancel</button>
-          <button type="button" class="plan-btn-submit" id="planBtnSubmit">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
+  <!-- POPUP 1: BOOK DAILY HIRE -->
+  <div class="modal-overlay price-plan-modal-overlay" id="modalDailyHire" role="dialog" aria-modal="true" aria-labelledby="modalDailyHireTitle">
+    <div class="price-plan-modal-card">
+      <div class="price-plan-modal-header">
+        <div class="price-plan-header-left">
+          <div class="price-plan-header-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+              <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/>
             </svg>
-            <span id="planBtnSubmitText">Check Availability</span>
-          </button>
+          </div>
+          <div class="price-plan-header-divider"></div>
+          <div class="price-plan-header-text">
+            <h3 class="price-plan-header-title" id="modalDailyHireTitle">Book Daily Hire</h3>
+            <p class="price-plan-header-sub">Hire a KDH van with driver for a full day (e.g. up to 8–10 hours).</p>
+          </div>
         </div>
-      </form>
+        <button class="price-plan-modal-close" aria-label="Close dialog">&times;</button>
+      </div>
+
+      <div class="price-plan-modal-body">
+        <div class="price-plan-banner">
+          <img src="assets/modals/banner-daily-hire.jpg" alt="Book Daily Hire Toyota KDH">
+        </div>
+
+        <form class="price-plan-form" id="formDailyHire">
+          <div class="price-plan-form-grid">
+            <!-- Pickup Location -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Pickup Location <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <select class="price-plan-select" name="pickupLocation" required>
+                  <option value="Colombo" selected>Colombo</option>
+                  <option value="Negombo">Negombo</option>
+                  <option value="Bandaranaike Airport (CMB)">Bandaranaike Airport (CMB)</option>
+                  <option value="Kandy">Kandy</option>
+                  <option value="Galle">Galle</option>
+                  <option value="Bentota">Bentota</option>
+                  <option value="Custom Location">Custom Location</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Travel Date -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Travel Date <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </span>
+                <input type="text" class="price-plan-input" name="travelDate" value="Tue, 28 Jan 2025" required>
+              </div>
+            </div>
+
+            <!-- Start Time -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Start Time <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </span>
+                <select class="price-plan-select" name="startTime" required>
+                  <option value="8:00 AM">8:00 AM</option>
+                  <option value="8:30 AM">8:30 AM</option>
+                  <option value="9:00 AM" selected>9:00 AM</option>
+                  <option value="9:30 AM">9:30 AM</option>
+                  <option value="10:00 AM">10:00 AM</option>
+                  <option value="Custom Time">Custom Time</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Estimated Hours -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Estimated Hours <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 10"/></svg>
+                </span>
+                <select class="price-plan-select" name="estimatedHours" required>
+                  <option value="8 Hours (Full Day)" selected>8 Hours (Full Day)</option>
+                  <option value="10 Hours (Extended)">10 Hours (Extended)</option>
+                  <option value="12 Hours (Full Day + Overtime)">12 Hours (Full Day + Overtime)</option>
+                  <option value="Half Day (4-5 Hours)">Half Day (4-5 Hours)</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Passengers -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Passengers <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <select class="price-plan-select" name="passengers" required>
+                  <option value="1-2">1 - 2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                  <option value="5-7">5 - 7</option>
+                  <option value="8-10">8 - 10</option>
+                  <option value="11-14">11 - 14</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Trip Plan / Destination -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Trip Plan / Destination <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <input type="text" class="price-plan-input" name="tripPlan" value="Kandy Sightseeing (Kandy, Peradeniya, ...)" required>
+              </div>
+            </div>
+
+            <!-- Contact Number (Full Width) -->
+            <div class="price-plan-form-group full-width">
+              <label class="price-plan-label">Contact Number <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <input type="tel" class="price-plan-input" name="contactNumber" value="+94 77 123 4567" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notice Box -->
+          <div class="price-plan-notice-box">
+            <div class="price-plan-notice-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <circle cx="7" cy="7" r="1.5" fill="#d97706"/>
+              </svg>
+            </div>
+            <div class="price-plan-notice-bar"></div>
+            <div class="price-plan-notice-content">
+              <span class="price-plan-notice-title">Final price will be confirmed based on duration, itinerary, and availability.</span>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="price-plan-actions">
+            <button type="button" class="price-plan-btn-cancel">Cancel</button>
+            <button type="submit" class="price-plan-btn-submit">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              Check Availability
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP 2: BOOK POINT TO POINT HIRE -->
+  <div class="modal-overlay price-plan-modal-overlay" id="modalPointToPoint" role="dialog" aria-modal="true" aria-labelledby="modalP2PTitle">
+    <div class="price-plan-modal-card">
+      <div class="price-plan-modal-header">
+        <div class="price-plan-header-left">
+          <div class="price-plan-header-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 11l1.5-5.5A2 2 0 0 1 8.4 4h7.2a2 2 0 0 1 1.9 1.5L19 11v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1H8v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7z"/>
+              <circle cx="7.5" cy="14.5" r="1.5"/>
+              <circle cx="16.5" cy="14.5" r="1.5"/>
+            </svg>
+          </div>
+          <div class="price-plan-header-divider"></div>
+          <div class="price-plan-header-text">
+            <h3 class="price-plan-header-title" id="modalP2PTitle">Book Point to Point Hire</h3>
+            <p class="price-plan-header-sub">Enjoy comfortable city-to-city and town-to-town travel across Sri Lanka.</p>
+          </div>
+        </div>
+        <button class="price-plan-modal-close" aria-label="Close dialog">&times;</button>
+      </div>
+
+      <div class="price-plan-modal-body">
+        <div class="price-plan-banner">
+          <img src="assets/modals/banner-point-to-point.jpg" alt="Point to Point Toyota KDH Van Hire">
+        </div>
+
+        <form class="price-plan-form" id="formPointToPoint">
+          <div class="price-plan-form-grid">
+            <!-- Pickup Location -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Pickup Location <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <select class="price-plan-select" name="pickupLocation" required>
+                  <option value="Colombo" selected>Colombo</option>
+                  <option value="Bandaranaike Airport (CMB)">Bandaranaike Airport (CMB)</option>
+                  <option value="Negombo">Negombo</option>
+                  <option value="Kandy">Kandy</option>
+                  <option value="Galle">Galle</option>
+                  <option value="Ella">Ella</option>
+                  <option value="Sigiriya">Sigiriya</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Destination -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Destination <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <select class="price-plan-select" name="destination" required>
+                  <option value="Kandy" selected>Kandy</option>
+                  <option value="Galle">Galle</option>
+                  <option value="Ella">Ella</option>
+                  <option value="Nuwara Eliya">Nuwara Eliya</option>
+                  <option value="Sigiriya">Sigiriya</option>
+                  <option value="Bentota">Bentota</option>
+                  <option value="Mirissa">Mirissa</option>
+                  <option value="Bandaranaike Airport (CMB)">Bandaranaike Airport (CMB)</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Travel Date -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Travel Date <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </span>
+                <input type="text" class="price-plan-input" name="travelDate" value="Tue, 28 Jan 2025" required>
+              </div>
+            </div>
+
+            <!-- Pickup Time -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Pickup Time <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </span>
+                <select class="price-plan-select" name="pickupTime" required>
+                  <option value="7:00 AM">7:00 AM</option>
+                  <option value="8:00 AM">8:00 AM</option>
+                  <option value="9:00 AM">9:00 AM</option>
+                  <option value="10:00 AM" selected>10:00 AM</option>
+                  <option value="11:00 AM">11:00 AM</option>
+                  <option value="12:00 PM">12:00 PM</option>
+                  <option value="2:00 PM">2:00 PM</option>
+                  <option value="Other">Other Time</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Passengers -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Passengers <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <select class="price-plan-select" name="passengers" required>
+                  <option value="1-2">1 - 2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                  <option value="5-7">5 - 7</option>
+                  <option value="8-10">8 - 10</option>
+                  <option value="11-14">11 - 14</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Trip Type (Radio Buttons) -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Trip Type <span class="price-plan-required">*</span></label>
+              <div class="price-plan-radio-group">
+                <label class="price-plan-radio-label active" data-val="One Way">
+                  <input type="radio" name="p2pTripType" value="One Way" checked>
+                  One Way
+                </label>
+                <label class="price-plan-radio-label" data-val="Return">
+                  <input type="radio" name="p2pTripType" value="Return">
+                  Return
+                </label>
+              </div>
+            </div>
+
+            <!-- Additional Stops (Full Width) -->
+            <div class="price-plan-form-group full-width">
+              <label class="price-plan-label">Additional Stops (Optional)</label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/><line x1="12" y1="7" x2="12" y2="13"/><line x1="9" y1="10" x2="15" y2="10"/></svg>
+                </span>
+                <input type="text" class="price-plan-input" name="additionalStops" placeholder="Add stop(s) (e.g., Matale, Peradeniya)">
+              </div>
+            </div>
+
+            <!-- Contact Number (Full Width) -->
+            <div class="price-plan-form-group full-width">
+              <label class="price-plan-label">Contact Number <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <input type="tel" class="price-plan-input" name="contactNumber" value="+94 77 123 4567" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notice Box -->
+          <div class="price-plan-notice-box">
+            <div class="price-plan-notice-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <circle cx="7" cy="7" r="1.5" fill="#d97706"/>
+              </svg>
+            </div>
+            <div class="price-plan-notice-bar"></div>
+            <div class="price-plan-notice-content">
+              <span class="price-plan-notice-title">Final pricing will be confirmed based on your route and trip details.</span>
+              <span class="price-plan-notice-sub">We'll review your request and share the best available rate shortly.</span>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="price-plan-actions">
+            <button type="button" class="price-plan-btn-cancel">Cancel</button>
+            <button type="submit" class="price-plan-btn-submit">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              Request Trip Quote
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP 3: BOOK AIRPORT TRANSFER -->
+  <div class="modal-overlay price-plan-modal-overlay" id="modalAirportTransfer" role="dialog" aria-modal="true" aria-labelledby="modalAirportTitle">
+    <div class="price-plan-modal-card">
+      <div class="price-plan-modal-header">
+        <div class="price-plan-header-left">
+          <div class="price-plan-header-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"/>
+            </svg>
+          </div>
+          <div class="price-plan-header-divider"></div>
+          <div class="price-plan-header-text">
+            <h3 class="price-plan-header-title" id="modalAirportTitle">Book Airport Transfer</h3>
+            <p class="price-plan-header-sub">Plan your airport pickup or drop-off in a few simple steps.</p>
+          </div>
+        </div>
+        <button class="price-plan-modal-close" aria-label="Close dialog">&times;</button>
+      </div>
+
+      <div class="price-plan-modal-body">
+        <div class="price-plan-banner">
+          <img src="assets/modals/banner-airport-transfer.jpg" alt="Airport Transfer Toyota KDH">
+        </div>
+
+        <form class="price-plan-form" id="formAirportTransfer">
+          <div class="price-plan-form-grid">
+            <!-- Airport -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Airport <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>
+                </span>
+                <select class="price-plan-select" name="airport" required>
+                  <option value="Bandaranaike Intl. Airport (CMB)" selected>Bandaranaike Intl. Airport (CMB)</option>
+                  <option value="Mattala Rajapaksa Airport (HRI)">Mattala Rajapaksa Airport (HRI)</option>
+                  <option value="Ratmalana Airport (RML)">Ratmalana Airport (RML)</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Pickup / Drop-off -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Pickup / Drop-off <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                </span>
+                <select class="price-plan-select" name="pickupDropoff" required>
+                  <option value="Airport Pickup" selected>Airport Pickup</option>
+                  <option value="Airport Drop-off">Airport Drop-off</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Destination -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Destination <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <input type="text" class="price-plan-input" name="destination" value="Colombo" required>
+              </div>
+            </div>
+
+            <!-- Date -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Date <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </span>
+                <input type="text" class="price-plan-input" name="travelDate" value="Tue, 28 Jan 2025" required>
+              </div>
+            </div>
+
+            <!-- Time -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Time <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </span>
+                <select class="price-plan-select" name="transferTime" required>
+                  <option value="06:00 AM">06:00 AM</option>
+                  <option value="08:00 AM">08:00 AM</option>
+                  <option value="10:00 AM" selected>10:00 AM</option>
+                  <option value="12:00 PM">12:00 PM</option>
+                  <option value="02:00 PM">02:00 PM</option>
+                  <option value="06:00 PM">06:00 PM</option>
+                  <option value="09:00 PM">09:00 PM</option>
+                  <option value="Midnight / Night Flight">Midnight / Night Flight</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Passengers -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Passengers <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <select class="price-plan-select" name="passengers" required>
+                  <option value="1-2">1 - 2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                  <option value="5-7">5 - 7</option>
+                  <option value="8-10">8 - 10</option>
+                  <option value="11-14">11 - 14</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Luggage -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Luggage</label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </span>
+                <select class="price-plan-select" name="luggage">
+                  <option value="1-2 bags">1 - 2 bags</option>
+                  <option value="3-4 bags">3 - 4 bags</option>
+                  <option value="4 bags" selected>4 bags</option>
+                  <option value="5-6 bags">5 - 6 bags</option>
+                  <option value="7-10 bags">7 - 10 bags</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Flight Number -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Flight Number</label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </span>
+                <input type="text" class="price-plan-input" name="flightNumber" value="UL 403" placeholder="e.g. UL 403">
+              </div>
+            </div>
+
+            <!-- Contact Number (Full Width) -->
+            <div class="price-plan-form-group full-width">
+              <label class="price-plan-label">Contact Number <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <input type="tel" class="price-plan-input" name="contactNumber" value="+94 77 123 4567" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notice Box -->
+          <div class="price-plan-notice-box">
+            <div class="price-plan-notice-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <circle cx="7" cy="7" r="1.5" fill="#d97706"/>
+              </svg>
+            </div>
+            <div class="price-plan-notice-bar"></div>
+            <div class="price-plan-notice-content">
+              <span class="price-plan-notice-title">Estimated fare shown after confirmation.</span>
+              <span class="price-plan-notice-sub">The final fare will be shared based on your trip details, date, and availability.</span>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="price-plan-actions">
+            <button type="button" class="price-plan-btn-cancel">Cancel</button>
+            <button type="submit" class="price-plan-btn-submit">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              Request Booking
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP 4: PLAN YOUR MULTI-DAY TOUR -->
+  <div class="modal-overlay price-plan-modal-overlay" id="modalMultiDayTour" role="dialog" aria-modal="true" aria-labelledby="modalMultiDayTitle">
+    <div class="price-plan-modal-card">
+      <div class="price-plan-modal-header">
+        <div class="price-plan-header-left">
+          <div class="price-plan-header-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m8 3 4 8 5-5 5 15H2L8 3z"/>
+              <path d="M4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19"/>
+            </svg>
+          </div>
+          <div class="price-plan-header-divider"></div>
+          <div class="price-plan-header-text">
+            <h3 class="price-plan-header-title" id="modalMultiDayTitle">Plan Your Multi-Day Tour</h3>
+            <p class="price-plan-header-sub">Customized Sri Lanka tours with a professional driver.</p>
+          </div>
+        </div>
+        <button class="price-plan-modal-close" aria-label="Close dialog">&times;</button>
+      </div>
+
+      <div class="price-plan-modal-body">
+        <div class="price-plan-banner">
+          <img src="assets/modals/banner-multi-day.jpg" alt="Plan Multi-Day Tour Toyota KDH Van">
+        </div>
+
+        <form class="price-plan-form" id="formMultiDayTour">
+          <div class="price-plan-form-grid">
+            <!-- Start Location -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Start Location <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <select class="price-plan-select" name="startLocation" required>
+                  <option value="Colombo" selected>Colombo</option>
+                  <option value="Bandaranaike Airport (CMB)">Bandaranaike Airport (CMB)</option>
+                  <option value="Negombo">Negombo</option>
+                  <option value="Kandy">Kandy</option>
+                  <option value="Galle">Galle</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Travel Start Date -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Travel Start Date <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </span>
+                <input type="text" class="price-plan-input" name="travelStartDate" value="Tue, 28 Jan 2025" required>
+              </div>
+            </div>
+
+            <!-- Tour Duration -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Tour Duration <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </span>
+                <select class="price-plan-select" name="tourDuration" required>
+                  <option value="2 Days / 1 Night">2 Days / 1 Night</option>
+                  <option value="3 Days / 2 Nights" selected>3 Days / 2 Nights</option>
+                  <option value="4 Days / 3 Nights">4 Days / 3 Nights</option>
+                  <option value="5 Days / 4 Nights">5 Days / 4 Nights</option>
+                  <option value="7 Days / 6 Nights">7 Days / 6 Nights</option>
+                  <option value="10+ Days (Custom)">10+ Days (Custom)</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Passengers -->
+            <div class="price-plan-form-group">
+              <label class="price-plan-label">Passengers <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <select class="price-plan-select" name="passengers" required>
+                  <option value="1-2">1 - 2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                  <option value="5-7">5 - 7</option>
+                  <option value="8-10">8 - 10</option>
+                  <option value="11-14">11 - 14</option>
+                </select>
+                <span class="price-plan-select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Preferred Destinations (Full Width) -->
+            <div class="price-plan-form-group full-width">
+              <label class="price-plan-label">Preferred Destinations <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <input type="text" class="price-plan-input" name="preferredDestinations" value="Kandy, Ella, Sigiriya" required>
+              </div>
+            </div>
+
+            <!-- Notes / Special Requests (Full Width) -->
+            <div class="price-plan-form-group full-width">
+              <label class="price-plan-label">Notes / Special Requests</label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon top-align">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </span>
+                <textarea class="price-plan-textarea" name="specialNotes" rows="2" placeholder="e.g., hotel locations, places to visit, or any special arrangements ..."></textarea>
+              </div>
+            </div>
+
+            <!-- Contact Number (Full Width) -->
+            <div class="price-plan-form-group full-width">
+              <label class="price-plan-label">Contact Number <span class="price-plan-required">*</span></label>
+              <div class="price-plan-input-wrap">
+                <span class="price-plan-input-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <input type="tel" class="price-plan-input" name="contactNumber" value="+94 77 123 4567" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notice Box -->
+          <div class="price-plan-notice-box">
+            <div class="price-plan-notice-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <circle cx="7" cy="7" r="1.5" fill="#d97706"/>
+              </svg>
+            </div>
+            <div class="price-plan-notice-bar"></div>
+            <div class="price-plan-notice-content">
+              <span class="price-plan-notice-title">A tailored tour quote will be prepared for you.</span>
+              <span class="price-plan-notice-sub">The quote will be based on your itinerary, number of days, and travel plan.</span>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="price-plan-actions">
+            <button type="button" class="price-plan-btn-cancel">Cancel</button>
+            <button type="submit" class="price-plan-btn-submit">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              Request Tour Quote
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 
   <!-- =========================================================================
-       6. INSTANT BOOKING MODAL (Fallback)
+       6. INSTANT BOOKING MODAL (LEGACY FALLBACK)
        ========================================================================= -->
   <div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">
