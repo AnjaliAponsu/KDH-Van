@@ -1158,7 +1158,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const target = document.getElementById(popupId);
     if (target) {
       target.classList.add('open');
+      document.body.classList.add('modal-open');
       document.body.style.overflow = 'hidden';
+      // Auto-focus first input for accessibility
+      const firstInput = target.querySelector('input, select');
+      if (firstInput) {
+        setTimeout(() => firstInput.focus(), 120);
+      }
     }
   }
 
@@ -1167,6 +1173,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const el = document.getElementById(id);
       if (el) el.classList.remove('open');
     });
+    document.body.classList.remove('modal-open');
     document.body.style.overflow = '';
   }
 
@@ -1202,14 +1209,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Radio button pills for Point to Point (One Way / Return)
-  document.querySelectorAll('.price-plan-radio-label').forEach(label => {
+  document.querySelectorAll('.price-plan-radio-pill, .price-plan-radio-label').forEach(label => {
     label.addEventListener('click', () => {
       const parent = label.closest('.price-plan-radio-group');
       if (parent) {
-        parent.querySelectorAll('.price-plan-radio-label').forEach(l => l.classList.remove('active'));
+        parent.querySelectorAll('.price-plan-radio-pill, .price-plan-radio-label').forEach(l => l.classList.remove('active'));
         label.classList.add('active');
         const radio = label.querySelector('input[type="radio"]');
-        if (radio) radio.checked = true;
+        if (radio) {
+          radio.checked = true;
+          // Dispatch change event for form state tracking
+          radio.dispatchEvent(new Event('change', { bubbles: true }));
+        }
       }
     });
   });

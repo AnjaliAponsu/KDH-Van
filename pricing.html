@@ -334,6 +334,26 @@
 
       </div>
 
+      <!-- Point-to-Point City Transfer Banner -->
+      <div class="pricing-p2p-strip">
+        <div class="pricing-p2p-info">
+          <div class="pricing-p2p-badge-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 11l1.5-5.5A2 2 0 0 1 8.4 4h7.2a2 2 0 0 1 1.9 1.5L19 11v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1H8v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7z"/>
+              <circle cx="7.5" cy="14.5" r="1.5"/>
+              <circle cx="16.5" cy="14.5" r="1.5"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="pricing-p2p-title">Looking for City-to-City or Point-to-Point Hire?</h4>
+            <p class="pricing-p2p-desc">Fast, door-to-door private transfers between Colombo, Kandy, Galle, Ella, Sigiriya &amp; across Sri Lanka.</p>
+          </div>
+        </div>
+        <button class="pricing-btn-p2p btn-open-pricing-popup" data-popup="modalPointToPoint">
+          Book Point to Point &rarr;
+        </button>
+      </div>
+
       <!-- 4 Trust Badges Strip -->
       <div class="pricing-trust-strip">
         <div class="pricing-trust-item">
@@ -516,7 +536,12 @@
             <p class="price-plan-header-sub">Hire a KDH van with driver for a full day (e.g. up to 8–10 hours).</p>
           </div>
         </div>
-        <button class="price-plan-modal-close" aria-label="Close dialog">&times;</button>
+        <button class="price-plan-modal-close" aria-label="Close dialog">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
 
       <div class="price-plan-modal-body">
@@ -693,7 +718,12 @@
             <p class="price-plan-header-sub">Enjoy comfortable city-to-city and town-to-town travel across Sri Lanka.</p>
           </div>
         </div>
-        <button class="price-plan-modal-close" aria-label="Close dialog">&times;</button>
+        <button class="price-plan-modal-close" aria-label="Close dialog">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
 
       <div class="price-plan-modal-body">
@@ -807,13 +837,15 @@
             <div class="price-plan-form-group">
               <label class="price-plan-label">Trip Type <span class="price-plan-required">*</span></label>
               <div class="price-plan-radio-group">
-                <label class="price-plan-radio-label active" data-val="One Way">
-                  <input type="radio" name="p2pTripType" value="One Way" checked>
-                  One Way
+                <label class="price-plan-radio-pill active" data-val="One Way">
+                  <input type="radio" name="p2pTripType" value="One Way" checked class="price-plan-radio-native">
+                  <span class="price-plan-radio-disc"></span>
+                  <span class="price-plan-radio-text">One Way</span>
                 </label>
-                <label class="price-plan-radio-label" data-val="Return">
-                  <input type="radio" name="p2pTripType" value="Return">
-                  Return
+                <label class="price-plan-radio-pill" data-val="Return">
+                  <input type="radio" name="p2pTripType" value="Return" class="price-plan-radio-native">
+                  <span class="price-plan-radio-disc"></span>
+                  <span class="price-plan-radio-text">Return</span>
                 </label>
               </div>
             </div>
@@ -890,7 +922,12 @@
             <p class="price-plan-header-sub">Plan your airport pickup or drop-off in a few simple steps.</p>
           </div>
         </div>
-        <button class="price-plan-modal-close" aria-label="Close dialog">&times;</button>
+        <button class="price-plan-modal-close" aria-label="Close dialog">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
 
       <div class="price-plan-modal-body">
@@ -1094,7 +1131,12 @@
             <p class="price-plan-header-sub">Customized Sri Lanka tours with a professional driver.</p>
           </div>
         </div>
-        <button class="price-plan-modal-close" aria-label="Close dialog">&times;</button>
+        <button class="price-plan-modal-close" aria-label="Close dialog">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
 
       <div class="price-plan-modal-body">
@@ -1192,10 +1234,10 @@
             <div class="price-plan-form-group full-width">
               <label class="price-plan-label">Notes / Special Requests</label>
               <div class="price-plan-input-wrap">
-                <span class="price-plan-input-icon top-align">
+                <span class="price-plan-input-icon">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 </span>
-                <textarea class="price-plan-textarea" name="specialNotes" rows="2" placeholder="e.g., hotel locations, places to visit, or any special arrangements ..."></textarea>
+                <input type="text" class="price-plan-input" name="specialNotes" placeholder="e.g., hotel locations, places to visit, or any special arrangements ...">
               </div>
             </div>
 
