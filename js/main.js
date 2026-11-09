@@ -1320,6 +1320,222 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // =========================================================================
+  // Dedicated Booking Page Wizard Logic (booking.html)
+  // =========================================================================
+  const bookingPageForm = document.getElementById('bookingTripForm');
+  if (bookingPageForm) {
+    const btnOneWay = document.getElementById('btnOneWay');
+    const btnRoundTrip = document.getElementById('btnRoundTrip');
+    const hiddenTripType = document.getElementById('selectedTripType');
+
+    if (btnOneWay && btnRoundTrip && hiddenTripType) {
+      btnOneWay.addEventListener('click', () => {
+        btnOneWay.classList.add('active');
+        btnRoundTrip.classList.remove('active');
+        hiddenTripType.value = 'One Way';
+      });
+      btnRoundTrip.addEventListener('click', () => {
+        btnRoundTrip.classList.add('active');
+        btnOneWay.classList.remove('active');
+        hiddenTripType.value = 'Round Trip';
+      });
+    }
+
+    // Auto-select service from URL query parameter ?service=...
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceParam = urlParams.get('service');
+    const serviceSelect = document.getElementById('bookingServiceType');
+    if (serviceParam && serviceSelect) {
+      for (let i = 0; i < serviceSelect.options.length; i++) {
+        if (serviceSelect.options[i].value.toLowerCase().includes(serviceParam.toLowerCase())) {
+          serviceSelect.selectedIndex = i;
+          break;
+        }
+      }
+    }
+
+    const pill1 = document.getElementById('pillStep1');
+    const pill2 = document.getElementById('pillStep2');
+    const pill3 = document.getElementById('pillStep3');
+
+    const pane1 = document.getElementById('stepPane1');
+    const pane2 = document.getElementById('stepPane2');
+    const pane3 = document.getElementById('stepPane3');
+
+    function goToStep(step) {
+      [pane1, pane2, pane3].forEach(p => { if (p) p.style.display = 'none'; });
+      [pill1, pill2, pill3].forEach(p => { if (p) p.classList.remove('active'); });
+
+      if (step === 1) {
+        if (pane1) pane1.style.display = 'block';
+        if (pill1) pill1.classList.add('active');
+      } else if (step === 2) {
+        if (pane2) pane2.style.display = 'block';
+        if (pill2) pill2.classList.add('active');
+      } else if (step === 3) {
+        if (pane3) pane3.style.display = 'block';
+        if (pill3) pill3.classList.add('active');
+        renderBookingSummary();
+      }
+    }
+
+    if (pill1) pill1.addEventListener('click', () => goToStep(1));
+    if (pill2) pill2.addEventListener('click', () => {
+      if (validateStep1()) goToStep(2);
+    });
+    if (pill3) pill3.addEventListener('click', () => {
+      if (validateStep1() && validateStep2()) goToStep(3);
+    });
+
+    const btnGoToStep2 = document.getElementById('btnGoToStep2');
+    const btnBackToStep1 = document.getElementById('btnBackToStep1');
+    const btnGoToStep3 = document.getElementById('btnGoToStep3');
+    const btnBackToStep2 = document.getElementById('btnBackToStep2');
+    const btnConfirmBooking = document.getElementById('btnConfirmBooking');
+
+    function validateStep1() {
+      const service = document.getElementById('bookingServiceType')?.value;
+      const pickup = document.getElementById('bookingPickup')?.value.trim();
+      const dest = document.getElementById('bookingDestination')?.value.trim();
+      const date = document.getElementById('bookingDate')?.value;
+      const time = document.getElementById('bookingTime')?.value;
+
+      if (!service) {
+        showToast('Please select a service type.');
+        document.getElementById('bookingServiceType')?.focus();
+        return false;
+      }
+      if (!pickup) {
+        showToast('Please enter a pickup location.');
+        document.getElementById('bookingPickup')?.focus();
+        return false;
+      }
+      if (!dest) {
+        showToast('Please enter a destination.');
+        document.getElementById('bookingDestination')?.focus();
+        return false;
+      }
+      if (!date) {
+        showToast('Please select your travel date.');
+        document.getElementById('bookingDate')?.focus();
+        return false;
+      }
+      if (!time) {
+        showToast('Please select your pickup time.');
+        document.getElementById('bookingTime')?.focus();
+        return false;
+      }
+      return true;
+    }
+
+    function validateStep2() {
+      const name = document.getElementById('clientName')?.value.trim();
+      const phone = document.getElementById('clientPhone')?.value.trim();
+      const email = document.getElementById('clientEmail')?.value.trim();
+
+      if (!name) {
+        showToast('Please enter your full name.');
+        document.getElementById('clientName')?.focus();
+        return false;
+      }
+      if (!phone) {
+        showToast('Please enter your contact number.');
+        document.getElementById('clientPhone')?.focus();
+        return false;
+      }
+      if (!email || !email.includes('@')) {
+        showToast('Please enter a valid email address.');
+        document.getElementById('clientEmail')?.focus();
+        return false;
+      }
+      return true;
+    }
+
+    function renderBookingSummary() {
+      const reviewBox = document.getElementById('bookingReviewBox');
+      if (!reviewBox) return;
+
+      const service = document.getElementById('bookingServiceType')?.value || '-';
+      const tripType = document.getElementById('selectedTripType')?.value || 'One Way';
+      const pickup = document.getElementById('bookingPickup')?.value || '-';
+      const dest = document.getElementById('bookingDestination')?.value || '-';
+      const date = document.getElementById('bookingDate')?.value || '-';
+      const time = document.getElementById('bookingTime')?.value || '-';
+      const pax = document.getElementById('bookingPassengers')?.value || '1';
+      const req = document.getElementById('bookingRequirements')?.value || 'None';
+      const name = document.getElementById('clientName')?.value || '-';
+      const phone = document.getElementById('clientPhone')?.value || '-';
+      const email = document.getElementById('clientEmail')?.value || '-';
+
+      reviewBox.innerHTML = `
+        <div class="booking-summary-row"><span class="booking-summary-label">Service:</span><span class="booking-summary-val">${service} (${tripType})</span></div>
+        <div class="booking-summary-row"><span class="booking-summary-label">Pickup &rarr; Destination:</span><span class="booking-summary-val">${pickup} &rarr; ${dest}</span></div>
+        <div class="booking-summary-row"><span class="booking-summary-label">Date &amp; Time:</span><span class="booking-summary-val">${date} at ${time}</span></div>
+        <div class="booking-summary-row"><span class="booking-summary-label">Passengers:</span><span class="booking-summary-val">${pax} person(s)</span></div>
+        <div class="booking-summary-row"><span class="booking-summary-label">Passenger Name:</span><span class="booking-summary-val">${name}</span></div>
+        <div class="booking-summary-row"><span class="booking-summary-label">Phone &amp; Email:</span><span class="booking-summary-val">${phone} | ${email}</span></div>
+        ${req !== 'None' ? `<div class="booking-summary-row"><span class="booking-summary-label">Requirements:</span><span class="booking-summary-val">${req}</span></div>` : ''}
+      `;
+    }
+
+    if (btnGoToStep2) {
+      btnGoToStep2.addEventListener('click', () => {
+        if (validateStep1()) goToStep(2);
+      });
+    }
+
+    if (btnBackToStep1) {
+      btnBackToStep1.addEventListener('click', () => goToStep(1));
+    }
+
+    if (btnGoToStep3) {
+      btnGoToStep3.addEventListener('click', () => {
+        if (validateStep2()) goToStep(3);
+      });
+    }
+
+    if (btnBackToStep2) {
+      btnBackToStep2.addEventListener('click', () => goToStep(2));
+    }
+
+    if (btnConfirmBooking) {
+      btnConfirmBooking.addEventListener('click', () => {
+        const service = document.getElementById('bookingServiceType')?.value || '';
+        const tripType = document.getElementById('selectedTripType')?.value || 'One Way';
+        const pickup = document.getElementById('bookingPickup')?.value || '';
+        const dest = document.getElementById('bookingDestination')?.value || '';
+        const date = document.getElementById('bookingDate')?.value || '';
+        const time = document.getElementById('bookingTime')?.value || '';
+        const pax = document.getElementById('bookingPassengers')?.value || '1';
+        const req = document.getElementById('bookingRequirements')?.value || '';
+        const name = document.getElementById('clientName')?.value || '';
+        const phone = document.getElementById('clientPhone')?.value || '';
+        const email = document.getElementById('clientEmail')?.value || '';
+
+        const msg = encodeURIComponent(
+          `*New KDH Van Booking Reservation*\n\n` +
+          `*Service:* ${service} (${tripType})\n` +
+          `*Pickup:* ${pickup}\n` +
+          `*Destination:* ${dest}\n` +
+          `*Date:* ${date}\n` +
+          `*Time:* ${time}\n` +
+          `*Passengers:* ${pax}\n` +
+          (req ? `*Requirements:* ${req}\n` : '') +
+          `\n*Client Name:* ${name}\n` +
+          `*Phone:* ${phone}\n` +
+          `*Email:* ${email}\n\n` +
+          `Please confirm availability and best price.`
+        );
+
+        showToast('Connecting your booking reservation to WhatsApp...');
+        setTimeout(() => {
+          window.open(`https://wa.me/94771234567?text=${msg}`, '_blank');
+        }, 600);
+      });
+    }
+  }
+
   // Escape key closes open popups
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
