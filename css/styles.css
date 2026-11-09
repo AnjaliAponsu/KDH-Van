@@ -205,12 +205,33 @@ button, input, select {
   color: var(--color-gold);
 }
 
-.nav-link.active {
-  background-color: var(--color-blue-pill);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+/* Active Nav Link (Header Gold Underline across all pages: Home, Services, Fleet, Pricing) */
+.nav-link.active,
+.nav-link.home-nav-active,
+.nav-link.services-nav-active,
+.nav-link.fleet-nav-active,
+.nav-link.pricing-nav-active {
+  position: relative;
   color: #ffffff;
   font-weight: 600;
   opacity: 1;
+  background-color: transparent;
+  border: none;
+}
+
+.nav-link.active::after,
+.nav-link.home-nav-active::after,
+.nav-link.services-nav-active::after,
+.nav-link.fleet-nav-active::after,
+.nav-link.pricing-nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 12px;
+  right: 12px;
+  height: 2.5px;
+  background-color: var(--color-gold);
+  border-radius: 2px;
 }
 
 .nav-dropdown-wrapper {
@@ -2617,28 +2638,7 @@ input:checked + .return-toggle-slider:before {
    PAGE 2: OUR SERVICES STYLES (Mockup Exact Fidelity)
    ========================================================================== */
 
-/* Header Nav Active Underline for Services, Fleet & Pricing */
-.nav-link.services-nav-active,
-.nav-link.fleet-nav-active,
-.nav-link.pricing-nav-active {
-  position: relative;
-  color: #ffffff;
-  font-weight: 600;
-  opacity: 1;
-}
-
-.nav-link.services-nav-active::after,
-.nav-link.fleet-nav-active::after,
-.nav-link.pricing-nav-active::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 12px;
-  right: 12px;
-  height: 2.5px;
-  background-color: var(--color-gold);
-  border-radius: 2px;
-}
+/* Header Nav Active Underline defined centrally in line 208 */
 
 /* Services Hero Section */
 .services-hero-section {
