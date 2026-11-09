@@ -1452,9 +1452,10 @@ button, input, select {
 }
 
 .footer-contact-item.wa svg {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   color: var(--color-whatsapp);
+  flex-shrink: 0;
 }
 
 .footer-contact-item.mail svg,
