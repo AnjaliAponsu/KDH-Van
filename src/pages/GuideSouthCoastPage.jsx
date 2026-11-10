@@ -34,17 +34,29 @@ export default function GuideSouthCoastPage() {
   const peakMonths = ['Dec', 'Jan', 'Feb', 'Mar', 'Apr'];
 
   return (
-    <main className="guide-southcoast-main">
-      <PageHero
-        kicker="DESTINATION GUIDE"
-        title="South Coast Travel Guide – Galle &amp; Mirissa"
-        desc="Explore historic charm, golden beaches, vibrant coastal life and unforgettable ocean experiences on Sri Lanka's South Coast."
-        bgImage="/assets/guide/southcoast-sunset.jpg"
-        breadcrumbs={[
-          { label: 'Travel Guide', path: '/travel-guide' },
-          { label: 'South Coast' }
-        ]}
-      />
+    <main className="guide-southcoast-main post-page-body">
+      <section className="guide-hero" style={{ backgroundImage: "url('/assets/guide/southcoast-hero.jpg')" }}>
+        <div className="guide-container">
+          <div className="guide-hero-content">
+            <div className="guide-hero-eyebrow">DESTINATION GUIDE</div>
+            <h1 className="guide-hero-title">South Coast Travel Guide &ndash; <span className="highlight-gold">Galle &amp; Mirissa</span></h1>
+            <p className="guide-hero-desc">Explore historic charm, golden beaches, vibrant coastal life and unforgettable ocean experiences on Sri Lanka's South Coast.</p>
+            <nav className="guide-breadcrumbs" aria-label="Breadcrumbs">
+              <a href="/">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Home
+              </a>
+              <span className="sep">&gt;</span>
+              <a href="/travel-guide.html">Destinations</a>
+              <span className="sep">&gt;</span>
+              <span className="current">South Coast Travel Guide</span>
+            </nav>
+          </div>
+        </div>
+      </section>
 
       <div className="guide-container">
         {/* Intro */}

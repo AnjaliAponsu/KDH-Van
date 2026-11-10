@@ -1,30 +1,82 @@
 import React from 'react';
 import PageHero from '../components/common/PageHero';
-import SectionHeader from '../components/common/SectionHeader';
-import CtaBanner from '../components/common/CtaBanner';
 import { useApp } from '../context/AppContext';
 
 export default function GuideEllaPage() {
   const { openBookingModal } = useApp();
 
   const experiences = [
-    { label: 'Ride the scenic train' },
-    { label: 'Hike to panoramic views' },
-    { label: 'Visit waterfalls' },
-    { label: 'Explore tea plantations' },
-    { label: 'Capture iconic landscapes' },
-    { label: 'Enjoy local cafés' }
+    {
+      label: 'Ride the scenic train',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" strokeWidth="2.2">
+          <rect x="4" y="3" width="16" height="16" rx="2" />
+          <path d="M4 11h16" />
+          <path d="M12 3v8" />
+          <circle cx="8" cy="15" r="1.5" />
+          <circle cx="16" cy="15" r="1.5" />
+          <path d="M8 19l-2 3" />
+          <path d="M16 19l2 3" />
+        </svg>
+      )
+    },
+    {
+      label: 'Hike to panoramic views',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.2">
+          <path d="M8 3l4 8 5-5 5 15H2L8 3z" />
+        </svg>
+      )
+    },
+    {
+      label: 'Visit waterfalls',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" strokeWidth="2.2">
+          <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+        </svg>
+      )
+    },
+    {
+      label: 'Explore tea plantations',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.2">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+        </svg>
+      )
+    },
+    {
+      label: 'Capture iconic landscapes',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="2.2">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+          <circle cx="12" cy="13" r="4" />
+        </svg>
+      )
+    },
+    {
+      label: 'Enjoy local cafés',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b45309" strokeWidth="2.2">
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+          <line x1="6" y1="1" x2="6" y2="4" />
+          <line x1="10" y1="1" x2="10" y2="4" />
+          <line x1="14" y1="1" x2="14" y2="4" />
+        </svg>
+      )
+    }
   ];
 
   const attractions = [
     {
       title: 'Nine Arch Bridge',
-      desc: 'Ella\'s most iconic landmark, a stunning colonial-era bridge set amid lush greenery.',
-      image: '/assets/home-page/dest-ella.jpg'
+      desc: "Ella's most iconic landmark, a stunning colonial-era bridge set amid lush greenery.",
+      image: '/assets/guide/ella-nine-arch.jpg'
     },
     {
-      title: 'Little Adam\'s Peak',
-      desc: 'A popular and rewarding hike with spectacular views of Ella\'s hill country.',
+      title: "Little Adam's Peak",
+      desc: "A popular and rewarding hike with spectacular views of Ella's hill country.",
       image: '/assets/guide/ella-adams-peak.jpg'
     },
     {
@@ -34,158 +86,337 @@ export default function GuideEllaPage() {
     }
   ];
 
+  const itinerarySteps = [
+    { title: 'Start from\nColombo / Kandy', img: '/assets/guide/ella-itin-1.jpg' },
+    { title: 'Nine Arch\nBridge', img: '/assets/guide/ella-itin-2.jpg' },
+    { title: "Little Adam's\nPeak", img: '/assets/guide/ella-itin-3.jpg' },
+    { title: 'Ravana\nFalls', img: '/assets/guide/ella-itin-4.jpg' },
+    { title: 'Tea Plantation\n& Factory', img: '/assets/guide/ella-itin-5.jpg' },
+    { title: 'Return\n(Evening)', img: '/assets/guide/ella-itin-6.jpg' }
+  ];
+
   return (
-    <main className="guide-ella-main">
-      <PageHero
-        kicker="EXPLORE SRI LANKA"
-        title="Ella Travel Guide"
-        desc="Discover Ella's stunning mountains, iconic landmarks, tea country charm and the best things to see, do and experience with KDH Van Hire."
-        bgImage="/assets/guide/sigiriya-summit-aerial.jpg"
-        breadcrumbs={[
-          { label: 'Travel Guide', path: '/travel-guide' },
-          { label: 'Ella' }
-        ]}
-      />
+    <main className="guide-ella-main post-page-body">
+      <section className="guide-hero" style={{ backgroundImage: "url('/assets/guide/ella-hero.jpg')" }}>
+        <div className="guide-container">
+          <div className="guide-hero-content">
+            <div className="guide-hero-eyebrow">EXPLORE SRI LANKA</div>
+            <h1 className="guide-hero-title">Ella <span className="highlight-gold">Travel Guide</span></h1>
+            <p className="guide-hero-desc">Discover Ella's stunning mountains, iconic landmarks, tea country charm and the best things to see, do and experience with KDH Van Hire.</p>
+            <nav className="guide-breadcrumbs" aria-label="Breadcrumbs">
+              <a href="/">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Home
+              </a>
+              <span className="sep">&gt;</span>
+              <a href="/travel-guide.html">Destinations</a>
+              <span className="sep">&gt;</span>
+              <span className="current">Ella Travel Guide</span>
+            </nav>
+          </div>
+        </div>
+      </section>
 
       <div className="guide-container">
-        {/* Intro */}
-        <section style={{ marginBottom: '48px' }}>
-          <SectionHeader
-            title="Ella Travel Guide"
-            subtitle="Your complete guide to visiting Ella — top attractions, scenic spots, travel tips, itineraries and everything you need to plan a memorable trip with a comfortable KDH van and a professional driver."
-          />
-        </section>
+        {/* Centered Heading */}
+        <div className="section-heading-centered" style={{ marginBottom: '38px' }}>
+          <h2 className="section-title" style={{ fontSize: '34px' }}>Ella Travel Guide</h2>
+          <p className="section-subtitle" style={{ fontSize: '15.5px', lineHeight: 1.65, maxWidth: '860px', margin: '0 auto' }}>
+            Your complete guide to visiting Ella &mdash; top attractions, scenic spots, travel tips, itineraries and everything you need to plan a memorable trip with a comfortable KDH van and a professional driver.
+          </p>
+        </div>
 
-        {/* Top Experiences 6-col */}
-        <section style={{ marginBottom: '48px' }}>
-          <SectionHeader
-            title="Top Experiences"
-            subtitle="The best things to see and do in Ella — from iconic landmarks to refreshing nature escapes."
-          />
-
-          <div className="ella-experiences-grid">
-            {experiences.map((exp, idx) => (
-              <div key={idx} className="ella-exp-card">
-                <div className="ella-exp-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        {/* Top Area: Why Visit Ella + Top Experiences + Quick Facts */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1.45fr 1fr', gap: '32px', marginBottom: '56px', alignItems: 'start' }}>
+          <div>
+            {/* Why Visit Ella Box */}
+            <div style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '28px', background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.03)' }}>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 800, color: '#b45309', marginBottom: '8px' }}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '28px', height: '28px', background: '#fef3c7', borderRadius: '8px' }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b45309" strokeWidth="2.2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                  </span>
+                  Why Visit Ella
                 </div>
-                <span className="ella-exp-label">{exp.label}</span>
+                <p className="post-text-p" style={{ fontSize: '15px', lineHeight: 1.65, color: '#475569', margin: 0 }}>
+                  A charming hill-country town, Ella is famous for its breathtaking scenery, tea plantations, iconic train views, waterfalls and laid-back vibe. It's the perfect blend of nature, adventure and relaxation, making it one of Sri Lanka's most loved destinations.
+                </p>
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Must-Visit Attractions */}
-        <section style={{ marginBottom: '48px' }}>
-          <SectionHeader
-            title="Must-Visit Attractions"
-            subtitle="Top places to explore in and around Ella."
-          />
-
-          <div className="service-cases-grid">
-            {attractions.map((att, idx) => (
-              <div key={idx} className="service-case-card">
-                <div className="service-case-media">
-                  <img src={att.image} alt={att.title} loading="lazy" />
-                </div>
-                <div className="service-case-body">
-                  <h4 className="service-case-title">{att.title}</h4>
-                  <p className="service-case-desc">{att.desc}</p>
-                </div>
+              <div style={{ width: '200px', height: '130px', borderRadius: '12px', overflow: 'hidden', flexShrink: 0, boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}>
+                <img src="/assets/guide/ella-why-visit.jpg" alt="Ella tea hills landscape" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 3-Col Tips */}
-        <section style={{ marginBottom: '48px' }}>
-          <div className="south-mid-grid">
-            <div className="service-feature-card">
-              <h4 className="feature-card-title" style={{ borderBottom: '2px solid #ffb900', paddingBottom: '8px', marginBottom: '14px' }}>
-                Best Scenic Stops
-              </h4>
-              <ul className="post-checklist" style={{ listStyle: 'none', padding: 0 }}>
-                <li>Ella Rock (a scenic and rewarding hike)</li>
-                <li>Demodara Loop (unique spiral railway)</li>
-                <li>Upper Diyaluma / Diyaluma Falls (stunning views)</li>
-                <li>Halpewatte Tea Factory (learn about Ceylon tea)</li>
-                <li>Kithal Ella Viewpoint (a peaceful, lesser-known spot)</li>
-              </ul>
             </div>
 
-            <div className="service-feature-card">
-              <h4 className="feature-card-title" style={{ borderBottom: '2px solid #ffb900', paddingBottom: '8px', marginBottom: '14px' }}>
-                When to Visit
-              </h4>
-              <p style={{ fontSize: '13.5px', color: '#64748b', marginBottom: '10px' }}>
-                Ella is beautiful year-round, but the best time is during the drier months:
-              </p>
-              <div className="month-badge peak" style={{ padding: '6px 12px', display: 'inline-block', marginBottom: '12px' }}>
-                Best Time: Dec – Mar &amp; Jul – Sep
-              </div>
-              <ul className="post-checklist" style={{ listStyle: 'none', padding: 0 }}>
-                <li>Pleasant, cooler weather</li>
-                <li>Clearer views and great for hiking</li>
-                <li>Ideal for outdoor activities and photography</li>
-              </ul>
-            </div>
-
-            <div className="service-feature-card">
-              <h4 className="feature-card-title" style={{ borderBottom: '2px solid #ffb900', paddingBottom: '8px', marginBottom: '14px' }}>
-                Travel Advice
-              </h4>
-              <ul className="post-checklist" style={{ listStyle: 'none', padding: 0 }}>
-                <li>Wear comfortable shoes for hikes.</li>
-                <li>Carry a light jacket (it can get cool, especially evenings).</li>
-                <li>Keep a camera or phone ready for scenic views.</li>
-                <li>Start hikes early for the best weather and fewer crowds.</li>
-                <li>Travel with a reliable van and driver for safe, flexible trips.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Suggested Itinerary Timeline */}
-        <section style={{ marginBottom: '56px' }}>
-          <div className="ella-timeline-row">
+            {/* Top Experiences (6 icons) */}
             <div>
-              <h4 style={{ fontSize: '20px', fontWeight: '800', color: '#081726', margin: '0 0 4px' }}>Suggested Itinerary: Ella Day Trip</h4>
-              <p style={{ fontSize: '14.5px', color: '#64748b', margin: '0 0 16px' }}>A popular one-day itinerary to experience Ella's main highlights at a relaxed pace.</p>
-              <div className="ella-steps-chain" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', alignItems: 'center' }}>
-                <span className="step-tag">Start: Colombo / Kandy</span>
-                <span>&rarr;</span>
-                <span className="step-tag">Nine Arch Bridge</span>
-                <span>&rarr;</span>
-                <span className="step-tag">Little Adam's Peak</span>
-                <span>&rarr;</span>
-                <span className="step-tag">Ravana Falls</span>
-                <span>&rarr;</span>
-                <span className="step-tag">Tea Factory</span>
-                <span>&rarr;</span>
-                <span className="step-tag">Return (Evening)</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                <span style={{ color: 'var(--color-gold)', fontSize: '20px' }}>&#9733;</span>
+                <h3 className="post-section-title" style={{ fontSize: '22px', margin: 0 }}>Top Experiences</h3>
+              </div>
+              <p style={{ fontSize: '14px', color: '#64748b', margin: '0 0 16px' }}>
+                The best things to see and do in Ella &mdash; from iconic landmarks to refreshing nature escapes.
+              </p>
+
+              <div className="ella-experiences-grid">
+                {experiences.map((exp, idx) => (
+                  <div key={idx} className="ella-exp-card" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '16px 10px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', boxShadow: '0 2px 6px rgba(0,0,0,0.02)' }}>
+                    <div className="ella-exp-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      {exp.icon}
+                    </div>
+                    <span className="ella-exp-label" style={{ fontSize: '12px', fontWeight: 700, color: '#081726', lineHeight: 1.3 }}>{exp.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
-            <div style={{ textAlign: 'center', borderLeft: '1px solid #e2e8f0', paddingLeft: '20px' }}>
-              <span style={{ fontSize: '12px', fontWeight: '800', color: '#64748b', textTransform: 'uppercase' }}>Route Distance</span>
-              <p style={{ fontSize: '18px', fontWeight: '800', color: '#081726', margin: '4px 0 12px' }}>≈ 200 km (5-6 hrs)</p>
-              <button 
-                type="button" 
-                className="btn-primary" 
-                style={{ width: '100%', height: '42px', fontSize: '13.5px' }}
-                onClick={() => openBookingModal({ destination: 'Ella' })}
-              >
-                Book Ella Trip
-              </button>
+          </div>
+
+          {/* Quick Facts Sidebar */}
+          <div className="sidebar-card" style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.04)', borderRadius: '14px', overflow: 'hidden' }}>
+            <div className="sidebar-card-header-navy" style={{ fontSize: '16px', padding: '14px 20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#eab308' }}><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Quick Facts: Ella
+            </div>
+            <div className="sidebar-facts-list" style={{ padding: '20px 22px', gap: '16px' }}>
+              <div className="sidebar-fact-item" style={{ gap: '14px', display: 'flex', alignItems: 'flex-start' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }}><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div>
+                  <p className="fact-title" style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#64748b', marginBottom: '2px' }}>Location</p>
+                  <p className="fact-val" style={{ fontSize: '14.5px', fontWeight: 700, color: '#081726', margin: 0 }}>Badulla District, Uva Province</p>
+                </div>
+              </div>
+              <div className="sidebar-fact-item" style={{ gap: '14px', display: 'flex', alignItems: 'flex-start' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }}><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
+                <div>
+                  <p className="fact-title" style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#64748b', marginBottom: '2px' }}>Elevation</p>
+                  <p className="fact-val" style={{ fontSize: '14.5px', fontWeight: 700, color: '#081726', margin: 0 }}>&approx; 1,041 m (3,415 ft)</p>
+                </div>
+              </div>
+              <div className="sidebar-fact-item" style={{ gap: '14px', display: 'flex', alignItems: 'flex-start' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }}><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg>
+                <div>
+                  <p className="fact-title" style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#64748b', marginBottom: '2px' }}>From Colombo</p>
+                  <p className="fact-val" style={{ fontSize: '14.5px', fontWeight: 700, color: '#081726', margin: 0 }}>&approx; 200 km (5 &ndash; 6 hours)</p>
+                </div>
+              </div>
+              <div className="sidebar-fact-item" style={{ gap: '14px', display: 'flex', alignItems: 'flex-start' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }}><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M7 17l10 0"></path><circle cx="8" cy="12" r="1"></circle><circle cx="16" cy="12" r="1"></circle></svg>
+                <div>
+                  <p className="fact-title" style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#64748b', marginBottom: '2px' }}>By Train</p>
+                  <p className="fact-val" style={{ fontSize: '14.5px', fontWeight: 700, color: '#081726', margin: 0 }}>Scenic ride via Hill Country Line</p>
+                </div>
+              </div>
+              <div className="sidebar-fact-item" style={{ gap: '14px', display: 'flex', alignItems: 'flex-start' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }}><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+                <div>
+                  <p className="fact-title" style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#64748b', marginBottom: '2px' }}>Climate</p>
+                  <p className="fact-val" style={{ fontSize: '14.5px', fontWeight: 700, color: '#081726', margin: 0 }}>Cool &amp; pleasant (&approx; 16&deg;C &ndash; 26&deg;C)</p>
+                </div>
+              </div>
+              <div className="sidebar-fact-item" style={{ gap: '14px', display: 'flex', alignItems: 'flex-start' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }}><path d="M12 2l8 8-8 8-8-8z"></path></svg>
+                <div>
+                  <p className="fact-title" style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#64748b', marginBottom: '2px' }}>Best Known For</p>
+                  <p className="fact-val" style={{ fontSize: '14.5px', fontWeight: 700, color: '#081726', margin: 0 }}>Nine Arch Bridge, hiking, tea hills, waterfalls</p>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
 
-        <CtaBanner
-          title="Plan Your Ella Trip Today"
-          subtitle="Explore Ella's iconic attractions, scenic hikes and tea country beauty with a comfortable KDH van and a professional driver."
-        />
+        {/* Must-Visit Attractions (3 cards) */}
+        <div style={{ marginBottom: '56px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+            <span style={{ color: 'var(--color-gold)', fontSize: '20px' }}>&#127956;</span>
+            <h3 className="post-section-title" style={{ fontSize: '26px', margin: 0 }}>Must-Visit Attractions</h3>
+          </div>
+          <p style={{ fontSize: '15px', color: '#64748b', margin: '0 0 24px' }}>Top places to explore in and around Ella.</p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+            {attractions.map((att, idx) => (
+              <div key={idx} className="destination-card" style={{ borderRadius: '14px', overflow: 'hidden', boxShadow: '0 4px 16px rgba(0,0,0,0.05)', transition: 'transform 0.25s ease' }}>
+                <div className="destination-card-img-wrap" style={{ height: '185px' }}>
+                  <img src={att.image} alt={att.title} className="destination-card-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+                </div>
+                <div className="destination-card-body" style={{ padding: '18px 20px 22px' }}>
+                  <div className="destination-card-title-row" style={{ marginBottom: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div className="destination-card-title-wrap" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#eab308' }}><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                      <h4 className="destination-card-title" style={{ fontSize: '18px', fontWeight: 800, color: '#081726', margin: 0 }}>{att.title}</h4>
+                    </div>
+                    <span className="destination-card-arrow" style={{ color: '#64748b', fontSize: '16px' }}>&rarr;</span>
+                  </div>
+                  <p className="destination-card-desc" style={{ fontSize: '14px', lineHeight: 1.55, color: '#64748b', margin: 0 }}>{att.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 3-Column Info Row: Best Scenic Stops, When to Visit, Travel Advice */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', marginBottom: '56px' }}>
+          {/* Col 1: Best Scenic Stops */}
+          <div className="info-card-block" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '24px', boxShadow: '0 2px 10px rgba(0,0,0,0.03)' }}>
+            <h4 style={{ fontSize: '18px', fontWeight: 800, color: '#081726', margin: '0 0 4px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ color: 'var(--color-gold, #ffb900)', fontSize: '20px' }}>&#128197;</span> Best Scenic Stops
+            </h4>
+            <p style={{ fontSize: '13.5px', color: '#64748b', margin: '0 0 16px' }}>Don't miss these beautiful spots when visiting Ella.</p>
+            <ul className="sidebar-tips-list" style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Ella Rock (a scenic and rewarding hike)</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Demodara Loop (unique spiral railway)</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Upper Diyaluma / Diyaluma Falls (stunning views)</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Halpewatte Tea Factory (learn about Ceylon tea)</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Kithal Ella Viewpoint (a peaceful, lesser-known spot)</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 2: When to Visit */}
+          <div className="info-card-block" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '24px', boxShadow: '0 2px 10px rgba(0,0,0,0.03)' }}>
+            <h4 style={{ fontSize: '18px', fontWeight: 800, color: '#081726', margin: '0 0 4px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ color: 'var(--color-gold, #ffb900)', fontSize: '20px' }}>&#128197;</span> When to Visit
+            </h4>
+            <p style={{ fontSize: '13.5px', color: '#64748b', margin: '0 0 14px' }}>Ella is beautiful year-round, but the best time is during the drier months.</p>
+            <div style={{ background: '#fef3c7', color: '#92400e', padding: '10px 14px', borderRadius: '8px', fontSize: '13.5px', fontWeight: 800, marginBottom: '16px', textAlign: 'center', border: '1px solid #fde68a' }}>
+              Best Time: Dec &ndash; Mar &amp; Jul &ndash; Sep
+            </div>
+            <ul className="sidebar-tips-list" style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Pleasant, cooler weather</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Clearer views and great for hiking</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Ideal for outdoor activities and photography</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Travel Advice */}
+          <div className="info-card-block" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '24px', boxShadow: '0 2px 10px rgba(0,0,0,0.03)' }}>
+            <h4 style={{ fontSize: '18px', fontWeight: 800, color: '#081726', margin: '0 0 4px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ color: 'var(--color-gold, #ffb900)', fontSize: '20px' }}>&#9432;</span> Travel Advice
+            </h4>
+            <p style={{ fontSize: '13.5px', color: '#64748b', margin: '0 0 16px' }}>Helpful tips to make your Ella trip smooth and enjoyable.</p>
+            <ul className="sidebar-tips-list" style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Wear comfortable shoes for hikes.</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Carry a light jacket (it can get cool, especially evenings).</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Keep a camera or phone ready for scenic views.</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Start hikes early for the best weather and fewer crowds.</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', lineHeight: 1.5, color: '#334155' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Travel with a reliable van and driver for a safe, comfortable trip.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Suggested Itinerary: Ella Day Trip (6 Steps Chain + Route Suggestion) */}
+        <div style={{ marginBottom: '56px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+            <span style={{ color: 'var(--color-gold)', fontSize: '20px' }}>&#128506;</span>
+            <h3 className="post-section-title" style={{ fontSize: '26px', margin: 0 }}>Suggested Itinerary: Ella Day Trip</h3>
+          </div>
+          <p style={{ fontSize: '15px', color: '#64748b', margin: '0 0 24px' }}>A popular one-day itinerary to experience Ella's main highlights at a relaxed pace.</p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '24px', alignItems: 'stretch' }}>
+            {/* 6 Steps Chain Box */}
+            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '24px 20px', boxShadow: '0 4px 16px rgba(0,0,0,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              {itinerarySteps.map((step, idx) => (
+                <React.Fragment key={idx}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '8px' }}>
+                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', overflow: 'hidden', boxShadow: '0 3px 10px rgba(0,0,0,0.1)', border: '2px solid #ffffff' }}>
+                      <img src={step.img} alt={step.title.replace('\n', ' ')} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+                    </div>
+                    <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#081726', lineHeight: 1.3, whiteSpace: 'pre-line' }}>{step.title}</span>
+                  </div>
+                  {idx < itinerarySteps.length - 1 && (
+                    <span style={{ color: '#94a3b8', fontSize: '20px' }}>&rarr;</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+
+            {/* Route Suggestion Box */}
+            <div style={{ background: '#fffbeb', border: '1px solid #fde68a', borderRadius: '16px', padding: '24px 28px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '14px', boxShadow: '0 4px 16px rgba(0,0,0,0.03)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <span style={{ fontSize: '28px', lineHeight: 1 }}>&#128652;</span>
+                <div>
+                  <h4 style={{ fontSize: '18px', fontWeight: 800, color: '#081726', margin: '0 0 2px 0' }}>Route Suggestion</h4>
+                  <p style={{ fontSize: '13.5px', color: '#92400e', margin: 0, fontWeight: 600 }}>Colombo / Kandy &rarr; Ella (via A1 or A6)</p>
+                </div>
+              </div>
+              <div style={{ fontSize: '14px', color: '#475569', lineHeight: 1.6, borderTop: '1px dashed #fde68a', paddingTop: '12px', margin: 0 }}>
+                <p style={{ margin: '0 0 4px 0', fontWeight: 700, color: '#081726' }}>&approx; 200 km &bull; 5 &ndash; 6 hours</p>
+                <p style={{ margin: 0, color: '#64748b' }}>Travel comfortably with a private KDH van and professional driver.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div className="custom-cta-banner" style={{ background: "linear-gradient(90deg, rgba(8, 23, 38, 0.92) 0%, rgba(8, 23, 38, 0.85) 100%), url('/assets/guide/travel-guide-cta-bg.jpg') center/cover no-repeat", borderRadius: '16px', padding: '34px 44px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 8px 30px rgba(8,23,38,0.25)', marginBottom: '56px' }}>
+          <div className="cta-banner-text">
+            <h3 className="cta-banner-title" style={{ fontSize: '24px', fontWeight: 800, color: '#ffffff', margin: '0 0 6px 0' }}>Plan Your Ella Trip Today</h3>
+            <p className="cta-banner-desc" style={{ fontSize: '15px', color: '#e2e8f0', margin: 0 }}>Explore Ella's iconic attractions, scenic hikes and tea country beauty with a comfortable KDH van and a professional driver.</p>
+          </div>
+          <div className="cta-banner-buttons" style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
+            <button
+              type="button"
+              onClick={() => openBookingModal({ destination: 'Ella' })}
+              className="btn-cta-gold"
+              style={{ backgroundColor: 'var(--color-gold)', color: '#081726', fontSize: '14px', fontWeight: 700, padding: '12px 24px', borderRadius: '8px', border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 3px 10px rgba(245,158,11,0.3)' }}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg>
+              Book Your Van &rarr;
+            </button>
+            <a
+              href="https://wa.me/94771234567?text=Hi%2C%20I%20would%20like%20to%20plan%20a%20trip%20to%20Ella%20with%20a%20KDH%20van"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-cta-white"
+              style={{ backgroundColor: '#16a34a', color: '#ffffff', fontSize: '14px', fontWeight: 700, padding: '12px 24px', borderRadius: '8px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 3px 10px rgba(22,163,74,0.3)' }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.697c.97.531 1.808.819 2.806.819l.005-.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.767-5.766zm3.376 8.21c-.144.405-.837.774-1.17.824-.312.045-.694.06-2.18-.557-1.9-0.788-3.122-2.73-3.217-2.855-.095-.125-.769-1.025-.769-1.954 0-.929.489-1.386.663-1.577.174-.191.38-.239.507-.239.127 0 .253.001.365.006.118.006.277-.045.433.329.16.38.547 1.332.594 1.43.048.098.079.213.016.34-.064.127-.095.206-.191.317-.095.111-.201.248-.287.333-.095.095-.195.198-.084.388.111.19.493.813 1.056 1.315.725.645 1.336.845 1.527.939.19.095.302.079.413-.048.111-.127.476-.556.603-.746.127-.19.254-.159.428-.095.175.063 1.11.523 1.301.618.19.095.317.143.365.222.048.079.048.46-.096.865z"/>
+              </svg>
+              Chat on WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
     </main>
   );
 }
-

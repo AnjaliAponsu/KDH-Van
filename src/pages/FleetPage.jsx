@@ -8,10 +8,10 @@ export default function FleetPage() {
   const { openBookingModal } = useApp();
 
   const gallery = [
-    { title: 'Executive Cabin Layout', image: '/assets/fleet/fleet-interior-seats.jpg' },
-    { title: 'Generous Luggage Cargo Boot', image: '/assets/fleet/fleet-trunk.jpg' },
-    { title: 'Roof Climate Control', image: '/assets/fleet/fleet-gallery-3.jpg' },
-    { title: 'Pristine White Exterior', image: '/assets/fleet/fleet-van-main.jpg' }
+    { title: 'Pristine White Exterior', image: '/assets/fleet/fleet-gallery-1.jpg' },
+    { title: 'Executive Cabin Layout', image: '/assets/fleet/fleet-gallery-2.jpg' },
+    { title: 'Generous Luggage Cargo Boot', image: '/assets/fleet/fleet-gallery-3.jpg' },
+    { title: 'Roof Climate Control', image: '/assets/fleet/fleet-gallery-4.jpg' }
   ];
 
   const features = [

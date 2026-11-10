@@ -7,14 +7,27 @@ import { destinationsList, travelTipsList, suggestedItinerariesList } from '../d
 
 export default function TravelGuidePage() {
   return (
-    <main className="travel-guide-main-page">
-      <PageHero
-        kicker="TRAVEL GUIDE"
-        title="Travel Guide – Sri Lanka Destinations"
-        desc="Your complete guide to Sri Lanka's top places, experiences, travel tips, and suggested itineraries with a private driver."
-        bgImage="/assets/guide/sigiriya-summit-aerial.jpg"
-        breadcrumbs={[{ label: 'Travel Guide' }]}
-      />
+    <main className="travel-guide-main-page post-page-body">
+      <section className="guide-hero" style={{ backgroundImage: "url('/assets/guide/travel-guide-hero.jpg')" }}>
+        <div className="guide-container">
+          <div className="guide-hero-content">
+            <div className="guide-hero-eyebrow">TRAVEL GUIDE</div>
+            <h1 className="guide-hero-title">Travel Guide – <span className="highlight-gold">Sri Lanka Destinations</span></h1>
+            <p className="guide-hero-desc">Your complete guide to Sri Lanka's top places, experiences, travel tips, and suggested itineraries with a private driver.</p>
+            <nav className="guide-breadcrumbs" aria-label="Breadcrumbs">
+              <Link to="/">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Home
+              </Link>
+              <span className="sep">&gt;</span>
+              <span className="current">Travel Guide</span>
+            </nav>
+          </div>
+        </div>
+      </section>
 
       <div className="guide-container">
         {/* Section 1: Explore Sri Lanka's Top Destinations */}

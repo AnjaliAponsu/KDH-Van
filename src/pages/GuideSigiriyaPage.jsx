@@ -8,17 +8,29 @@ export default function GuideSigiriyaPage() {
   const { openBookingModal } = useApp();
 
   return (
-    <main className="guide-sigiriya-main">
-      <PageHero
-        kicker="EXPLORE SRI LANKA"
-        title="Sigiriya Travel Guide"
-        desc="A complete guide to visiting Sri Lanka's iconic Sigiriya Rock Fortress — history, highlights, travel tips and more."
-        bgImage="/assets/guide/sigiriya-summit-aerial.jpg"
-        breadcrumbs={[
-          { label: 'Travel Guide', path: '/travel-guide' },
-          { label: 'Sigiriya' }
-        ]}
-      />
+    <main className="guide-sigiriya-main post-page-body">
+      <section className="guide-hero" style={{ backgroundImage: "url('/assets/guide/sigiriya-hero.jpg')" }}>
+        <div className="guide-container">
+          <div className="guide-hero-content">
+            <div className="guide-hero-eyebrow">EXPLORE SRI LANKA</div>
+            <h1 className="guide-hero-title">Sigiriya <span className="highlight-gold">Travel Guide</span></h1>
+            <p className="guide-hero-desc">A complete guide to visiting Sri Lanka's iconic Sigiriya Rock Fortress &mdash; history, highlights, travel tips and more.</p>
+            <nav className="guide-breadcrumbs" aria-label="Breadcrumbs">
+              <Link to="/">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Home
+              </Link>
+              <span className="sep">&gt;</span>
+              <Link to="/travel-guide.html">Destinations</Link>
+              <span className="sep">&gt;</span>
+              <span className="current">Sigiriya Travel Guide</span>
+            </nav>
+          </div>
+        </div>
+      </section>
 
       <div className="guide-container">
         <div className="article-main-grid">
