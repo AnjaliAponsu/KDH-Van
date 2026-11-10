@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import BookingSearch from '../components/home/BookingSearch';
+import WhyChooseUs from '../components/home/WhyChooseUs';
+import PopularRoutes from '../components/home/PopularRoutes';
+import Testimonials from '../components/home/Testimonials';
 import CtaBanner from '../components/common/CtaBanner';
 import SectionHeader from '../components/common/SectionHeader';
 
@@ -34,8 +37,8 @@ export default function HomePage() {
 
   return (
     <main className="home-page-main">
-      {/* Hero Section */}
-      <section className="hero-section">
+      {/* 1. Hero Section */}
+      <section className="hero-section" id="home">
         <div className="container hero-container">
           <div className="hero-content">
             <div className="hero-badge">
@@ -87,102 +90,194 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Booking Search Interactive Box */}
+      {/* 2. Booking Search Interactive Box */}
       <BookingSearch />
 
-      {/* Services Grid Section */}
-      <section className="services-section">
+      {/* 3. Services Grid Section */}
+      <section className="services-section" id="services">
         <div className="container">
           <SectionHeader
-            kicker="WHAT WE OFFER"
+            kicker="OUR SERVICES"
             title="Travel Solutions for Every Need"
             subtitle="Explore our comprehensive range of private transport options tailored for couples, families, groups and business executives."
           />
 
-          <div className="services-grid">
+          <div className="services-cards-grid">
             {/* Card 1: Airport Transfers */}
-            <div className="service-card">
-              <div className="service-card-media">
-                <img src="/assets/services/service-airport-transfers.jpg" alt="Airport Transfers" loading="lazy" />
-                <span className="service-badge">Most Popular</span>
-              </div>
-              <div className="service-card-body">
-                <h3 className="service-card-title">Airport Transfers</h3>
-                <p className="service-card-desc">Seamless 24/7 airport pickups &amp; drop-offs between BIA (CMB) and any destination in Sri Lanka. Flight delay tracking included.</p>
-                <div className="service-meta-strip">
-                  <span>From $35 USD</span>
-                  <span>Door-to-Door</span>
-                </div>
-                <div className="service-card-actions">
-                  <Link to="/services" className="btn-service-learn">Learn More</Link>
-                  <button type="button" className="btn-service-book" onClick={() => openBookingModal({ service: 'Airport Transfer' })}>Book Now</button>
+            <article className="service-card-item">
+              <div className="service-card-thumbnail-box">
+                <img src="/assets/home-page/service-airport-transfers.jpg" alt="Airport Transfers" className="service-card-thumbnail" loading="lazy" />
+                <div className="service-card-icon-badge" title="Airport Transfers">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"></path>
+                  </svg>
                 </div>
               </div>
-            </div>
+              <div className="service-card-content">
+                <h3 className="service-card-header-title">Airport Transfers</h3>
+                <p className="service-card-paragraph">
+                  Hassle-free airport pickups and drop-offs to any destination in Sri Lanka.
+                </p>
+                <div className="service-card-buttons-row">
+                  <button type="button" className="btn-card-book-now" onClick={() => openBookingModal({ service: 'Airport Transfer' })}>
+                    Book Now &rarr;
+                  </button>
+                  <Link to="/services" className="btn-card-learn-more">
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </article>
 
             {/* Card 2: Point to Point Hire */}
-            <div className="service-card">
-              <div className="service-card-media">
-                <img src="/assets/services/service-point-to-point.jpg" alt="Point to Point Hire" loading="lazy" />
-              </div>
-              <div className="service-card-body">
-                <h3 className="service-card-title">Point to Point Hire</h3>
-                <p className="service-card-desc">Direct private transfers between major cities and tourist hotspots. Travel safely and comfortably without public transport hassle.</p>
-                <div className="service-meta-strip">
-                  <span>Flexible Stops</span>
-                  <span>Fixed Rates</span>
-                </div>
-                <div className="service-card-actions">
-                  <Link to="/services/point-to-point" className="btn-service-learn">Learn More</Link>
-                  <button type="button" className="btn-service-book" onClick={() => openBookingModal({ service: 'Point to Point Hire' })}>Book Now</button>
+            <article className="service-card-item">
+              <div className="service-card-thumbnail-box">
+                <img src="/assets/home-page/service-point-to-point.jpg" alt="Point to Point Hire" className="service-card-thumbnail" loading="lazy" />
+                <div className="service-card-icon-badge" title="Point to Point Hire">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7h2"></path>
+                    <circle cx="7" cy="17" r="2"></circle>
+                    <path d="M9 17h6"></path>
+                    <circle cx="17" cy="17" r="2"></circle>
+                  </svg>
                 </div>
               </div>
-            </div>
+              <div className="service-card-content">
+                <h3 className="service-card-header-title">Point to Point Hire</h3>
+                <p className="service-card-paragraph">
+                  Travel between cities and towns with a comfortable KDH and driver.
+                </p>
+                <div className="service-card-buttons-row">
+                  <button type="button" className="btn-card-book-now" onClick={() => openBookingModal({ service: 'Point to Point Hire' })}>
+                    Book Now &rarr;
+                  </button>
+                  <Link to="/services/point-to-point" className="btn-card-learn-more">
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </article>
 
             {/* Card 3: Daily Hire */}
-            <div className="service-card">
-              <div className="service-card-media">
-                <img src="/assets/services/service-daily-hire.jpg" alt="Daily Hire" loading="lazy" />
-              </div>
-              <div className="service-card-body">
-                <h3 className="service-card-title">Daily Hire with Driver</h3>
-                <p className="service-card-desc">Hire a luxury Toyota KDH van for the whole day. Perfect for city tours, shopping, business errands and day excursions (80–100 km included).</p>
-                <div className="service-meta-strip">
-                  <span>Full Day Flexibility</span>
-                  <span>Fuel Included</span>
+            <article className="service-card-item">
+              <div className="service-card-thumbnail-box">
+                <img src="/assets/home-page/service-daily-hire.jpg" alt="Daily Hire" className="service-card-thumbnail" loading="lazy" />
+                <div className="service-card-icon-badge" title="Daily Hire">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                    <path d="M8 14h.01"></path>
+                    <path d="M12 14h.01"></path>
+                    <path d="M16 14h.01"></path>
+                    <path d="M8 18h.01"></path>
+                    <path d="M12 18h.01"></path>
+                    <path d="M16 18h.01"></path>
+                  </svg>
                 </div>
-                <div className="service-card-actions">
-                  <Link to="/services/daily-hire" className="btn-service-learn">Learn More</Link>
-                  <button type="button" className="btn-service-book" onClick={() => openBookingModal({ service: 'Daily Hire' })}>Book Now</button>
+              </div>
+              <div className="service-card-content">
+                <h3 className="service-card-header-title">Daily Hire</h3>
+                <p className="service-card-paragraph">
+                  Hire a KDH van with driver for a full day (ideal for multiple stops and sightseeing).
+                </p>
+                <div className="service-card-buttons-row">
+                  <button type="button" className="btn-card-book-now" onClick={() => openBookingModal({ service: 'Daily Hire' })}>
+                    Book Now &rarr;
+                  </button>
+                  <Link to="/services/daily-hire" className="btn-card-learn-more">
+                    Learn More
+                  </Link>
                 </div>
               </div>
-            </div>
+            </article>
 
             {/* Card 4: Multi-Day Tours */}
-            <div className="service-card">
-              <div className="service-card-media">
-                <img src="/assets/services/service-multi-day.jpg" alt="Multi-Day Tours" loading="lazy" />
-                <span className="service-badge gold">Best Experience</span>
-              </div>
-              <div className="service-card-body">
-                <h3 className="service-card-title">Multi-Day Island Tours</h3>
-                <p className="service-card-desc">Complete round-island tour packages across Sigiriya, Kandy, Nuwara Eliya, Ella, Yala and Galle with your private driver-guide.</p>
-                <div className="service-meta-strip">
-                  <span>Custom Itineraries</span>
-                  <span>Driver Allowance Included</span>
-                </div>
-                <div className="service-card-actions">
-                  <Link to="/services/multi-day-tours" className="btn-service-learn">Learn More</Link>
-                  <button type="button" className="btn-service-book" onClick={() => openBookingModal({ service: 'Multi-Day Tour' })}>Book Now</button>
+            <article className="service-card-item">
+              <div className="service-card-thumbnail-box">
+                <img src="/assets/home-page/service-multi-day.jpg" alt="Multi-Day Tours" className="service-card-thumbnail" loading="lazy" />
+                <div className="service-card-icon-badge" title="Multi-Day Tours">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M8 3l4 8 5-5 5 15H2L8 3z"></path>
+                    <path d="M4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19"></path>
+                  </svg>
                 </div>
               </div>
-            </div>
+              <div className="service-card-content">
+                <h3 className="service-card-header-title">Multi-Day Tours</h3>
+                <p className="service-card-paragraph">
+                  Explore Sri Lanka at your pace with a dedicated van and driver-guide.
+                </p>
+                <div className="service-card-buttons-row">
+                  <button type="button" className="btn-card-book-now" onClick={() => openBookingModal({ service: 'Multi-Day Tour' })}>
+                    Book Now &rarr;
+                  </button>
+                  <Link to="/services/multi-day-tours" className="btn-card-learn-more">
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* Card 5: Weddings & Events */}
+            <article className="service-card-item">
+              <div className="service-card-thumbnail-box">
+                <img src="/assets/home-page/service-weddings.jpg" alt="Weddings & Events" className="service-card-thumbnail" loading="lazy" />
+                <div className="service-card-icon-badge" title="Weddings & Events">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </div>
+              </div>
+              <div className="service-card-content">
+                <h3 className="service-card-header-title">Weddings &amp; Events</h3>
+                <p className="service-card-paragraph">
+                  Elegant group transport for wedding guests, VIP delegates, and family celebrations.
+                </p>
+                <div className="service-card-buttons-row">
+                  <button type="button" className="btn-card-book-now" onClick={() => openBookingModal({ service: 'Weddings & Events' })}>
+                    Book Now &rarr;
+                  </button>
+                  <Link to="/services/wedding-events" className="btn-card-learn-more">
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* Card 6: Corporate Transport */}
+            <article className="service-card-item">
+              <div className="service-card-thumbnail-box">
+                <img src="/assets/home-page/service-corporate.jpg" alt="Corporate Transport" className="service-card-thumbnail" loading="lazy" />
+                <div className="service-card-icon-badge" title="Corporate Transport">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                </div>
+              </div>
+              <div className="service-card-content">
+                <h3 className="service-card-header-title">Corporate Transport</h3>
+                <p className="service-card-paragraph">
+                  Professional fleet solutions for business conferences, client site visits, and team retreats.
+                </p>
+                <div className="service-card-buttons-row">
+                  <button type="button" className="btn-card-book-now" onClick={() => openBookingModal({ service: 'Corporate Transport' })}>
+                    Book Now &rarr;
+                  </button>
+                  <Link to="/services/corporate-transport" className="btn-card-learn-more">
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* Vehicle Showcase Section */}
-      <section className="vehicle-section">
+      {/* 4. Vehicle Showcase Section */}
+      <section className="vehicle-section" id="vehicle">
         <div className="container">
           <div className="vehicle-showcase-grid">
             <div className="vehicle-media-col">
@@ -223,8 +318,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="how-it-works-section">
+      {/* 5. How It Works Section */}
+      <section className="how-it-works-section" id="how-it-works">
         <div className="container">
           <SectionHeader
             kicker="SIMPLE PROCESS"
@@ -252,8 +347,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="faq-section">
+      {/* 6. Why Choose Us Section */}
+      <WhyChooseUs />
+
+      {/* 7. Popular Routes Section */}
+      <PopularRoutes />
+
+      {/* 8. Testimonials Section */}
+      <Testimonials />
+
+      {/* 9. FAQ Section */}
+      <section className="faq-section" id="faq">
         <div className="container">
           <SectionHeader
             kicker="HAVE QUESTIONS?"
@@ -283,9 +387,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Pre-Footer CTA */}
+      {/* 10. Pre-Footer CTA */}
       <CtaBanner />
     </main>
   );
 }
-
