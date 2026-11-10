@@ -19,28 +19,44 @@ const SiteLoader = (() => {
       progressBar = document.getElementById('siteTopProgressBar');
     }
 
-    // 2. Create Branded Page Loader
+    // 2. Create Branded Executive Page Loader
     if (!document.getElementById('sitePageLoader')) {
       pageLoader = document.createElement('div');
       pageLoader.id = 'sitePageLoader';
       pageLoader.className = 'site-page-loader';
       pageLoader.innerHTML = `
-        <div class="page-loader-box">
-          <div class="page-loader-spinner-wrap">
-            <div class="page-loader-ring"></div>
-            <svg class="page-loader-van-svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
-            </svg>
+        <div class="page-loader-brand-wrap">
+          <div class="loader-logo-container">
+            <img src="assets/logo.png" alt="KDH Van Hire Sri Lanka" class="loader-brand-logo" width="220" height="38">
+            <div class="loader-ambient-glow"></div>
           </div>
-          <p class="page-loader-title">KDH <span>Van Hire</span> Sri Lanka</p>
+          <div class="loader-track">
+            <div class="loader-track-bar"></div>
+          </div>
+          <span class="loader-sub-text">Premium Travel &bull; Sri Lanka</span>
         </div>
       `;
       document.body.appendChild(pageLoader);
     } else {
       pageLoader = document.getElementById('sitePageLoader');
+      // If legacy HTML exists inside sitePageLoader, upgrade it cleanly
+      if (pageLoader.querySelector('.page-loader-spinner-wrap')) {
+        pageLoader.innerHTML = `
+          <div class="page-loader-brand-wrap">
+            <div class="loader-logo-container">
+              <img src="assets/logo.png" alt="KDH Van Hire Sri Lanka" class="loader-brand-logo" width="220" height="38">
+              <div class="loader-ambient-glow"></div>
+            </div>
+            <div class="loader-track">
+              <div class="loader-track-bar"></div>
+            </div>
+            <span class="loader-sub-text">Premium Travel &bull; Sri Lanka</span>
+          </div>
+        `;
+      }
     }
 
-    setProgress(40);
+    setProgress(50);
 
     const finishLoading = () => {
       setProgress(100);
@@ -58,17 +74,17 @@ const SiteLoader = (() => {
           pageLoader.classList.add('loaded');
         }
         isNavigating = false;
-      }, 240);
+      }, 260);
     };
 
     if (document.readyState === 'complete') {
       finishLoading();
     } else {
       window.addEventListener('load', finishLoading);
-      setTimeout(finishLoading, 650); // Fallback so page is never blocked
+      setTimeout(finishLoading, 600); // Fail-safe
     }
 
-    // 3. Intercept internal link clicks for smooth page transitions
+    // 3. Intercept internal link clicks for sleek top progress feedback (Apple/YouTube style)
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a');
       if (!link) return;
@@ -84,12 +100,8 @@ const SiteLoader = (() => {
       const isInternal = href.endsWith('.html') || (!href.startsWith('http://') && !href.startsWith('https://') && !href.startsWith('//'));
       if (isInternal && !isNavigating) {
         isNavigating = true;
-        setProgress(25);
-        setTimeout(() => setProgress(70), 120);
-
-        if (pageLoader) {
-          pageLoader.classList.remove('loaded');
-        }
+        setProgress(35);
+        setTimeout(() => setProgress(80), 100);
       }
     });
 
@@ -114,31 +126,10 @@ const SiteLoader = (() => {
   return { init, setProgress };
 })();
 
-// Helper function to show smooth modal loading overlay
-function showModalLoading(modalEl, loadingText = 'Loading options & rates...') {
+// Refined non-blocking modal loading helper
+function showModalLoading(modalEl) {
+  // Modal has instant smooth spring entry without intrusive card blocking
   if (!modalEl) return;
-  const card = modalEl.querySelector('.modal-card, .price-plan-modal-card');
-  if (!card) return;
-
-  let overlay = card.querySelector('.modal-loading-overlay');
-  if (!overlay) {
-    overlay = document.createElement('div');
-    overlay.className = 'modal-loading-overlay';
-    overlay.innerHTML = `
-      <div class="modal-spinner"></div>
-      <p class="modal-loading-text">${loadingText}</p>
-    `;
-    card.style.position = 'relative';
-    card.appendChild(overlay);
-  } else {
-    const textEl = overlay.querySelector('.modal-loading-text');
-    if (textEl) textEl.textContent = loadingText;
-    overlay.classList.remove('fade-out');
-  }
-
-  setTimeout(() => {
-    overlay.classList.add('fade-out');
-  }, 220);
 }
 
 // Start loader immediately
