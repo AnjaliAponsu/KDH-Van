@@ -133,50 +133,121 @@ export default function ContactPage() {
               )}
             </div>
 
-            {/* Right Card: Contact Info */}
+            {/* Right Card: Contact Info (Executive Luxury Redesign) */}
             <div className="contact-info-card">
-              <h2 className="contact-card-title">Contact Information</h2>
-              <p className="contact-card-sub">Reach out to us directly through any of these channels.</p>
+              <div className="contact-info-header">
+                <div className="contact-card-kicker">
+                  <span className="contact-kicker-dot"></span>
+                  DIRECT VIP CHANNELS
+                </div>
+                <h2 className="contact-card-title">Contact Information</h2>
+                <p className="contact-card-sub">Reach our Colombo operations team & chauffeur dispatch directly 24/7.</p>
+              </div>
 
               <div className="contact-channels-list">
-                <a href="tel:+94771234567" className="contact-channel-item">
-                  <div className="contact-channel-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                {/* Channel 1: WhatsApp */}
+                <a href="https://wa.me/94771234567" target="_blank" rel="noopener noreferrer" className="contact-channel-item" aria-label="Chat on WhatsApp">
+                  <div className="contact-channel-badge badge-wa">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
                   </div>
                   <div className="contact-channel-text">
-                    <span className="contact-channel-title">Phone Call</span>
-                    <span className="contact-channel-sub">+94 77 123 4567</span>
+                    <div className="contact-channel-meta">
+                      <span className="contact-channel-kicker">INSTANT CHAT &amp; QUOTES</span>
+                      <span className="contact-channel-pill pill-online"><span className="pill-dot"></span> Online</span>
+                    </div>
+                    <span className="contact-channel-title">WhatsApp Concierge</span>
+                    <span className="contact-channel-sub">+94 77 123 4567 • Instant reply under 3 mins</span>
                   </div>
+                  <span className="contact-channel-arrow" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
                 </a>
 
-                <a href="https://wa.me/94771234567" target="_blank" rel="noopener noreferrer" className="contact-channel-item">
-                  <div className="contact-channel-icon" style={{ backgroundColor: '#ecfdf5', color: '#16a34a' }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.029.575 1.761.883 2.806.883 3.181 0 5.767-2.587 5.767-5.766.001-3.18-2.585-5.766-5.767-5.766zm3.374 8.204c-.14.394-.717.728-1.009.774-.29.047-.648.067-2.096-.532-1.448-.598-2.378-2.062-2.45-2.158-.073-.096-.582-.774-.582-1.476 0-.702.364-1.047.494-1.189.13-.142.285-.178.38-.178.096 0 .19.002.273.007.087.005.203-.033.317.241.114.274.394.96.429 1.03.035.071.058.154.012.247-.046.094-.07.153-.139.234-.07.081-.146.182-.209.245-.07.07-.143.146-.062.286.082.14.364.601.782.973.539.479.993.627 1.133.697.14.07.222.059.305-.036.082-.095.352-.408.446-.548.094-.14.188-.117.316-.07.128.047.818.386.958.456.14.07.234.105.269.164.035.059.035.342-.105.736z"/></svg>
+                {/* Channel 2: Call Us */}
+                <a href="tel:+94771234567" className="contact-channel-item" aria-label="Call +94 77 123 4567">
+                  <div className="contact-channel-badge badge-phone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
                   </div>
                   <div className="contact-channel-text">
-                    <span className="contact-channel-title">WhatsApp Chat</span>
-                    <span className="contact-channel-sub">+94 77 123 4567 (Fastest response)</span>
+                    <div className="contact-channel-meta">
+                      <span className="contact-channel-kicker">24/7 CALL DISPATCH</span>
+                      <span className="contact-channel-pill">Toll Free</span>
+                    </div>
+                    <span className="contact-channel-title">+94 77 123 4567</span>
+                    <span className="contact-channel-sub">Live telephone bookings &amp; emergency dispatch</span>
                   </div>
+                  <span className="contact-channel-arrow" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
                 </a>
 
-                <a href="mailto:info@kdhvanhire.lk" className="contact-channel-item">
-                  <div className="contact-channel-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                {/* Channel 3: Email Us */}
+                <a href="mailto:info@kdhvanhire.lk" className="contact-channel-item" aria-label="Email info@kdhvanhire.lk">
+                  <div className="contact-channel-badge badge-email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
                   </div>
                   <div className="contact-channel-text">
-                    <span className="contact-channel-title">Email Us</span>
-                    <span className="contact-channel-sub">info@kdhvanhire.lk</span>
+                    <div className="contact-channel-meta">
+                      <span className="contact-channel-kicker">RESERVATIONS &amp; QUOTES</span>
+                      <span className="contact-channel-pill">Official</span>
+                    </div>
+                    <span className="contact-channel-title">info@kdhvanhire.lk</span>
+                    <span className="contact-channel-sub">Multi-day tours &amp; corporate hire agreements</span>
                   </div>
+                  <span className="contact-channel-arrow" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
                 </a>
 
-                <div className="contact-channel-item">
-                  <div className="contact-channel-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                {/* Channel 4: Our Location */}
+                <a href="https://maps.google.com/?q=Colombo,Sri+Lanka" target="_blank" rel="noopener noreferrer" className="contact-channel-item" aria-label="Our Location in Colombo, Sri Lanka">
+                  <div className="contact-channel-badge badge-loc">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
                   </div>
                   <div className="contact-channel-text">
-                    <span className="contact-channel-title">Our Location</span>
-                    <span className="contact-channel-sub">Colombo, Sri Lanka</span>
+                    <div className="contact-channel-meta">
+                      <span className="contact-channel-kicker">OPERATING BASE &amp; GARAGE</span>
+                      <span className="contact-channel-pill">Main Depot</span>
+                    </div>
+                    <span className="contact-channel-title">Colombo, Sri Lanka</span>
+                    <span className="contact-channel-sub">VIP departure depot &amp; 24/7 airport terminal hub</span>
                   </div>
+                  <span className="contact-channel-arrow" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+
+              {/* Executive Dispatch Assurance Footer */}
+              <div className="contact-info-footer">
+                <div className="contact-footer-status">
+                  <span className="status-pulse-ring"></span>
+                  <span className="status-dot"></span>
+                </div>
+                <div className="contact-footer-copy">
+                  <strong>Live Concierge Active:</strong> Average response under 5 mins &bull; 100% Islandwide Fleet Coverage
                 </div>
               </div>
             </div>

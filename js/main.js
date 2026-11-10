@@ -92,8 +92,8 @@ const SiteLoader = (() => {
       const href = link.getAttribute('href');
       const target = link.getAttribute('target');
 
-      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || 
-          href.startsWith('https://wa.me') || href.includes('javascript:') || target === '_blank') {
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') ||
+        href.startsWith('https://wa.me') || href.includes('javascript:') || target === '_blank') {
         return;
       }
 
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const passengerDisplay = document.getElementById('passengerDisplay');
   const passengerHiddenInput = document.getElementById('passengerCountInput');
   const checkAvailabilityBtn = document.getElementById('btnCheckAvailability');
-  
+
   // Booking Modal Elements
   const modal = document.getElementById('bookingModal');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 7. Dynamic Fare Calculator (Route specific in USD & LKR)
   function calculateDynamicEstimate(service, dest, passengers) {
     const d = (dest || '').toLowerCase();
-    
+
     if (service === 'Daily Hire') {
       return '$80 / day (~LKR 26,000)';
     }
@@ -1378,7 +1378,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const formData = new FormData(form);
       const details = detailsGetter(formData);
-      
+
       const phone = formData.get('contactNumber') || '+94 77 123 4567';
       const waMessage = encodeURIComponent(
         `*New KDH Van Hire Inquiry*\n` +
@@ -1399,41 +1399,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupPopupFormSubmit('formDailyHire', 'Daily Van Hire', (fd) => {
     return `*Pickup Location:* ${fd.get('pickupLocation')}\n` +
-           `*Travel Date:* ${fd.get('travelDate')}\n` +
-           `*Start Time:* ${fd.get('startTime')}\n` +
-           `*Estimated Hours:* ${fd.get('estimatedHours')}\n` +
-           `*Passengers:* ${fd.get('passengers')}\n` +
-           `*Trip Plan / Destination:* ${fd.get('tripPlan')}\n`;
+      `*Travel Date:* ${fd.get('travelDate')}\n` +
+      `*Start Time:* ${fd.get('startTime')}\n` +
+      `*Estimated Hours:* ${fd.get('estimatedHours')}\n` +
+      `*Passengers:* ${fd.get('passengers')}\n` +
+      `*Trip Plan / Destination:* ${fd.get('tripPlan')}\n`;
   });
 
   setupPopupFormSubmit('formPointToPoint', 'Point-to-Point Transfer', (fd) => {
     return `*Pickup Location:* ${fd.get('pickupLocation')}\n` +
-           `*Destination:* ${fd.get('destination')}\n` +
-           `*Travel Date:* ${fd.get('travelDate')}\n` +
-           `*Pickup Time:* ${fd.get('pickupTime')}\n` +
-           `*Passengers:* ${fd.get('passengers')}\n` +
-           `*Trip Type:* ${fd.get('p2pTripType') || 'One Way'}\n` +
-           (fd.get('additionalStops') ? `*Stops:* ${fd.get('additionalStops')}\n` : '');
+      `*Destination:* ${fd.get('destination')}\n` +
+      `*Travel Date:* ${fd.get('travelDate')}\n` +
+      `*Pickup Time:* ${fd.get('pickupTime')}\n` +
+      `*Passengers:* ${fd.get('passengers')}\n` +
+      `*Trip Type:* ${fd.get('p2pTripType') || 'One Way'}\n` +
+      (fd.get('additionalStops') ? `*Stops:* ${fd.get('additionalStops')}\n` : '');
   });
 
   setupPopupFormSubmit('formAirportTransfer', 'Airport Transfer', (fd) => {
     return `*Airport:* ${fd.get('airport')}\n` +
-           `*Service:* ${fd.get('pickupDropoff')}\n` +
-           `*Destination:* ${fd.get('destination')}\n` +
-           `*Date:* ${fd.get('travelDate')}\n` +
-           `*Time:* ${fd.get('transferTime')}\n` +
-           `*Passengers:* ${fd.get('passengers')}\n` +
-           (fd.get('luggage') ? `*Luggage:* ${fd.get('luggage')}\n` : '') +
-           (fd.get('flightNumber') ? `*Flight #:* ${fd.get('flightNumber')}\n` : '');
+      `*Service:* ${fd.get('pickupDropoff')}\n` +
+      `*Destination:* ${fd.get('destination')}\n` +
+      `*Date:* ${fd.get('travelDate')}\n` +
+      `*Time:* ${fd.get('transferTime')}\n` +
+      `*Passengers:* ${fd.get('passengers')}\n` +
+      (fd.get('luggage') ? `*Luggage:* ${fd.get('luggage')}\n` : '') +
+      (fd.get('flightNumber') ? `*Flight #:* ${fd.get('flightNumber')}\n` : '');
   });
 
   setupPopupFormSubmit('formMultiDayTour', 'Multi-Day Sri Lanka Tour', (fd) => {
     return `*Start Location:* ${fd.get('startLocation')}\n` +
-           `*Start Date:* ${fd.get('travelStartDate')}\n` +
-           `*Duration:* ${fd.get('tourDuration')}\n` +
-           `*Passengers:* ${fd.get('passengers')}\n` +
-           `*Preferred Destinations:* ${fd.get('preferredDestinations')}\n` +
-           (fd.get('specialNotes') ? `*Notes:* ${fd.get('specialNotes')}\n` : '');
+      `*Start Date:* ${fd.get('travelStartDate')}\n` +
+      `*Duration:* ${fd.get('tourDuration')}\n` +
+      `*Passengers:* ${fd.get('passengers')}\n` +
+      `*Preferred Destinations:* ${fd.get('preferredDestinations')}\n` +
+      (fd.get('specialNotes') ? `*Notes:* ${fd.get('specialNotes')}\n` : '');
   });
 
   // Contact Page Form Submission Handler
