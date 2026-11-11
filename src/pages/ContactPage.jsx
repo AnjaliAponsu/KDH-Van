@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PageHero from '../components/common/PageHero';
+import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 
 export default function ContactPage() {
@@ -62,13 +62,31 @@ export default function ContactPage() {
 
   return (
     <main className="contact-page-main">
-      <PageHero
-        kicker="CONTACT US"
-        title="Get in Touch"
-        desc="Have a question, need a custom travel itinerary, or want to check vehicle availability? Our team is here to assist you 24/7."
-        bgImage="/assets/contact/contact-hero-bg.jpg"
-        breadcrumbs={[{ label: 'Contact' }]}
-      />
+      {/* Contact Hero Banner */}
+      <section className="contact-hero-section">
+        <div className="contact-hero-overlay"></div>
+        <div className="contact-hero-container">
+          <div className="contact-hero-content">
+            <div className="contact-hero-eyebrow">CONTACT US</div>
+            <h1 className="contact-hero-title">Get in <span className="text-gold">Touch</span></h1>
+            <p className="contact-hero-desc">
+              Have a question, need a quote, or ready to book?<br />
+              We're here to help with your travel plans in Sri Lanka.
+            </p>
+            <nav className="services-breadcrumbs" aria-label="Breadcrumbs" style={{ marginTop: '14px' }}>
+              <Link to="/">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Home
+              </Link>
+              <span className="breadcrumb-separator">›</span>
+              <span className="breadcrumb-current">Contact</span>
+            </nav>
+          </div>
+        </div>
+      </section>
 
       <div className="contact-main-section">
         <div className="contact-container">

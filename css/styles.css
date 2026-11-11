@@ -5073,16 +5073,18 @@ body.modal-open {
 }
 
 .contact-hero-title {
-  font-size: 40px;
+  font-size: 46px;
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   line-height: 1.15;
   margin-bottom: 12px;
 }
 
-.contact-hero-title .text-gold {
-  color: #FFB900;
+.contact-hero-title .text-gold,
+.text-gold,
+.highlight-gold {
+  color: #FFB900 !important;
 }
 
 .contact-hero-desc {
@@ -5673,7 +5675,7 @@ body.modal-open {
 }
 
 .contact-find-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   color: #081726;
   margin: 0 0 6px 0;
@@ -5848,63 +5850,6 @@ body.modal-open {
   line-height: 1.35;
 }
 
-/* Contact Footer */
-.contact-footer {
-  padding-top: 14px !important;
-  padding-bottom: 10px !important;
-}
-
-.contact-footer .container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 32px;
-  box-sizing: border-box;
-}
-
-.contact-footer .footer-top-grid {
-  display: grid !important;
-  grid-template-columns: 1.6fr 1fr 1.2fr 1fr !important;
-  gap: 24px !important;
-  padding-top: 0px !important;
-  padding-bottom: 8px !important;
-  margin-bottom: 4px !important;
-}
-
-.contact-footer .footer-col-brand .brand-logo {
-  margin-bottom: 10px;
-}
-
-
-
-.contact-footer .footer-col-title {
-  font-size: 13.5px !important;
-  margin-bottom: 10px !important;
-  color: #ffffff;
-}
-
-.contact-footer .footer-nav-list {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.contact-footer .footer-nav-list li {
-  margin-bottom: 0 !important;
-}
-
-
-
-
-
-.contact-footer .footer-legal-links {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-
-
 /* Responsive Rules for Contact Page */
 @media (max-width: 720px) {
   .contact-grid {
@@ -5921,18 +5866,19 @@ body.modal-open {
     height: auto;
   }
   .contact-map-col {
-    height: 160px;
+    height: 240px;
+    min-height: 240px;
   }
   .contact-trust-strip {
     grid-template-columns: 1fr;
     height: auto;
     gap: 10px;
-    padding: 12px;
+    padding: 16px;
   }
   .contact-trust-item {
     border-right: none !important;
-    border-bottom: 1px solid #f0e2cf;
-    padding: 0 0 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 0 0 10px 0;
   }
   .contact-trust-item:last-child {
     border-bottom: none;
@@ -5948,15 +5894,15 @@ body.modal-open {
   .contact-form-card,
   .contact-info-card,
   .contact-find-info {
-    padding: 14px 12px;
+    padding: 20px 16px;
   }
   .contact-hero-title {
-    font-size: 28px;
+    font-size: 32px;
   }
   .contact-hero-section {
     height: auto;
-    min-height: 180px;
-    padding: 70px 0 20px 0;
+    min-height: 280px;
+    padding: 96px 0 36px 0;
   }
 }
 
