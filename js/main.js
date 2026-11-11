@@ -1464,6 +1464,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Global FAQ Accordion Toggle
+  document.addEventListener('click', (e) => {
+    const question = e.target.closest('.faq-question');
+    if (question) {
+      const item = question.closest('.faq-item');
+      if (item) {
+        const accordion = item.closest('.faq-accordion');
+        if (accordion) {
+          const wasActive = item.classList.contains('active');
+          accordion.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+          if (!wasActive) {
+            item.classList.add('active');
+          }
+        } else {
+          item.classList.toggle('active');
+        }
+      }
+    }
+  });
+
   // =========================================================================
   // Dedicated Booking Page Wizard Logic (booking.html)
   // =========================================================================
