@@ -1,7 +1,17 @@
-node_modules
-dist
-.DS_Store
-
-scratch/
+# Dependencies
 node_modules/
+
+# Production build outputs
 dist/
+dist-ssr/
+*.local
+
+# Scratch and debug files
+scratch/
+
+# OS and Editor junk
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
