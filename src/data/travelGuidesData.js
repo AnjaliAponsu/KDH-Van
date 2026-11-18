@@ -3,7 +3,7 @@ export const destinationsList = [
     slug: 'sigiriya',
     title: 'Sigiriya',
     desc: 'Discover the magnificent Sigiriya Rock Fortress and its rich history.',
-    image: '/assets/home-page/dest-sigiriya.jpg',
+    image: '/assets/guide/dest-sigiriya.jpg',
     tag: 'Cultural Triangle',
     link: '/travel-guide/sigiriya'
   },
@@ -11,7 +11,7 @@ export const destinationsList = [
     slug: 'kandy',
     title: 'Kandy',
     desc: 'Visit the cultural capital of Sri Lanka, home to the Temple of the Tooth.',
-    image: '/assets/home-page/dest-kandy.jpg',
+    image: '/assets/guide/dest-kandy.jpg',
     tag: 'Hill Country',
     link: '/travel-guide'
   },
@@ -19,7 +19,7 @@ export const destinationsList = [
     slug: 'ella',
     title: 'Ella',
     desc: 'Experience breathtaking views, waterfalls and hill-country charm.',
-    image: '/assets/home-page/dest-ella.jpg',
+    image: '/assets/guide/dest-ella.jpg',
     tag: 'Nature & Hiking',
     link: '/travel-guide/ella'
   },
@@ -27,7 +27,7 @@ export const destinationsList = [
     slug: 'south-coast',
     title: 'Galle & South Coast',
     desc: 'Explore the historic Galle Fort and enjoy tropical coastal beauty.',
-    image: '/assets/home-page/dest-galle.jpg',
+    image: '/assets/guide/dest-galle.jpg',
     tag: 'Beaches & Heritage',
     link: '/travel-guide/south-coast'
   },
@@ -35,7 +35,7 @@ export const destinationsList = [
     slug: 'nuwara-eliya',
     title: 'Nuwara Eliya',
     desc: 'Enjoy the cool climate, tea estates and scenic landscapes.',
-    image: '/assets/home-page/dest-nuwara-eliya.jpg',
+    image: '/assets/guide/dest-nuwara-eliya.jpg',
     tag: 'Little England',
     link: '/travel-guide'
   },
@@ -43,7 +43,7 @@ export const destinationsList = [
     slug: 'mirissa',
     title: 'Mirissa',
     desc: 'Relax on a beautiful beach, with clear waters and a laid-back vibe.',
-    image: '/assets/home-page/dest-mirissa.jpg',
+    image: '/assets/guide/dest-mirissa.jpg',
     tag: 'Whale Watching & Coast',
     link: '/travel-guide/south-coast'
   }

@@ -136,7 +136,7 @@ export const servicesData = [
     title: 'Multi-Day Tours',
     shortDesc: 'Explore the best of Sri Lanka on a comfortable private multi-day tour with a dedicated driver.',
     heroBg: '/assets/services-detail/multiday-hero.jpg',
-    image: '/assets/services/service-multi-day.jpg',
+    image: '/assets/services/service-multi-day-tours.jpg',
     features: ['Customized itinerary', 'English-speaking driver-guide', 'Fuel & tolls included', 'Hotel stops flexibility'],
     overview: [
       {

@@ -50,7 +50,7 @@ export default function GuideSigiriyaPage() {
             </div>
 
             <div className="post-featured-media">
-              <img src="/assets/home-page/dest-sigiriya.jpg" alt="Sigiriya Rock Fortress" loading="lazy" />
+              <img src="/assets/guide/dest-sigiriya.jpg" alt="Sigiriya Rock Fortress" loading="lazy" />
             </div>
 
             <section className="post-section">

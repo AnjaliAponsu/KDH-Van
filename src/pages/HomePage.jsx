@@ -196,7 +196,7 @@ export default function HomePage() {
             {/* Card 4: Multi-Day Tours */}
             <article className="service-card-item">
               <div className="service-card-thumbnail-box">
-                <img src="/assets/home-page/service-multi-day.jpg" alt="Multi-Day Tours" className="service-card-thumbnail" loading="lazy" />
+                <img src="/assets/services/service-multi-day-tours.jpg" alt="Multi-Day Tours" className="service-card-thumbnail" loading="lazy" />
                 <div className="service-card-icon-badge" title="Multi-Day Tours">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M8 3l4 8 5-5 5 15H2L8 3z"></path>
@@ -223,7 +223,7 @@ export default function HomePage() {
             {/* Card 5: Weddings & Events */}
             <article className="service-card-item">
               <div className="service-card-thumbnail-box">
-                <img src="/assets/home-page/service-weddings.jpg" alt="Weddings & Events" className="service-card-thumbnail" loading="lazy" />
+                <img src="/assets/services/service-events-weddings.jpg" alt="Weddings & Events" className="service-card-thumbnail" loading="lazy" />
                 <div className="service-card-icon-badge" title="Weddings & Events">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
@@ -249,7 +249,7 @@ export default function HomePage() {
             {/* Card 6: Corporate Transport */}
             <article className="service-card-item">
               <div className="service-card-thumbnail-box">
-                <img src="/assets/home-page/service-corporate.jpg" alt="Corporate Transport" className="service-card-thumbnail" loading="lazy" />
+                <img src="/assets/services/service-corporate-transport.jpg" alt="Corporate Transport" className="service-card-thumbnail" loading="lazy" />
                 <div className="service-card-icon-badge" title="Corporate Transport">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
