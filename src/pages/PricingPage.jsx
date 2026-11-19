@@ -1,7 +1,5 @@
 import React from 'react';
-import PageHero from '../components/common/PageHero';
-import SectionHeader from '../components/common/SectionHeader';
-import CtaBanner from '../components/common/CtaBanner';
+import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 
 export default function PricingPage() {
@@ -10,152 +8,246 @@ export default function PricingPage() {
   const plans = [
     {
       name: 'Airport Transfer',
-      price: 'From $35 USD',
-      period: 'per transfer',
-      desc: 'BIA Airport to Colombo, Negombo, or direct to Southern Beaches & Hill Country.',
+      price: 'From LKR 12,500',
+      amount: 'LKR 12,500',
+      period: '',
+      desc: 'Hassle-free pickup and drop-off from any airport in Sri Lanka.',
+      iconClass: 'icon-blue',
+      btnText: 'Book Airport Transfer',
+      popular: false,
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z" />
+        </svg>
+      ),
       features: [
-        'Private Toyota KDH Van',
-        'Flight delay monitoring',
-        '60 minutes free wait time',
-        'Expressway highway tolls included',
-        'Meet & greet inside arrivals'
+        'Meet & greet at the airport',
+        'Comfortable air-conditioned van',
+        'Professional driver',
+        'Flight tracking & on-time service'
       ]
     },
     {
-      name: 'Daily Van Hire',
-      price: 'From $65 USD',
-      period: 'per day',
+      name: 'Daily Hire',
+      price: 'From LKR 18,000 / day',
+      amount: 'LKR 18,000',
+      period: '/ day',
+      desc: 'Perfect for city travel, business trips or day excursions.',
+      iconClass: 'icon-gold',
+      btnText: 'Book Daily Hire',
+      popular: false,
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+      ),
+      features: [
+        '8–10 hours of service',
+        'Customizable itinerary',
+        'Experienced local driver',
+        'Fuel included'
+      ]
+    },
+    {
+      name: 'Multi-Day Tour',
+      price: 'From LKR 16,500 / day',
+      amount: 'LKR 16,500',
+      period: '/ day',
+      desc: 'Explore Sri Lanka at your own pace with a dedicated van and driver.',
+      iconClass: 'icon-green',
+      btnText: 'Book Multi-Day Tour',
       popular: true,
-      desc: 'Full-day van and private chauffeur for city travel, business, or day excursions.',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+          <path d="M4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19" />
+        </svg>
+      ),
       features: [
-        '80–100 km included per day',
-        'Professional English-speaking driver',
-        'Fuel & air conditioning included',
-        'Driver food & stay allowances',
-        'Flexible hours & spontaneous stops'
-      ]
-    },
-    {
-      name: 'Multi-Day Island Tour',
-      price: 'From $85 USD',
-      period: 'per day',
-      desc: 'All-inclusive private transport for multi-day itineraries across Sri Lanka.',
-      features: [
-        'Unlimited itinerary customization',
-        'Dedicated driver-guide for entire tour',
-        'All vehicle fuel and parking fees',
-        'Expressway tolls covered',
-        'Free pickup and final airport drop'
+        'Ideal for 2+ day trips',
+        'Flexible routes and stops',
+        'Same driver throughout your trip',
+        'Comfortable & well-maintained van'
       ]
     }
   ];
 
-  const routes = [
-    { from: 'Colombo Airport (CMB)', to: 'Colombo City', dist: '35 km', time: '≈ 40 mins', fare: '$35 – $40 USD' },
-    { from: 'Colombo Airport (CMB)', to: 'Kandy', dist: '115 km', time: '≈ 3.5 hrs', fare: '$65 – $75 USD' },
-    { from: 'Colombo Airport (CMB)', to: 'Galle / Unawatuna', dist: '155 km', time: '≈ 2 hrs', fare: '$75 – $85 USD' },
-    { from: 'Colombo Airport (CMB)', to: 'Mirissa / Weligama', dist: '175 km', time: '≈ 2.5 hrs', fare: '$85 – $95 USD' },
-    { from: 'Colombo Airport (CMB)', to: 'Sigiriya / Dambulla', dist: '160 km', time: '≈ 4 hrs', fare: '$85 – $95 USD' },
-    { from: 'Colombo Airport (CMB)', to: 'Ella', dist: '240 km', time: '≈ 5.5 hrs', fare: '$110 – $125 USD' }
-  ];
-
   return (
     <main className="pricing-page-main">
-      <PageHero
-        kicker="TRANSPARENT RATES"
-        title="Simple & Transparent Pricing"
-        desc="No hidden fees. Every quote includes fuel, highway tolls, a professional driver, and air-conditioned Toyota KDH comfort."
-        bgImage="/assets/fleet/fleet-hero-bg.jpg"
-        breadcrumbs={[{ label: 'Pricing' }]}
-      />
+      {/* 1. Pricing Hero Banner */}
+      <section className="pricing-hero-section">
+        <div className="pricing-hero-overlay"></div>
+        <div className="pricing-hero-container">
+          <div className="pricing-hero-content">
+            <div className="pricing-hero-eyebrow">OUR PRICING</div>
+            <h1 className="pricing-hero-title">
+              Simple &amp; Transparent <span className="text-gold">Pricing</span>
+            </h1>
+            <p className="pricing-hero-desc">
+              Flexible van hire packages for airport transfers, daily trips, and multi-day tours across Sri Lanka.
+            </p>
+            <div className="pricing-breadcrumb">
+              <Link to="/" aria-label="Home">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+                Home
+              </Link>
+              <span className="pricing-breadcrumb-sep">&gt;</span>
+              <span className="pricing-breadcrumb-current">Pricing</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <section className="pricing-plans-section" style={{ padding: '64px 0 80px' }}>
+      {/* 2. Our Pricing Plans Section */}
+      <section className="pricing-plans-section">
         <div className="container">
-          <SectionHeader
-            kicker="CHOOSE YOUR PLAN"
-            title="Our Pricing Packages"
-            subtitle="Transparent and competitive rates with zero surprise charges. All prices can be settled in USD, EUR, GBP, or LKR."
-          />
+          {/* Section Header */}
+          <div className="pricing-section-title-wrap">
+            <span className="pricing-title-line"></span>
+            <h2 className="pricing-section-title">Our Pricing Plans</h2>
+            <span className="pricing-title-line"></span>
+          </div>
+          <p className="pricing-section-subtitle">Choose a plan that fits your travel needs.</p>
 
-          {/* 3 Pricing Cards */}
-          <div className="pricing-plans-grid" style={{ marginBottom: '64px' }}>
-            {plans.map((p, idx) => (
-              <div key={idx} className={`pricing-plan-card ${p.popular ? 'popular-plan' : ''}`}>
-                {p.popular && <div className="pricing-popular-badge">★ Most Popular</div>}
-                <h3 className="plan-name">{p.name}</h3>
-                <div className="plan-price-wrap">
-                  <span className="plan-amount">{p.price}</span>
-                  <span className="plan-period">/ {p.period}</span>
+          {/* 3-Column Pricing Cards Grid */}
+          <div className="pricing-cards-grid">
+            {plans.map((plan, idx) => (
+              <div
+                key={idx}
+                className={`pricing-plan-card ${plan.popular ? 'popular-plan' : ''}`}
+              >
+                {plan.popular && (
+                  <div className="pricing-popular-badge">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 23c6.075 0 11-4.925 11-11 0-4.004-2.146-7.509-5.362-9.451a.75.75 0 0 0-1.121.758c.241 1.767-.168 3.558-1.173 4.966-1.164 1.63-2.99 2.65-4.966 2.766-.546.032-.978.47-.978 1.017 0 .548.432.986.978.954 1.144-.067 2.253-.417 3.238-1.026.17-.105.393-.058.508.106.115.163.076.386-.089.501-1.745 1.218-3.834 1.865-6.035 1.865-1.01 0-1.996-.135-2.933-.393a.75.75 0 0 0-.909.91C5.176 18.995 8.324 23 12 23z" />
+                    </svg>
+                    Popular
+                  </div>
+                )}
+
+                <div className="pricing-card-header">
+                  <div className={`pricing-card-icon-box ${plan.iconClass}`}>
+                    {plan.icon}
+                  </div>
+                  <div className="pricing-card-title-group">
+                    <h3 className="pricing-card-plan-name">{plan.name}</h3>
+                    <p className="pricing-card-plan-desc">{plan.desc}</p>
+                  </div>
                 </div>
-                <p className="plan-desc">{p.desc}</p>
-                <ul className="plan-features-list">
-                  {p.features.map((f, fIdx) => (
-                    <li key={fIdx}>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      {f}
+
+                <div className="pricing-card-rate-wrap">
+                  <span className="pricing-rate-from">From</span>
+                  <span className="pricing-rate-amount">{plan.amount}</span>
+                  {plan.period && <span className="pricing-rate-period">{plan.period}</span>}
+                </div>
+
+                <ul className="pricing-card-features-list">
+                  {plan.features.map((feat, fIdx) => (
+                    <li key={fIdx} className="pricing-feature-item">
+                      <svg className="pricing-check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      {feat}
                     </li>
                   ))}
                 </ul>
+
                 <button
                   type="button"
-                  className={p.popular ? 'btn-primary' : 'btn-outline-dark'}
-                  style={{ width: '100%', height: '48px', marginTop: 'auto' }}
-                  onClick={() => openPricePlanModal(p)}
+                  className={plan.popular ? 'pricing-btn-gold' : 'pricing-btn-outline'}
+                  onClick={() => openPricePlanModal(plan)}
                 >
-                  Choose {p.name}
+                  {plan.btnText} &rarr;
                 </button>
               </div>
             ))}
           </div>
 
-          {/* Popular Fixed Rates Table */}
-          <SectionHeader
-            kicker="FIXED ROUTES"
-            title="Popular Direct Transfer Rates"
-            subtitle="Fixed, door-to-door fares including all expressway tolls and taxes."
-          />
+          {/* 3. 4 Trust Badges Strip */}
+          <div className="pricing-trust-strip">
+            <div className="pricing-trust-item">
+              <div className="pricing-trust-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </div>
+              <div className="pricing-trust-text-group">
+                <div className="pricing-trust-title">Transparent Pricing</div>
+                <div className="pricing-trust-sub">No hidden charges</div>
+              </div>
+            </div>
 
-          <div className="route-table-container" style={{ background: '#ffffff', borderRadius: '16px', border: '1px solid #e2e8f0', overflow: 'hidden', marginBottom: '60px', boxShadow: '0 4px 16px rgba(0,0,0,0.03)' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-              <thead>
-                <tr style={{ background: '#081726', color: '#ffffff', fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  <th style={{ padding: '16px 20px' }}>Route</th>
-                  <th style={{ padding: '16px 20px' }}>Distance</th>
-                  <th style={{ padding: '16px 20px' }}>Est. Travel Time</th>
-                  <th style={{ padding: '16px 20px' }}>Toyota KDH Price</th>
-                  <th style={{ padding: '16px 20px' }}>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {routes.map((r, idx) => (
-                  <tr key={idx} style={{ borderBottom: '1px solid #f1f5f9', fontSize: '14.5px' }}>
-                    <td style={{ padding: '16px 20px', fontWeight: '700', color: '#081726' }}>{r.from} &rarr; {r.to}</td>
-                    <td style={{ padding: '16px 20px', color: '#64748b' }}>{r.dist}</td>
-                    <td style={{ padding: '16px 20px', color: '#64748b' }}>{r.time}</td>
-                    <td style={{ padding: '16px 20px', fontWeight: '800', color: '#b45309' }}>{r.fare}</td>
-                    <td style={{ padding: '16px 20px' }}>
-                      <button 
-                        type="button" 
-                        className="btn-primary" 
-                        style={{ height: '36px', fontSize: '13px', padding: '0 16px' }}
-                        onClick={() => openBookingModal({ pickup: r.from, destination: r.to })}
-                      >
-                        Book
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="pricing-trust-item">
+              <div className="pricing-trust-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 11l1.5-5.5A2 2 0 0 1 8.4 4h7.2a2 2 0 0 1 1.9 1.5L19 11v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1H8v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7z" />
+                  <circle cx="7.5" cy="14.5" r="1.5" />
+                  <circle cx="16.5" cy="14.5" r="1.5" />
+                </svg>
+              </div>
+              <div className="pricing-trust-text-group">
+                <div className="pricing-trust-title">Well-Maintained Vans</div>
+                <div className="pricing-trust-sub">Clean, safe &amp; comfortable</div>
+              </div>
+            </div>
+
+            <div className="pricing-trust-item">
+              <div className="pricing-trust-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <polyline points="16 11 18 13 22 9" />
+                </svg>
+              </div>
+              <div className="pricing-trust-text-group">
+                <div className="pricing-trust-title">Experienced Drivers</div>
+                <div className="pricing-trust-sub">Friendly &amp; professional</div>
+              </div>
+            </div>
+
+            <div className="pricing-trust-item">
+              <div className="pricing-trust-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                  <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                </svg>
+              </div>
+              <div className="pricing-trust-text-group">
+                <div className="pricing-trust-title">24/7 Support</div>
+                <div className="pricing-trust-sub">We're always here to help</div>
+              </div>
+            </div>
           </div>
 
-          <CtaBanner
-            title="Need a Custom Rate for Your Trip?"
-            subtitle="Send your exact itinerary to our team on WhatsApp for a custom discounted price."
-          />
+          {/* 4. Need a Custom Quote? Banner */}
+          <div className="pricing-quote-banner-card">
+            <div className="pricing-quote-content">
+              <div className="pricing-quote-text">
+                <h3 className="pricing-quote-heading">Need a Custom Quote?</h3>
+                <p className="pricing-quote-desc">Tell us your travel plan and get a personalized price today.</p>
+              </div>
+              <button
+                type="button"
+                className="pricing-btn-get-quote"
+                onClick={() => openBookingModal({ service: 'Custom Quote' })}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                Get a Quote
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </main>
   );
 }
-
