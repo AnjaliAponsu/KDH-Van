@@ -127,6 +127,7 @@ export default function ServicesPage() {
       <section className="why-choose-us-section" style={{ paddingTop: '20px', paddingBottom: '56px' }}>
         <div className="container">
           <SectionHeader
+            kicker="OUR PROMISE"
             title="Why Choose Our Services?"
             subtitle="Every journey is backed by our executive hospitality standards."
           />

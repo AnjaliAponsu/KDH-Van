@@ -33,6 +33,7 @@ export default function TravelGuidePage() {
         {/* Section 1: Explore Sri Lanka's Top Destinations */}
         <section className="destinations-section" style={{ marginBottom: '56px' }}>
           <SectionHeader
+            kicker="TOP DESTINATIONS"
             title="Explore Sri Lanka's Top Destinations"
             subtitle="From ancient kingdoms and misty highlands to golden beaches and scenic train journeys, discover the most popular places to visit in Sri Lanka."
           />
@@ -59,6 +60,7 @@ export default function TravelGuidePage() {
         {/* Section 2: Travel Tips */}
         <section className="travel-tips-section" style={{ marginBottom: '56px' }}>
           <SectionHeader
+            kicker="PRACTICAL ADVICE"
             title="Travel Tips for Visiting Sri Lanka"
             subtitle="Make the most of your trip with these practical travel tips, from the best time to visit to getting around comfortably."
           />
@@ -84,6 +86,7 @@ export default function TravelGuidePage() {
         {/* Section 3: Suggested Itineraries */}
         <section className="itineraries-section" style={{ marginBottom: '60px' }}>
           <SectionHeader
+            kicker="TRIP IDEAS"
             title="Suggested Itineraries"
             subtitle="Ready-made trip ideas to help you experience the best of Sri Lanka, whether you have a few days or a full week."
           />

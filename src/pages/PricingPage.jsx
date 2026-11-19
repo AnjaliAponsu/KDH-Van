@@ -110,6 +110,7 @@ export default function PricingPage() {
 
           {/* Popular Fixed Rates Table */}
           <SectionHeader
+            kicker="FIXED ROUTES"
             title="Popular Direct Transfer Rates"
             subtitle="Fixed, door-to-door fares including all expressway tolls and taxes."
           />

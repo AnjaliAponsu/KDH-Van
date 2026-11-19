@@ -40,8 +40,9 @@ export default function Testimonials() {
     <section className="testimonials-section" id="testimonials">
       <div className="container">
         <SectionHeader
+          kicker="CLIENT REVIEWS"
           title="What Our Customers Say"
-          subtitle=""
+          subtitle="Verified feedback from travellers and families who explored Sri Lanka with us."
         />
 
         <div className="testimonials-slider-wrap">

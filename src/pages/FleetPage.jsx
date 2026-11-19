@@ -57,6 +57,7 @@ export default function FleetPage() {
 
           {/* Features Grid */}
           <SectionHeader
+            kicker="COMFORT & SAFETY"
             title="Vehicle Features &amp; Amenities"
             subtitle="Everything you need for an effortless journey through Sri Lanka's cities, coastlines, and misty mountains."
           />

@@ -49,7 +49,10 @@ export default function AboutPage() {
                 <img src="/assets/about/about-story-van.jpg" alt="KDH Van on coastal road" style={{ width: '100%', borderRadius: '16px', boxShadow: '0 8px 24px rgba(0,0,0,0.08)' }} loading="lazy" />
               </div>
               <div className="about-story-content">
-                <div className="features-badge" style={{ marginBottom: '8px' }}>OUR STORY</div>
+                <div className="about-section-eyebrow">
+                  <span className="about-dash"></span>
+                  OUR STORY
+                </div>
                 <h2 className="about-section-title">Your Trusted Travel Partner Across Sri Lanka</h2>
                 <p style={{ fontSize: '15.5px', color: '#475569', lineHeight: '1.7', marginBottom: '16px' }}>
                   KDH Van Hire Sri Lanka was started with a simple goal — to provide reliable, comfortable and hassle-free transportation for locals and travellers across Sri Lanka. With our well-maintained Toyota KDH vans and professional drivers, we make your airport transfers, family trips, business travel and island tours smooth and enjoyable.
@@ -64,6 +67,7 @@ export default function AboutPage() {
           {/* Section 2: Our Values */}
           <section className="about-values-section" style={{ marginBottom: '70px' }}>
             <SectionHeader
+              kicker="CORE VALUES"
               title="Our Values"
               subtitle="The guiding principles behind every kilometer we drive."
             />
@@ -87,7 +91,10 @@ export default function AboutPage() {
           <section className="about-why-section" style={{ marginBottom: '70px' }}>
             <div className="about-why-grid">
               <div className="about-why-content">
-                <div className="features-badge" style={{ marginBottom: '8px' }}>WHY TRAVEL WITH US</div>
+                <div className="about-section-eyebrow">
+                  <span className="about-dash"></span>
+                  WHY TRAVEL WITH US
+                </div>
                 <h2 className="about-section-title">More Than Just a Van Hire</h2>
                 <p style={{ fontSize: '15.5px', color: '#475569', lineHeight: '1.7', marginBottom: '18px' }}>
                   We combine comfort, safety and local knowledge to give you a better travel experience — whether it's a short airport transfer or a multi-day tour across the island.

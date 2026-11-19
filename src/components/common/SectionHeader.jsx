@@ -8,11 +8,20 @@ export default function SectionHeader({
   style = {}
 }) {
   return (
-    <div className={`section-heading-centered ${centered ? 'text-center' : ''}`} style={style}>
-      {kicker && <div className="features-badge" style={{ marginBottom: '8px' }}>{kicker}</div>}
+    <div
+      className="section-header"
+      style={{ textAlign: centered ? 'center' : 'left', ...style }}
+    >
+      {kicker && <div className="section-eyebrow">{kicker}</div>}
       <h2 className="section-title">{title}</h2>
-      {subtitle && <p className="section-subtitle">{subtitle}</p>}
+      {subtitle && (
+        <p
+          className="section-subtitle"
+          style={centered ? { maxWidth: '680px', margin: '0 auto' } : undefined}
+        >
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 }
-
