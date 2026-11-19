@@ -40,14 +40,14 @@ export default function TravelGuidePage() {
           <div className="destinations-grid">
             {destinationsList.map((dest, idx) => (
               <Link key={idx} to={dest.link} className="destination-card">
-                <div className="destination-card-media">
-                  <img src={dest.image} alt={dest.title} loading="lazy" />
+                <div className="destination-card-img-wrap">
+                  <img src={dest.image} alt={dest.title} className="destination-card-img" loading="lazy" />
                   <span className="destination-tag-badge">{dest.tag}</span>
                 </div>
                 <div className="destination-card-body">
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div className="destination-card-title-row">
                     <h3 className="destination-card-title">{dest.title}</h3>
-                    <span className="dest-arrow" style={{ color: '#ffb900' }}>&rarr;</span>
+                    <span className="destination-card-arrow">&rarr;</span>
                   </div>
                   <p className="destination-card-desc">{dest.desc}</p>
                 </div>
@@ -91,14 +91,14 @@ export default function TravelGuidePage() {
           <div className="itineraries-grid">
             {suggestedItinerariesList.map((itin, idx) => (
               <Link key={idx} to={itin.link} className="itinerary-card">
-                <div className="itinerary-media">
-                  <img src={itin.image} alt={itin.title} loading="lazy" />
-                  <span className="itin-days-badge">{itin.days}</span>
+                <div className="itinerary-card-img-wrap">
+                  <img src={itin.image} alt={itin.title} className="itinerary-card-img" loading="lazy" />
+                  <span className="itinerary-badge">{itin.days}</span>
                 </div>
                 <div className="itinerary-body">
                   <h4 className="itinerary-title">{itin.title}</h4>
                   <p className="itinerary-desc">{itin.desc}</p>
-                  <div style={{ marginTop: 'auto', paddingTop: '10px', color: '#ffb900', fontWeight: '700', fontSize: '13.5px' }}>
+                  <div style={{ marginTop: 'auto', paddingTop: '14px', color: '#d97706', fontWeight: '700', fontSize: '13.5px' }}>
                     View Full Guide &rarr;
                   </div>
                 </div>

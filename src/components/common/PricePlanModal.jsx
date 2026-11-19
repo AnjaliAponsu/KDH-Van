@@ -34,9 +34,9 @@ Requirements: ${formData.notes || 'Standard package'}`;
   };
 
   return (
-    <div className="price-plan-modal-overlay open" onClick={(e) => { if (e.target === e.currentTarget) closePricePlanModal(); }}>
+    <div className="modal-overlay price-plan-modal-overlay open" onClick={(e) => { if (e.target === e.currentTarget) closePricePlanModal(); }}>
       <div className="price-plan-modal-card">
-        <div className="price-plan-modal-header">
+        <div className="modal-header price-plan-modal-header">
           <div className="modal-title-wrap">
             <span className="modal-kicker">Custom Pricing Package</span>
             <h3 className="modal-title">{activePricePlan.name}</h3>

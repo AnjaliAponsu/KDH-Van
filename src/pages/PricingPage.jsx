@@ -78,10 +78,10 @@ export default function PricingPage() {
           />
 
           {/* 3 Pricing Cards */}
-          <div className="services-grid" style={{ marginBottom: '64px' }}>
+          <div className="pricing-plans-grid" style={{ marginBottom: '64px' }}>
             {plans.map((p, idx) => (
-              <div key={idx} className={`pricing-plan-card ${p.popular ? 'popular' : ''}`}>
-                {p.popular && <div className="popular-badge">Most Popular</div>}
+              <div key={idx} className={`pricing-plan-card ${p.popular ? 'popular-plan' : ''}`}>
+                {p.popular && <div className="pricing-popular-badge">★ Most Popular</div>}
                 <h3 className="plan-name">{p.name}</h3>
                 <div className="plan-price-wrap">
                   <span className="plan-amount">{p.price}</span>

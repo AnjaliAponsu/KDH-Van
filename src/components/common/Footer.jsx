@@ -38,7 +38,7 @@ export default function Footer() {
               <li><Link to="/services/point-to-point">› Point to Point Hire</Link></li>
               <li><Link to="/services/daily-hire">› Daily Hire</Link></li>
               <li><Link to="/services/multi-day-tours">› Multi-Day Tours</Link></li>
-              <li><Link to="/services/wedding-events">› Events &amp; Weddings</Link></li>
+              <li><Link to="/services/events-weddings">› Events &amp; Weddings</Link></li>
               <li><Link to="/services/corporate-transport">› Corporate Transport</Link></li>
             </ul>
           </div>

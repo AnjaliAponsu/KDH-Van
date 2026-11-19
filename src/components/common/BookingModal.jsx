@@ -75,16 +75,16 @@ Notes: ${formData.notes || 'None'}`;
   };
 
   return (
-    <div className="booking-modal-overlay open" onClick={(e) => { if (e.target === e.currentTarget) closeBookingModal(); }}>
+    <div className="modal-overlay booking-modal-overlay open" onClick={(e) => { if (e.target === e.currentTarget) closeBookingModal(); }}>
       <div className="booking-modal-card">
         {/* Modal Header */}
-        <div className="booking-modal-header">
+        <div className="modal-header booking-modal-header">
           <div className="modal-title-wrap">
             <span className="modal-kicker">Instant Van Reservation</span>
             <h3 className="modal-title">Book Your Toyota KDH Van</h3>
           </div>
           <button type="button" className="modal-close-btn" onClick={closeBookingModal} aria-label="Close modal">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -92,17 +92,17 @@ Notes: ${formData.notes || 'None'}`;
         </div>
 
         {/* Stepper Bar */}
-        <div className="booking-stepper-bar">
+        <div className="modal-stepper-bar">
           <div className={`step-item ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}>
-            <span className="step-circle">1</span>
+            <span className="step-circle">{step > 1 ? '✓' : '1'}</span>
             <span className="step-text">Trip Details</span>
           </div>
-          <div className="step-divider"></div>
+          <div className={`step-divider ${step > 1 ? 'active' : ''}`}></div>
           <div className={`step-item ${step >= 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}>
-            <span className="step-circle">2</span>
+            <span className="step-circle">{step > 2 ? '✓' : '2'}</span>
             <span className="step-text">Passenger Info</span>
           </div>
-          <div className="step-divider"></div>
+          <div className={`step-divider ${step > 2 ? 'active' : ''}`}></div>
           <div className={`step-item ${step >= 3 ? 'active' : ''}`}>
             <span className="step-circle">3</span>
             <span className="step-text">Confirmation</span>

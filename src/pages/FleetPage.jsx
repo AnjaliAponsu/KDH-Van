@@ -61,7 +61,7 @@ export default function FleetPage() {
             subtitle="Everything you need for an effortless journey through Sri Lanka's cities, coastlines, and misty mountains."
           />
 
-          <div className="services-grid" style={{ marginBottom: '60px' }}>
+          <div className="services-cards-grid" style={{ marginBottom: '60px' }}>
             {features.map((f, idx) => (
               <div key={idx} className="service-feature-card">
                 <div className="feature-card-icon">

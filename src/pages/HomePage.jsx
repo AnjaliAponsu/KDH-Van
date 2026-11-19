@@ -42,33 +42,41 @@ export default function HomePage() {
         <div className="container hero-container">
           <div className="hero-content">
             <div className="hero-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              #1 Rated Van Hire in Sri Lanka
+              <span>RELIABLE</span>
+              <span>•</span>
+              <span>COMFORTABLE</span>
+              <span>•</span>
+              <span>SAFE</span>
             </div>
             <h1 className="hero-title">
-              KDH Van Hire <span className="highlight-gold">in Sri Lanka</span>
+              KDH Van Hire<br />
+              in <span className="highlight-sri-lanka">Sri Lanka
+                <svg className="sri-lanka-swoosh" viewBox="0 0 160 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 4 10 C 45 3, 115 2, 156 7" stroke="#f59e0b" strokeWidth="4.5" strokeLinecap="round" />
+                </svg>
+              </span>
             </h1>
-            <p className="hero-description">
-              Private Toyota KDH passenger &amp; high-roof van hire with professional English-speaking drivers. Airport transfers, round tours, family vacations and corporate transport across Sri Lanka.
+            <p className="hero-desc">
+              Airport Transfers, Private Tours, Daily Hire and Custom Trips with Professional Drivers across Sri Lanka.
             </p>
 
-            <div className="hero-actions">
-              <button 
-                type="button" 
+            <div className="hero-buttons">
+              <button
+                type="button"
                 className="btn-hero-primary"
                 onClick={() => openBookingModal()}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                Book Your Van Now
+                Book Your Van
               </button>
               <a
                 href="https://wa.me/94771234567?text=Hi%20KDH%20Van%20Hire,%20I%20would%20like%20to%20get%20a%20quote%20for%20my%20trip."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-hero-whatsapp"
+                className="btn-hero-secondary"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.029.575 1.761.883 2.806.883 3.181 0 5.767-2.587 5.767-5.766.001-3.18-2.585-5.766-5.767-5.766zm3.374 8.204c-.14.394-.717.728-1.009.774-.29.047-.648.067-2.096-.532-1.448-.598-2.378-2.062-2.45-2.158-.073-.096-.582-.774-.582-1.476 0-.702.364-1.047.494-1.189.13-.142.285-.178.38-.178.096 0 .19.002.273.007.087.005.203-.033.317.241.114.274.394.96.429 1.03.035.071.058.154.012.247-.046.094-.07.153-.139.234-.07.081-.146.182-.209.245-.07.07-.143.146-.062.286.082.14.364.601.782.973.539.479.993.627 1.133.697.14.07.222.059.305-.036.082-.095.352-.408.446-.548.094-.14.188-.117.316-.07.128.047.818.386.958.456.14.07.234.105.269.164.035.059.035.342-.105.736z"/></svg>
-                Instant WhatsApp Quote
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--color-whatsapp)"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.029.575 1.761.883 2.806.883 3.181 0 5.767-2.587 5.767-5.766.001-3.18-2.585-5.766-5.767-5.766zm3.374 8.204c-.14.394-.717.728-1.009.774-.29.047-.648.067-2.096-.532-1.448-.598-2.378-2.062-2.45-2.158-.073-.096-.582-.774-.582-1.476 0-.702.364-1.047.494-1.189.13-.142.285-.178.38-.178.096 0 .19.002.273.007.087.005.203-.033.317.241.114.274.394.96.429 1.03.035.071.058.154.012.247-.046.094-.07.153-.139.234-.07.081-.146.182-.209.245-.07.07-.143.146-.062.286.082.14.364.601.782.973.539.479.993.627 1.133.697.14.07.222.059.305-.036.082-.095.352-.408.446-.548.094-.14.188-.117.316-.07.128.047.818.386.958.456.14.07.234.105.269.164.035.059.035.342-.105.736z"/></svg>
+                Chat on WhatsApp
               </a>
             </div>
 
@@ -239,7 +247,7 @@ export default function HomePage() {
                   <button type="button" className="btn-card-book-now" onClick={() => openBookingModal({ service: 'Weddings & Events' })}>
                     Book Now &rarr;
                   </button>
-                  <Link to="/services/wedding-events" className="btn-card-learn-more">
+                  <Link to="/services/events-weddings" className="btn-card-learn-more">
                     Learn More
                   </Link>
                 </div>
@@ -322,26 +330,57 @@ export default function HomePage() {
       <section className="how-it-works-section" id="how-it-works">
         <div className="container">
           <SectionHeader
-            kicker="SIMPLE PROCESS"
+            kicker="HOW IT WORKS"
             title="Book Your Van in 3 Simple Steps"
             subtitle="Booking your private transport across Sri Lanka is quick, transparent, and completely hassle-free."
           />
 
-          <div className="steps-grid">
+          <div className="steps-container">
             <div className="step-card">
-              <div className="step-num">1</div>
-              <h3 className="step-title">Choose Your Service</h3>
-              <p className="step-desc">Select your pickup, destination, dates, and vehicle size through our online form or direct WhatsApp.</p>
+              <div className="step-icon-circle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <div className="step-content">
+                <h3 className="step-title">1. Plan Your Trip</h3>
+                <p className="step-desc">Select your pickup, destination, dates, and service type online or via WhatsApp.</p>
+              </div>
             </div>
+
+            <div className="step-divider-arrow">&rarr;</div>
+
             <div className="step-card">
-              <div className="step-num">2</div>
-              <h3 className="step-title">Get Instant Confirmation</h3>
-              <p className="step-desc">Receive a fixed, guaranteed all-inclusive quote within minutes. No prepayment or credit card required.</p>
+              <div className="step-icon-circle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <div className="step-content">
+                <h3 className="step-title">2. Get a Quote</h3>
+                <p className="step-desc">Receive a fixed, guaranteed all-inclusive fare estimate within minutes.</p>
+              </div>
             </div>
+
+            <div className="step-divider-arrow">&rarr;</div>
+
             <div className="step-card">
-              <div className="step-num">3</div>
-              <h3 className="step-title">Enjoy Your Journey</h3>
-              <p className="step-desc">Your professional driver arrives punctually with a clean, chilled van ready to assist with your luggage.</p>
+              <div className="step-icon-circle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div className="step-content">
+                <h3 className="step-title">3. Confirm Booking</h3>
+                <p className="step-desc">Your professional driver arrives punctually with a clean, chilled KDH van.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -365,24 +404,26 @@ export default function HomePage() {
             subtitle="Everything you need to know about booking, vehicles, drivers and policies."
           />
 
-          <div className="faq-accordion-wrap">
-            {faqs.map((faq, idx) => (
-              <div key={idx} className={`faq-item ${openFaq === idx ? 'open' : ''}`}>
-                <button 
-                  type="button" 
-                  className="faq-question-btn"
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                >
-                  <span className="faq-question-text">{faq.q}</span>
-                  <svg className="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </button>
-                {openFaq === idx && (
-                  <div className="faq-answer-pane">
-                    <p>{faq.a}</p>
+          <div className="faq-container">
+            <div className="faq-accordion">
+              {faqs.map((faq, idx) => (
+                <div key={idx} className={`faq-item ${openFaq === idx ? 'active' : ''}`}>
+                  <button
+                    type="button"
+                    className="faq-question"
+                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  >
+                    <span className="faq-question-text">{faq.q}</span>
+                    <svg className="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <div className="faq-answer">
+                    <p className="faq-answer-text">{faq.a}</p>
                   </div>
-                )}
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
