@@ -47,9 +47,9 @@ export default function Testimonials() {
 
         <div className="testimonials-slider-wrap">
           {/* Navigation Buttons */}
-          <button 
-            type="button" 
-            className="slider-nav-btn slider-nav-prev" 
+          <button
+            type="button"
+            className="slider-nav-btn slider-nav-prev"
             onClick={handlePrev}
             aria-label="Previous Testimonial"
           >
@@ -57,9 +57,9 @@ export default function Testimonials() {
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </button>
-          <button 
-            type="button" 
-            className="slider-nav-btn slider-nav-next" 
+          <button
+            type="button"
+            className="slider-nav-btn slider-nav-next"
             onClick={handleNext}
             aria-label="Next Testimonial"
           >
@@ -90,9 +90,9 @@ export default function Testimonials() {
           {/* Slider Pagination Dots */}
           <div className="slider-pagination-dots">
             {testimonials.map((_, idx) => (
-              <button 
-                key={idx} 
-                type="button" 
+              <button
+                key={idx}
+                type="button"
                 className={`slider-dot ${currentSlide === idx ? 'active' : ''}`}
                 onClick={() => setCurrentSlide(idx)}
                 aria-label={`Slide ${idx + 1}`}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://AnjaliAponsu.github.io/KDH-Van/sitemap.xml
