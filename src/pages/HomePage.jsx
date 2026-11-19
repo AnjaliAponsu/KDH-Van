@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import BookingSearch from '../components/home/BookingSearch';
@@ -7,33 +7,10 @@ import PopularRoutes from '../components/home/PopularRoutes';
 import Testimonials from '../components/home/Testimonials';
 import CtaBanner from '../components/common/CtaBanner';
 import SectionHeader from '../components/common/SectionHeader';
+import FaqSection from '../components/common/FaqSection';
 
 export default function HomePage() {
   const { openBookingModal } = useApp();
-  const [openFaq, setOpenFaq] = useState(0);
-
-  const faqs = [
-    {
-      q: 'What is included in the KDH Van Hire price?',
-      a: 'All our prices include the Toyota KDH passenger van, fuel, highway tolls (expressways), an experienced English-speaking driver, and all driver allowances (food & accommodation). There are zero hidden fees.'
-    },
-    {
-      q: 'How many passengers and luggage bags can fit in a Toyota KDH?',
-      a: 'The Toyota KDH Super GL / Commuter comfortably accommodates up to 8–10 passengers with full luggage (8 large suitcases), or up to 14 passengers for day trips without heavy luggage.'
-    },
-    {
-      q: 'Do you track airport flights for delays?',
-      a: 'Yes, our dispatch team monitors your flight in real time using official radar. If your flight is delayed or lands early, your driver adjusts pickup timing automatically with 60 minutes of complimentary wait time inside the arrivals hall.'
-    },
-    {
-      q: 'Can we customize our itinerary during multi-day tours?',
-      a: 'Absolutely! Our tours are 100% private and customizable. You decide the stops, attractions, and pace. Your driver is happy to accommodate spontaneous viewpoint breaks or roadside coconut stops.'
-    },
-    {
-      q: 'How do I confirm the booking and do I need to pay in advance?',
-      a: 'Booking is simple: submit your trip details online or message us on WhatsApp. We confirm availability within 5 minutes. You can pay cash in USD, EUR, GBP, or LKR directly to your driver upon arrival.'
-    }
-  ];
 
   return (
     <main className="home-page-main">
@@ -395,38 +372,8 @@ export default function HomePage() {
       {/* 8. Testimonials Section */}
       <Testimonials />
 
-      {/* 9. FAQ Section */}
-      <section className="faq-section" id="faq">
-        <div className="container">
-          <SectionHeader
-            kicker="HAVE QUESTIONS?"
-            title="Frequently Asked Questions"
-            subtitle="Everything you need to know about booking, vehicles, drivers and policies."
-          />
-
-          <div className="faq-container">
-            <div className="faq-accordion">
-              {faqs.map((faq, idx) => (
-                <div key={idx} className={`faq-item ${openFaq === idx ? 'active' : ''}`}>
-                  <button
-                    type="button"
-                    className="faq-question"
-                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  >
-                    <span className="faq-question-text">{faq.q}</span>
-                    <svg className="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                  </button>
-                  <div className="faq-answer">
-                    <p className="faq-answer-text">{faq.a}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 9. FAQ Section (Identical Shared Component as Contact Page) */}
+      <FaqSection />
 
       {/* 10. Pre-Footer CTA */}
       <CtaBanner />
