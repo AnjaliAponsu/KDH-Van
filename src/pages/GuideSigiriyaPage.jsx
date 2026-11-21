@@ -24,7 +24,7 @@ export default function GuideSigiriyaPage() {
                 Home
               </Link>
               <span className="sep">&gt;</span>
-              <Link to="/travel-guide.html">Destinations</Link>
+              <Link to="/travel-guide">Destinations</Link>
               <span className="sep">&gt;</span>
               <span className="current">Sigiriya Travel Guide</span>
             </nav>

@@ -172,6 +172,36 @@ export const SEO_ROUTES = {
     priority: '0.75',
     changefreq: 'monthly'
   },
+  '/travel-guide/ella/nine-arch-bridge': {
+    title: 'Nine Arch Bridge Ella Guide | Train Times, Photos & Private KDH Van Access',
+    description:
+      'Complete visitor guide to Ella’s iconic Nine Arch Bridge (Demodara): best train crossing times, photography spots, trail access, and private Toyota KDH van transport.',
+    keywords:
+      'Nine Arch Bridge Ella, Ella train schedule Nine Arch Bridge, Demodara bridge Sri Lanka, Ella private van tour',
+    image: `${SITE_URL}/assets/guide/ella-nine-arch.jpg`,
+    priority: '0.75',
+    changefreq: 'monthly'
+  },
+  '/travel-guide/ella/little-adams-peak': {
+    title: 'Little Adam’s Peak Ella Hike Guide | Sunrise Views, Trail Info & KDH Transport',
+    description:
+      'Plan your hike to Little Adam’s Peak in Ella: trail duration, sunrise vs sunset tips, difficulty level, and comfortable private KDH van drop-off at the trailhead.',
+    keywords:
+      'Little Adams Peak Ella, Ella hiking guide Sri Lanka, sunrise hike Ella, Ella day tour KDH van',
+    image: `${SITE_URL}/assets/guide/ella-adams-peak.jpg`,
+    priority: '0.75',
+    changefreq: 'monthly'
+  },
+  '/travel-guide/ella/ravana-falls': {
+    title: 'Ravana Falls Ella Guide | Waterfall Info, Safety Tips & Private Van Stops',
+    description:
+      'Discover Ravana Falls near Ella: 25m tiered waterfall, Ramayana legend, best season for water flow, and effortless roadside stops by private Toyota KDH van.',
+    keywords:
+      'Ravana Falls Ella, waterfalls near Ella Sri Lanka, Ella to Yala van transfer, Ravana Ella Wildlife Sanctuary',
+    image: `${SITE_URL}/assets/guide/ella-ravana-falls.jpg`,
+    priority: '0.75',
+    changefreq: 'monthly'
+  },
   '/about': {
     title: 'About KDH Van Hire Sri Lanka | Trusted Chauffeur-Driven Van Service',
     description:

@@ -1,5 +1,6 @@
 import React from 'react';
-import PageHero from '../components/common/PageHero';
+import { Link } from 'react-router-dom';
+import SectionHeader from '../components/common/SectionHeader';
 import { useApp } from '../context/AppContext';
 
 export default function GuideEllaPage() {
@@ -72,25 +73,28 @@ export default function GuideEllaPage() {
     {
       title: 'Nine Arch Bridge',
       desc: "Ella's most iconic landmark, a stunning colonial-era bridge set amid lush greenery.",
-      image: '/assets/guide/ella-nine-arch.jpg'
+      image: '/assets/guide/ella-nine-arch.jpg',
+      link: '/travel-guide/ella/nine-arch-bridge'
     },
     {
       title: "Little Adam's Peak",
       desc: "A popular and rewarding hike with spectacular views of Ella's hill country.",
-      image: '/assets/guide/ella-adams-peak.jpg'
+      image: '/assets/guide/ella-adams-peak.jpg',
+      link: '/travel-guide/ella/little-adams-peak'
     },
     {
       title: 'Ravana Falls',
       desc: 'A beautiful cascade just a short drive from Ella, perfect for a refreshing stop.',
-      image: '/assets/guide/ella-ravana-falls.jpg'
+      image: '/assets/guide/ella-ravana-falls.jpg',
+      link: '/travel-guide/ella/ravana-falls'
     }
   ];
 
   const itinerarySteps = [
     { title: 'Start from\nColombo / Kandy', img: '/assets/guide/ella-itin-1.jpg' },
-    { title: 'Nine Arch\nBridge', img: '/assets/guide/ella-itin-2.jpg' },
-    { title: "Little Adam's\nPeak", img: '/assets/guide/ella-itin-3.jpg' },
-    { title: 'Ravana\nFalls', img: '/assets/guide/ella-itin-4.jpg' },
+    { title: 'Nine Arch\nBridge', img: '/assets/guide/ella-itin-2.jpg', link: '/travel-guide/ella/nine-arch-bridge' },
+    { title: "Little Adam's\nPeak", img: '/assets/guide/ella-itin-3.jpg', link: '/travel-guide/ella/little-adams-peak' },
+    { title: 'Ravana\nFalls', img: '/assets/guide/ella-itin-4.jpg', link: '/travel-guide/ella/ravana-falls' },
     { title: 'Tea Plantation\n& Factory', img: '/assets/guide/ella-itin-5.jpg' },
     { title: 'Return\n(Evening)', img: '/assets/guide/ella-itin-6.jpg' }
   ];
@@ -104,15 +108,15 @@ export default function GuideEllaPage() {
             <h1 className="guide-hero-title">Ella <span className="highlight-gold">Travel Guide</span></h1>
             <p className="guide-hero-desc">Discover Ella's stunning mountains, iconic landmarks, tea country charm and the best things to see, do and experience with KDH Van Hire.</p>
             <nav className="guide-breadcrumbs" aria-label="Breadcrumbs">
-              <a href="/">
+              <Link to="/">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                   <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
                 Home
-              </a>
+              </Link>
               <span className="sep">&gt;</span>
-              <a href="/travel-guide.html">Destinations</a>
+              <Link to="/travel-guide">Destinations</Link>
               <span className="sep">&gt;</span>
               <span className="current">Ella Travel Guide</span>
             </nav>
@@ -122,12 +126,11 @@ export default function GuideEllaPage() {
 
       <div className="guide-container">
         {/* Centered Heading */}
-        <div className="section-heading-centered" style={{ marginBottom: '38px' }}>
-          <h2 className="section-title" style={{ fontSize: '34px' }}>Ella Travel Guide</h2>
-          <p className="section-subtitle" style={{ fontSize: '15.5px', lineHeight: 1.65, maxWidth: '860px', margin: '0 auto' }}>
-            Your complete guide to visiting Ella &mdash; top attractions, scenic spots, travel tips, itineraries and everything you need to plan a memorable trip with a comfortable KDH van and a professional driver.
-          </p>
-        </div>
+        <SectionHeader
+          kicker="HILL COUNTRY GUIDE"
+          title="Ella Travel Guide"
+          subtitle="Your complete guide to visiting Ella — top attractions, scenic spots, travel tips, itineraries and everything you need to plan a memorable trip with a comfortable KDH van and a professional driver."
+        />
 
         {/* Top Area: Why Visit Ella + Top Experiences + Quick Facts */}
         <div style={{ display: 'grid', gridTemplateColumns: '1.45fr 1fr', gap: '32px', marginBottom: '56px', alignItems: 'start' }}>
@@ -236,7 +239,12 @@ export default function GuideEllaPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
             {attractions.map((att, idx) => (
-              <div key={idx} className="destination-card" style={{ borderRadius: '14px', overflow: 'hidden', boxShadow: '0 4px 16px rgba(0,0,0,0.05)', transition: 'transform 0.25s ease' }}>
+              <Link
+                key={idx}
+                to={att.link}
+                className="destination-card"
+                style={{ borderRadius: '14px', overflow: 'hidden', boxShadow: '0 4px 16px rgba(0,0,0,0.05)', transition: 'transform 0.25s ease', textDecoration: 'none', color: 'inherit' }}
+              >
                 <div className="destination-card-img-wrap" style={{ height: '185px' }}>
                   <img src={att.image} alt={att.title} className="destination-card-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
                 </div>
@@ -246,11 +254,11 @@ export default function GuideEllaPage() {
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#eab308' }}><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                       <h4 className="destination-card-title" style={{ fontSize: '18px', fontWeight: 800, color: '#081726', margin: 0 }}>{att.title}</h4>
                     </div>
-                    <span className="destination-card-arrow" style={{ color: '#64748b', fontSize: '16px' }}>&rarr;</span>
+                    <span className="destination-card-arrow" style={{ fontSize: '16px' }}>&rarr;</span>
                   </div>
                   <p className="destination-card-desc" style={{ fontSize: '14px', lineHeight: 1.55, color: '#64748b', margin: 0 }}>{att.desc}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -354,19 +362,32 @@ export default function GuideEllaPage() {
           <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '24px', alignItems: 'stretch' }}>
             {/* 6 Steps Chain Box */}
             <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '24px 20px', boxShadow: '0 4px 16px rgba(0,0,0,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              {itinerarySteps.map((step, idx) => (
-                <React.Fragment key={idx}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '8px' }}>
+              {itinerarySteps.map((step, idx) => {
+                const content = (
+                  <>
                     <div style={{ width: '64px', height: '64px', borderRadius: '50%', overflow: 'hidden', boxShadow: '0 3px 10px rgba(0,0,0,0.1)', border: '2px solid #ffffff' }}>
                       <img src={step.img} alt={step.title.replace('\n', ' ')} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
                     </div>
                     <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#081726', lineHeight: 1.3, whiteSpace: 'pre-line' }}>{step.title}</span>
-                  </div>
-                  {idx < itinerarySteps.length - 1 && (
-                    <span style={{ color: '#94a3b8', fontSize: '20px' }}>&rarr;</span>
-                  )}
-                </React.Fragment>
-              ))}
+                  </>
+                );
+                return (
+                  <React.Fragment key={idx}>
+                    {step.link ? (
+                      <Link to={step.link} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '8px', textDecoration: 'none' }}>
+                        {content}
+                      </Link>
+                    ) : (
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '8px' }}>
+                        {content}
+                      </div>
+                    )}
+                    {idx < itinerarySteps.length - 1 && (
+                      <span style={{ color: '#94a3b8', fontSize: '20px' }}>&rarr;</span>
+                    )}
+                  </React.Fragment>
+                );
+              })}
             </div>
 
             {/* Route Suggestion Box */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import PageHero from '../components/common/PageHero';
+import { Link } from 'react-router-dom';
 import SectionHeader from '../components/common/SectionHeader';
 import CtaBanner from '../components/common/CtaBanner';
 import { useApp } from '../context/AppContext';
@@ -42,15 +42,15 @@ export default function GuideSouthCoastPage() {
             <h1 className="guide-hero-title">South Coast Travel Guide &ndash; <span className="highlight-gold">Galle &amp; Mirissa</span></h1>
             <p className="guide-hero-desc">Explore historic charm, golden beaches, vibrant coastal life and unforgettable ocean experiences on Sri Lanka's South Coast.</p>
             <nav className="guide-breadcrumbs" aria-label="Breadcrumbs">
-              <a href="/">
+              <Link to="/">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                   <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
                 Home
-              </a>
+              </Link>
               <span className="sep">&gt;</span>
-              <a href="/travel-guide.html">Destinations</a>
+              <Link to="/travel-guide">Destinations</Link>
               <span className="sep">&gt;</span>
               <span className="current">South Coast Travel Guide</span>
             </nav>
