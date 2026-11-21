@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionHeader from '../components/common/SectionHeader';
+import ItineraryTimeline from '../components/common/ItineraryTimeline';
+import { ellaItinerarySteps, ellaRouteSummary } from '../data/ellaAttractionsData';
 import { useApp } from '../context/AppContext';
 
 export default function GuideEllaPage() {
@@ -88,15 +90,6 @@ export default function GuideEllaPage() {
       image: '/assets/guide/ella-ravana-falls.jpg',
       link: '/travel-guide/ella/ravana-falls'
     }
-  ];
-
-  const itinerarySteps = [
-    { title: 'Start from\nColombo / Kandy', img: '/assets/guide/ella-itin-1.jpg' },
-    { title: 'Nine Arch\nBridge', img: '/assets/guide/ella-itin-2.jpg', link: '/travel-guide/ella/nine-arch-bridge' },
-    { title: "Little Adam's\nPeak", img: '/assets/guide/ella-itin-3.jpg', link: '/travel-guide/ella/little-adams-peak' },
-    { title: 'Ravana\nFalls', img: '/assets/guide/ella-itin-4.jpg', link: '/travel-guide/ella/ravana-falls' },
-    { title: 'Tea Plantation\n& Factory', img: '/assets/guide/ella-itin-5.jpg' },
-    { title: 'Return\n(Evening)', img: '/assets/guide/ella-itin-6.jpg' }
   ];
 
   return (
@@ -351,61 +344,16 @@ export default function GuideEllaPage() {
           </div>
         </div>
 
-        {/* Suggested Itinerary: Ella Day Trip (6 Steps Chain + Route Suggestion) */}
-        <div style={{ marginBottom: '56px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-            <span style={{ color: 'var(--color-gold)', fontSize: '20px' }}>&#128506;</span>
-            <h3 className="post-section-title" style={{ fontSize: '26px', margin: 0 }}>Suggested Itinerary: Ella Day Trip</h3>
-          </div>
-          <p style={{ fontSize: '15px', color: '#64748b', margin: '0 0 24px' }}>A popular one-day itinerary to experience Ella's main highlights at a relaxed pace.</p>
-
-          <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '24px', alignItems: 'stretch' }}>
-            {/* 6 Steps Chain Box */}
-            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '24px 20px', boxShadow: '0 4px 16px rgba(0,0,0,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              {itinerarySteps.map((step, idx) => {
-                const content = (
-                  <>
-                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', overflow: 'hidden', boxShadow: '0 3px 10px rgba(0,0,0,0.1)', border: '2px solid #ffffff' }}>
-                      <img src={step.img} alt={step.title.replace('\n', ' ')} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
-                    </div>
-                    <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#081726', lineHeight: 1.3, whiteSpace: 'pre-line' }}>{step.title}</span>
-                  </>
-                );
-                return (
-                  <React.Fragment key={idx}>
-                    {step.link ? (
-                      <Link to={step.link} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '8px', textDecoration: 'none' }}>
-                        {content}
-                      </Link>
-                    ) : (
-                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '8px' }}>
-                        {content}
-                      </div>
-                    )}
-                    {idx < itinerarySteps.length - 1 && (
-                      <span style={{ color: '#94a3b8', fontSize: '20px' }}>&rarr;</span>
-                    )}
-                  </React.Fragment>
-                );
-              })}
-            </div>
-
-            {/* Route Suggestion Box */}
-            <div style={{ background: '#fffbeb', border: '1px solid #fde68a', borderRadius: '16px', padding: '24px 28px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '14px', boxShadow: '0 4px 16px rgba(0,0,0,0.03)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <span style={{ fontSize: '28px', lineHeight: 1 }}>&#128652;</span>
-                <div>
-                  <h4 style={{ fontSize: '18px', fontWeight: 800, color: '#081726', margin: '0 0 2px 0' }}>Route Suggestion</h4>
-                  <p style={{ fontSize: '13.5px', color: '#92400e', margin: 0, fontWeight: 600 }}>Colombo / Kandy &rarr; Ella (via A1 or A6)</p>
-                </div>
-              </div>
-              <div style={{ fontSize: '14px', color: '#475569', lineHeight: 1.6, borderTop: '1px dashed #fde68a', paddingTop: '12px', margin: 0 }}>
-                <p style={{ margin: '0 0 4px 0', fontWeight: 700, color: '#081726' }}>&approx; 200 km &bull; 5 &ndash; 6 hours</p>
-                <p style={{ margin: 0, color: '#64748b' }}>Travel comfortably with a private KDH van and professional driver.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Suggested Itinerary: Ella Day Trip (Executive Modern Timeline) */}
+        <ItineraryTimeline
+          eyebrow="CURATED DAY TRIP"
+          title="Suggested Itinerary: Ella Day Trip"
+          subtitle="A thoughtfully paced one-day private route covering Ella's iconic landmarks, viewpoints, and tea country highlights."
+          steps={ellaItinerarySteps}
+          routeSummary={ellaRouteSummary}
+          bookingDestination="Ella Day Trip"
+          bookingService="Daily Hire"
+        />
 
         {/* CTA Banner */}
         <div className="custom-cta-banner" style={{ background: "linear-gradient(90deg, rgba(8, 23, 38, 0.92) 0%, rgba(8, 23, 38, 0.85) 100%), url('/assets/guide/travel-guide-cta-bg.jpg') center/cover no-repeat", borderRadius: '16px', padding: '34px 44px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 8px 30px rgba(8,23,38,0.25)', marginBottom: '56px' }}>

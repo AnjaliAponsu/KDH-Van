@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { ellaAttractionsData } from '../data/ellaAttractionsData';
+import { ellaAttractionsData, ellaItinerarySteps, ellaRouteSummary } from '../data/ellaAttractionsData';
 import SectionHeader from '../components/common/SectionHeader';
+import ItineraryTimeline from '../components/common/ItineraryTimeline';
 import CtaBanner from '../components/common/CtaBanner';
 import { useApp } from '../context/AppContext';
 
@@ -251,6 +252,18 @@ export default function EllaAttractionDetailPage() {
             ))}
           </div>
         </section>
+
+        {/* Executive Suggested Itinerary: Ella Day Trip */}
+        <ItineraryTimeline
+          eyebrow="CURATED DAY TRIP"
+          title="Suggested Itinerary: Ella Day Trip"
+          subtitle={`See how ${attraction.title} fits seamlessly into our private full-day Ella KDH van tour.`}
+          steps={ellaItinerarySteps}
+          routeSummary={ellaRouteSummary}
+          bookingDestination={`${attraction.title}, Ella`}
+          bookingService="Daily Hire"
+          activeSlug={attraction.slug}
+        />
 
         {/* Pre-Footer CTA */}
         <CtaBanner

@@ -96,3 +96,63 @@ export const ellaAttractionsData = [
       'Ravana Falls sits right along our Ella–Yala and Ella–South Coast highway routes. Your KDH van pulls directly into the roadside parking bay for a stress-free, unhurried photo and refreshment stop.'
   }
 ];
+
+export const ellaItinerarySteps = [
+  {
+    time: '06:00 AM',
+    duration: 'Departure',
+    title: 'Hotel Pickup (Colombo / Kandy)',
+    desc: 'Relax in chilled dual-AC Toyota KDH comfort as your chauffeur navigates scenic hill-country highways.',
+    img: '/assets/guide/ella-itin-1.jpg'
+  },
+  {
+    slug: 'nine-arch-bridge',
+    time: '09:15 AM',
+    duration: '≈ 1.5 hrs',
+    title: 'Nine Arch Bridge',
+    desc: 'Catch the iconic blue mountain train gliding across Demodara’s 1921 colonial stone viaduct.',
+    img: '/assets/guide/ella-itin-2.jpg',
+    link: '/travel-guide/ella/nine-arch-bridge'
+  },
+  {
+    slug: 'little-adams-peak',
+    time: '11:00 AM',
+    duration: '≈ 1.5 hrs',
+    title: "Little Adam's Peak",
+    desc: 'Gentle scenic ridge walk through emerald Ceylon tea estates with 360° Ella Gap panoramas.',
+    img: '/assets/guide/ella-itin-3.jpg',
+    link: '/travel-guide/ella/little-adams-peak'
+  },
+  {
+    slug: 'ravana-falls',
+    time: '01:30 PM',
+    duration: '≈ 45 mins',
+    title: 'Ravana Falls',
+    desc: 'Refreshing stop at the 25-meter tiered rainforest cascade along the Ella–Wellawaya highway.',
+    img: '/assets/guide/ella-itin-4.jpg',
+    link: '/travel-guide/ella/ravana-falls'
+  },
+  {
+    time: '02:45 PM',
+    duration: '≈ 1 hr',
+    title: 'Halpewatte Tea Plantation & Factory',
+    desc: 'Guided Ceylon tea tasting and factory tour overlooking misty Uva valley slopes.',
+    img: '/assets/guide/ella-itin-5.jpg'
+  },
+  {
+    time: '04:30 PM',
+    duration: 'Evening Return',
+    title: 'Scenic Return Drop-off',
+    desc: 'Unwind in reclining captain seats with complimentary bottled water back to your hotel.',
+    img: '/assets/guide/ella-itin-6.jpg'
+  }
+];
+
+export const ellaRouteSummary = {
+  routeLabel: 'Colombo / Kandy → Ella',
+  distance: '≈ 200 km',
+  driveTime: '5 – 6 hrs',
+  bestDeparture: '06:00 AM',
+  vehicle: 'Toyota KDH 223'
+};
+

@@ -1,8 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PageHero from '../components/common/PageHero';
+import ItineraryTimeline from '../components/common/ItineraryTimeline';
 import CtaBanner from '../components/common/CtaBanner';
 import { useApp } from '../context/AppContext';
+
+const sigiriyaItinerarySteps = [
+  {
+    time: '06:00 AM',
+    duration: 'Departure',
+    title: 'Hotel Pickup (Colombo / Negombo / Kandy)',
+    desc: 'Early morning departure in a chilled Toyota KDH van to arrive before the midday heat.',
+    img: '/assets/guide/sigiriya-how-get-there.jpg'
+  },
+  {
+    time: '09:30 AM',
+    duration: '≈ 2.5 hrs',
+    title: 'Sigiriya Lion Rock & Frescoes Climb',
+    desc: 'Ascend past the ancient 5th-century frescoes and Lion’s Paw Terrace to the summit palace ruins.',
+    img: '/assets/guide/sigiriya-lion-paw.jpg'
+  },
+  {
+    time: '12:00 PM',
+    duration: '≈ 1 hr',
+    title: 'Royal Water Gardens & Authentic Lunch',
+    desc: 'Stroll through the symmetrical hydraulic gardens followed by a traditional Sri Lankan rice & curry lunch.',
+    img: '/assets/guide/sigiriya-royal-gardens.jpg'
+  },
+  {
+    time: '02:00 PM',
+    duration: '≈ 1.5 hrs',
+    title: 'Dambulla Golden Cave Temple',
+    desc: 'Visit the UNESCO-listed cave monastery housing over 150 Buddha statues and historic ceiling murals.',
+    img: '/assets/guide/sigiriya-dambulla.jpg'
+  },
+  {
+    time: '04:00 PM',
+    duration: 'Optional Safari',
+    title: 'Minneriya Elephant Safari & Evening Return',
+    desc: 'Optional 4x4 jeep safari to witness wild Asian elephant herds before a comfortable KDH transfer back.',
+    img: '/assets/guide/sigiriya-minneriya.jpg'
+  }
+];
+
+const sigiriyaRouteSummary = {
+  routeLabel: 'Colombo / Kandy → Sigiriya',
+  distance: '≈ 170 km',
+  driveTime: '3.5 – 4 hrs',
+  bestDeparture: '06:00 AM',
+  vehicle: 'Toyota KDH 223'
+};
 
 export default function GuideSigiriyaPage() {
   const { openBookingModal } = useApp();
@@ -123,17 +169,6 @@ export default function GuideSigiriyaPage() {
               </ul>
             </div>
 
-            <div className="sidebar-timeline-card">
-              <h4 className="sidebar-timeline-title">Suggested Half-Day Itinerary</h4>
-              <ul className="sidebar-timeline-list">
-                <li><span>06:00 AM</span> Depart from hotel in private AC van</li>
-                <li><span>09:30 AM</span> Arrive at Sigiriya &amp; climb the rock</li>
-                <li><span>12:00 PM</span> Explore the royal water gardens &amp; ruins</li>
-                <li><span>01:00 PM</span> Scenic Sri Lankan lunch with view</li>
-                <li><span>02:30 PM</span> Optional visit to Dambulla Cave Temple</li>
-              </ul>
-            </div>
-
             <div className="sidebar-cta-box">
               <h4>Need a Van to Sigiriya?</h4>
               <p>Travel comfortably with a private Toyota KDH van and experienced driver.</p>
@@ -147,6 +182,19 @@ export default function GuideSigiriyaPage() {
               </button>
             </div>
           </aside>
+        </div>
+
+        {/* Executive Suggested Itinerary: Sigiriya Cultural Day Trip */}
+        <div style={{ marginTop: '48px' }}>
+          <ItineraryTimeline
+            eyebrow="CURATED CULTURAL ROUTE"
+            title="Suggested Itinerary: Sigiriya Day Trip"
+            subtitle="Experience Sri Lanka's Cultural Triangle comfortably in a single private KDH van excursion."
+            steps={sigiriyaItinerarySteps}
+            routeSummary={sigiriyaRouteSummary}
+            bookingDestination="Sigiriya & Dambulla Day Trip"
+            bookingService="Daily Hire"
+          />
         </div>
 
         <CtaBanner

@@ -1,8 +1,55 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionHeader from '../components/common/SectionHeader';
+import ItineraryTimeline from '../components/common/ItineraryTimeline';
 import CtaBanner from '../components/common/CtaBanner';
 import { useApp } from '../context/AppContext';
+
+const southCoastItinerarySteps = [
+  {
+    time: 'Day 1 · 07:30 AM',
+    duration: '≈ 2 hrs drive',
+    title: 'Colombo Departure via Southern Expressway',
+    desc: 'Fast, smooth highway ride straight down to Sri Lanka’s historic southern coastline in a private KDH van.',
+    img: '/assets/guide/southcoast-itinerary-van.jpg'
+  },
+  {
+    time: 'Day 1 · 10:00 AM',
+    duration: '≈ 3 hrs',
+    title: 'Galle Dutch Fort & Boutique Lunch',
+    desc: 'Walk the UNESCO ramparts, lighthouse, and cobblestone streets before enjoying oceanfront dining.',
+    img: '/assets/guide/southcoast-galle.jpg'
+  },
+  {
+    time: 'Day 1 · 02:30 PM',
+    duration: 'Afternoon & Stay',
+    title: 'Unawatuna Bay & Coastal Sunset',
+    desc: 'Swim or snorkel in calm turquoise waters and unwind overnight at a beachfront hotel.',
+    img: '/assets/guide/southcoast-unawatuna.jpg'
+  },
+  {
+    time: 'Day 2 · 06:30 AM',
+    duration: '≈ 3.5 hrs',
+    title: 'Mirissa Whale Watching & Coconut Tree Hill',
+    desc: 'Early morning boat excursion to spot blue whales and dolphins followed by iconic coastal viewpoints.',
+    img: '/assets/guide/southcoast-mirissa.jpg'
+  },
+  {
+    time: 'Day 2 · 02:00 PM',
+    duration: 'Afternoon Return',
+    title: 'Weligama Surf Bay & Expressway Return',
+    desc: 'Stop at Weligama Bay for surfing or fresh seafood before a relaxed expressway drive back to Colombo or BIA.',
+    img: '/assets/guide/southcoast-weligama.jpg'
+  }
+];
+
+const southCoastRouteSummary = {
+  routeLabel: 'Colombo → Galle & Mirissa',
+  distance: '≈ 155 km',
+  driveTime: '2 – 2.5 hrs',
+  bestDeparture: '07:30 AM',
+  vehicle: 'Toyota KDH 223'
+};
 
 export default function GuideSouthCoastPage() {
   const { openBookingModal } = useApp();
@@ -139,27 +186,16 @@ export default function GuideSouthCoastPage() {
           </div>
         </section>
 
-        {/* 2-Day Itinerary Card */}
-        <section style={{ marginBottom: '56px' }}>
-          <div className="south-itin-card">
-            <div className="south-itin-media">
-              <img src="/assets/guide/southcoast-itinerary-van.jpg" alt="South Coast Van Tour" loading="lazy" />
-            </div>
-            <div className="south-itin-content">
-              <h4 style={{ fontSize: '20px', fontWeight: '800', color: '#081726', margin: 0 }}>Sample South Coast Itinerary (2 Days)</h4>
-              <p style={{ fontSize: '14.5px', color: '#64748b', margin: 0 }}>A relaxed coastal getaway covering history, beaches and ocean experiences.</p>
-              
-              <div className="day-badge-row">
-                <span className="day-pill">Day 1</span>
-                <span>Colombo &rarr; Galle Fort (explore &amp; lunch) &rarr; Unawatuna (beach &amp; snorkeling) &rarr; Overnight in Galle / Unawatuna</span>
-              </div>
-              <div className="day-badge-row">
-                <span className="day-pill">Day 2</span>
-                <span>Mirissa (whale watching – seasonal) &rarr; Weligama (surfing or beach time) &rarr; Return to Colombo</span>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Executive 2-Day Itinerary Timeline */}
+        <ItineraryTimeline
+          eyebrow="CURATED COASTAL ROUTE"
+          title="Suggested Itinerary: 2-Day South Coast Escape"
+          subtitle="A relaxed coastal getaway covering UNESCO heritage, golden beaches, whale watching, and surf bays."
+          steps={southCoastItinerarySteps}
+          routeSummary={southCoastRouteSummary}
+          bookingDestination="Galle & Mirissa (South Coast)"
+          bookingService="Multi-Day Tour"
+        />
 
         <CtaBanner
           title="Book Your South Coast Trip Today"
