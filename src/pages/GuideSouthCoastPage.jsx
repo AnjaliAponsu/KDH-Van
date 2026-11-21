@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionHeader from '../components/common/SectionHeader';
+import AttractionsShowcase from '../components/common/AttractionsShowcase';
 import ItineraryTimeline from '../components/common/ItineraryTimeline';
 import CtaBanner from '../components/common/CtaBanner';
 import { useApp } from '../context/AppContext';
@@ -57,23 +58,43 @@ export default function GuideSouthCoastPage() {
   const places = [
     {
       title: 'Galle Fort',
-      desc: 'A UNESCO World Heritage Site with colonial architecture, charming streets and ocean views.',
-      image: '/assets/guide/southcoast-galle.jpg'
+      tag: 'UNESCO Heritage',
+      location: 'Galle · South Coast',
+      meta: '3 hrs',
+      desc: 'A 16th-century fortified city with Dutch colonial streets, lighthouse ramparts, boutiques, and ocean views.',
+      image: '/assets/guide/southcoast-galle.jpg',
+      bookingDestination: 'Galle Fort, South Coast',
+      ctaLabel: 'Include in Trip'
     },
     {
       title: 'Unawatuna',
-      desc: 'A popular beach with calm waters, snorkeling, beachside cafes and a relaxed tropical vibe.',
-      image: '/assets/guide/southcoast-unawatuna.jpg'
+      tag: 'Beach & Reef',
+      location: 'Galle District',
+      meta: 'Half Day',
+      desc: 'A crescent bay famed for calm swimming waters, coral reef snorkeling, beachside dining, and tropical sunsets.',
+      image: '/assets/guide/southcoast-unawatuna.jpg',
+      bookingDestination: 'Unawatuna Beach, South Coast',
+      ctaLabel: 'Include in Trip'
     },
     {
       title: 'Mirissa',
-      desc: 'Famous for whale watching, picturesque beach views and a vibrant seaside atmosphere.',
-      image: '/assets/guide/southcoast-mirissa.jpg'
+      tag: 'Whale Watching',
+      location: 'Matara District',
+      meta: 'Half Day',
+      desc: 'Sri Lanka’s premier blue whale watching hub featuring Coconut Tree Hill and vibrant beachfront cafés.',
+      image: '/assets/guide/southcoast-mirissa.jpg',
+      bookingDestination: 'Mirissa, South Coast',
+      ctaLabel: 'Include in Trip'
     },
     {
       title: 'Weligama',
-      desc: 'A laid-back surf town, perfect for beginner surfers, beach time and stunning sunsets.',
-      image: '/assets/guide/southcoast-weligama.jpg'
+      tag: 'Surf & Coast',
+      location: 'Matara District',
+      meta: '2–3 hrs',
+      desc: 'A laid-back golden surf bay ideal for beginner waves, stilt fishermen sightings, and coastal relaxation.',
+      image: '/assets/guide/southcoast-weligama.jpg',
+      bookingDestination: 'Weligama Bay, South Coast',
+      ctaLabel: 'Include in Trip'
     }
   ];
 
@@ -114,27 +135,14 @@ export default function GuideSouthCoastPage() {
           />
         </section>
 
-        {/* 4 Places */}
-        <section style={{ marginBottom: '48px' }}>
-          <SectionHeader
-            title="Top Places to See"
-            subtitle="Discover the must-visit destinations along the South Coast, from a historic fort to beautiful beaches and top surf spots."
-          />
-
-          <div className="south-places-grid">
-            {places.map((place, idx) => (
-              <div key={idx} className="destination-card">
-                <div className="destination-card-media" style={{ height: '170px' }}>
-                  <img src={place.image} alt={place.title} loading="lazy" />
-                </div>
-                <div className="destination-card-body">
-                  <h4 className="destination-card-title">{place.title}</h4>
-                  <p className="destination-card-desc">{place.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* 4 Places (Unified Executive Component) */}
+        <AttractionsShowcase
+          eyebrow="COASTAL HIGHLIGHTS"
+          title="Top Places to See on the South Coast"
+          subtitle="Discover the must-visit destinations along Sri Lanka's Southern Coast, from historic UNESCO ramparts to golden surf and whale-watching bays."
+          items={places}
+          columns={4}
+        />
 
         {/* 3-Col Mid Row */}
         <section style={{ marginBottom: '48px' }}>

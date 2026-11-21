@@ -1,8 +1,65 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AttractionsShowcase from '../components/common/AttractionsShowcase';
 import ItineraryTimeline from '../components/common/ItineraryTimeline';
 import CtaBanner from '../components/common/CtaBanner';
 import { useApp } from '../context/AppContext';
+
+const sigiriyaTopPlaces = [
+  {
+    title: 'Sigiriya Frescoes',
+    tag: '5th-Century Art',
+    location: 'Western Rock Face · Sigiriya',
+    meta: '45 mins',
+    desc: 'World-famous ancient frescoes sheltered in a rock pocket, showcasing vivid royal artistry over 1,500 years old.',
+    image: '/assets/guide/sigiriya-frescoes.jpg',
+    bookingDestination: 'Sigiriya Rock Fortress',
+    ctaLabel: 'Include in Trip'
+  },
+  {
+    title: "Lion's Paw Terrace",
+    tag: 'Royal Gateway',
+    location: 'Northern Plateau · Sigiriya',
+    meta: '30 mins',
+    desc: 'The monumental carved stone lion paws guarding the final staircase ascent to King Kashyapa’s sky palace.',
+    image: '/assets/guide/sigiriya-lion-paw.jpg',
+    bookingDestination: 'Sigiriya Rock Fortress',
+    ctaLabel: 'Include in Trip'
+  },
+  {
+    title: 'Royal Water Gardens',
+    tag: 'UNESCO Gardens',
+    location: 'Lower Complex · Sigiriya',
+    meta: '1 hr',
+    desc: 'Among the world’s oldest landscaped gardens, featuring symmetrical pools, fountains, and boulder pavilions.',
+    image: '/assets/guide/sigiriya-royal-gardens.jpg',
+    bookingDestination: 'Sigiriya Water Gardens',
+    ctaLabel: 'Include in Trip'
+  }
+];
+
+const sigiriyaNearbyPlaces = [
+  {
+    title: 'Dambulla Cave Temple',
+    tag: 'UNESCO Heritage',
+    location: '25 mins from Sigiriya',
+    meta: '1.5 hrs',
+    desc: 'Sri Lanka’s largest and best-preserved cave temple complex filled with golden Buddha statues and sacred murals.',
+    image: '/assets/guide/sigiriya-dambulla.jpg',
+    bookingDestination: 'Dambulla Cave Temple & Sigiriya',
+    ctaLabel: 'Include in Trip'
+  },
+  {
+    title: 'Minneriya Elephant Safari',
+    tag: 'Wildlife Safari',
+    location: '35 mins from Sigiriya',
+    meta: '3 hrs',
+    desc: 'Thrilling afternoon 4x4 national park safari renowned for "The Gathering" of wild Asian elephant herds.',
+    image: '/assets/guide/sigiriya-minneriya.jpg',
+    bookingDestination: 'Minneriya Safari & Sigiriya',
+    ctaLabel: 'Include in Trip'
+  }
+];
 
 const sigiriyaItinerarySteps = [
   {
@@ -115,43 +172,6 @@ export default function GuideSigiriyaPage() {
                 <li>Discover the ruins of an ancient royal palace and landscaped water gardens.</li>
               </ul>
             </section>
-
-            <section className="post-section">
-              <h3 className="post-section-title">Top Attractions in Sigiriya</h3>
-              <div className="attractions-grid">
-                <div className="attraction-card">
-                  <img src="/assets/guide/sigiriya-frescoes.jpg" alt="Sigiriya Frescoes" loading="lazy" />
-                  <h4>Sigiriya Frescoes</h4>
-                  <p>Ancient 5th-century murals showcasing ancient art &amp; culture.</p>
-                </div>
-                <div className="attraction-card">
-                  <img src="/assets/guide/sigiriya-lion-paw.jpg" alt="Lion's Paw Terrace" loading="lazy" />
-                  <h4>Lion's Paw Terrace</h4>
-                  <p>The iconic gateway to the summit, carved with massive lion's paws.</p>
-                </div>
-                <div className="attraction-card">
-                  <img src="/assets/guide/sigiriya-royal-gardens.jpg" alt="Royal Gardens" loading="lazy" />
-                  <h4>Royal Water Gardens</h4>
-                  <p>Impressive water gardens and landscaped ruins below the rock.</p>
-                </div>
-              </div>
-            </section>
-
-            <section className="post-section">
-              <h3 className="post-section-title">Nearby Places to Explore</h3>
-              <div className="nearby-grid">
-                <div className="nearby-card">
-                  <img src="/assets/guide/sigiriya-dambulla.jpg" alt="Dambulla Cave Temple" loading="lazy" />
-                  <h4>Dambulla Cave Temple</h4>
-                  <p>Explore the famous Dambulla Cave Temple, a UNESCO World Heritage Site just 25 minutes away.</p>
-                </div>
-                <div className="nearby-card">
-                  <img src="/assets/guide/sigiriya-minneriya.jpg" alt="Minneriya National Park" loading="lazy" />
-                  <h4>Minneriya Elephant Safari</h4>
-                  <p>Go on a thrilling wildlife safari famous for its large gatherings of wild Asian elephants.</p>
-                </div>
-              </div>
-            </section>
           </div>
 
           {/* Sidebar */}
@@ -184,18 +204,36 @@ export default function GuideSigiriyaPage() {
           </aside>
         </div>
 
+        {/* Top Places to See in Sigiriya (Unified Executive Component) */}
+        <div style={{ marginTop: '56px' }}>
+          <AttractionsShowcase
+            eyebrow="SIGIRIYA HIGHLIGHTS"
+            title="Top Places to See in Sigiriya"
+            subtitle="Must-see archaeological wonders across the Lion Rock fortress and royal gardens."
+            items={sigiriyaTopPlaces}
+            columns={3}
+          />
+        </div>
+
+        {/* Nearby Places to Explore (Unified Executive Component) */}
+        <AttractionsShowcase
+          eyebrow="CULTURAL TRIANGLE EXCURSIONS"
+          title="Nearby Places to Explore"
+          subtitle="Pair Sigiriya seamlessly with nearby UNESCO heritage temples and wildlife safaris in your private KDH van."
+          items={sigiriyaNearbyPlaces}
+          columns={2}
+        />
+
         {/* Executive Suggested Itinerary: Sigiriya Cultural Day Trip */}
-        <div style={{ marginTop: '48px' }}>
-          <ItineraryTimeline
+        <ItineraryTimeline
             eyebrow="CURATED CULTURAL ROUTE"
             title="Suggested Itinerary: Sigiriya Day Trip"
             subtitle="Experience Sri Lanka's Cultural Triangle comfortably in a single private KDH van excursion."
             steps={sigiriyaItinerarySteps}
             routeSummary={sigiriyaRouteSummary}
             bookingDestination="Sigiriya & Dambulla Day Trip"
-            bookingService="Daily Hire"
-          />
-        </div>
+          bookingService="Daily Hire"
+        />
 
         <CtaBanner
           title="Book Your Sigiriya Trip with KDH Van Hire"

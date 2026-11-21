@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { ellaAttractionsData, ellaItinerarySteps, ellaRouteSummary } from '../data/ellaAttractionsData';
-import SectionHeader from '../components/common/SectionHeader';
+import AttractionsShowcase from '../components/common/AttractionsShowcase';
 import ItineraryTimeline from '../components/common/ItineraryTimeline';
 import CtaBanner from '../components/common/CtaBanner';
 import { useApp } from '../context/AppContext';
@@ -222,36 +222,22 @@ export default function EllaAttractionDetailPage() {
           </aside>
         </div>
 
-        {/* More Must-Visit Attractions in Ella */}
-        <section style={{ marginBottom: '56px' }}>
-          <SectionHeader
-            kicker="CONTINUE EXPLORING ELLA"
-            title="More Must-Visit Attractions in Ella"
-            subtitle="Combine all three iconic highlights effortlessly in one private KDH van day tour."
-          />
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', maxWidth: '860px', margin: '0 auto' }}>
-            {otherAttractions.map((item) => (
-              <Link
-                key={item.slug}
-                to={`/travel-guide/ella/${item.slug}`}
-                className="destination-card"
-              >
-                <div className="destination-card-img-wrap">
-                  <img src={item.featuredImage} alt={item.title} className="destination-card-img" loading="lazy" />
-                  <span className="destination-tag-badge">Ella Highlight</span>
-                </div>
-                <div className="destination-card-body">
-                  <div className="destination-card-title-row">
-                    <h4 className="destination-card-title">{item.title}</h4>
-                    <span className="destination-card-arrow">&rarr;</span>
-                  </div>
-                  <p className="destination-card-desc">{item.subtitle}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
+        {/* More Must-Visit Attractions in Ella (Unified Executive Component) */}
+        <AttractionsShowcase
+          eyebrow="CONTINUE EXPLORING ELLA"
+          title="More Top Places to See in Ella"
+          subtitle="Combine all three iconic highlights effortlessly in one private KDH van day tour."
+          items={otherAttractions.map((item) => ({
+            title: item.title,
+            tag: item.eyebrow.replace('ELLA ', ''),
+            location: item.location,
+            meta: item.suggestedDuration.split(' ')[0] + ' hrs',
+            desc: item.subtitle,
+            image: item.featuredImage,
+            link: `/travel-guide/ella/${item.slug}`
+          }))}
+          columns={2}
+        />
 
         {/* Executive Suggested Itinerary: Ella Day Trip */}
         <ItineraryTimeline

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionHeader from '../components/common/SectionHeader';
+import AttractionsShowcase from '../components/common/AttractionsShowcase';
 import ItineraryTimeline from '../components/common/ItineraryTimeline';
 import { ellaItinerarySteps, ellaRouteSummary } from '../data/ellaAttractionsData';
 import { useApp } from '../context/AppContext';
@@ -74,19 +75,28 @@ export default function GuideEllaPage() {
   const attractions = [
     {
       title: 'Nine Arch Bridge',
-      desc: "Ella's most iconic landmark, a stunning colonial-era bridge set amid lush greenery.",
+      tag: 'Iconic Landmark',
+      location: 'Demodara · Ella',
+      meta: '1.5 hrs',
+      desc: "Ella's most iconic landmark — a 1921 colonial-era nine-span stone viaduct set amid lush tea hills and jungle.",
       image: '/assets/guide/ella-nine-arch.jpg',
       link: '/travel-guide/ella/nine-arch-bridge'
     },
     {
       title: "Little Adam's Peak",
-      desc: "A popular and rewarding hike with spectacular views of Ella's hill country.",
+      tag: 'Scenic Hike',
+      location: 'Passara Rd · Ella',
+      meta: '1.5 hrs',
+      desc: "A rewarding, accessible ridge hike winding through manicured tea estates to 360° views over Ella Gap.",
       image: '/assets/guide/ella-adams-peak.jpg',
       link: '/travel-guide/ella/little-adams-peak'
     },
     {
       title: 'Ravana Falls',
-      desc: 'A beautiful cascade just a short drive from Ella, perfect for a refreshing stop.',
+      tag: 'Natural Waterfall',
+      location: 'Wellawaya Rd · Ella',
+      meta: '45 mins',
+      desc: 'A dramatic 25-meter tiered cascade steeped in Ramayana legend, just a 10-minute drive from Ella town.',
       image: '/assets/guide/ella-ravana-falls.jpg',
       link: '/travel-guide/ella/ravana-falls'
     }
@@ -222,39 +232,14 @@ export default function GuideEllaPage() {
           </div>
         </div>
 
-        {/* Must-Visit Attractions (3 cards) */}
-        <div style={{ marginBottom: '56px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-            <span style={{ color: 'var(--color-gold)', fontSize: '20px' }}>&#127956;</span>
-            <h3 className="post-section-title" style={{ fontSize: '26px', margin: 0 }}>Must-Visit Attractions</h3>
-          </div>
-          <p style={{ fontSize: '15px', color: '#64748b', margin: '0 0 24px' }}>Top places to explore in and around Ella.</p>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-            {attractions.map((att, idx) => (
-              <Link
-                key={idx}
-                to={att.link}
-                className="destination-card"
-                style={{ borderRadius: '14px', overflow: 'hidden', boxShadow: '0 4px 16px rgba(0,0,0,0.05)', transition: 'transform 0.25s ease', textDecoration: 'none', color: 'inherit' }}
-              >
-                <div className="destination-card-img-wrap" style={{ height: '185px' }}>
-                  <img src={att.image} alt={att.title} className="destination-card-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
-                </div>
-                <div className="destination-card-body" style={{ padding: '18px 20px 22px' }}>
-                  <div className="destination-card-title-row" style={{ marginBottom: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div className="destination-card-title-wrap" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#eab308' }}><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                      <h4 className="destination-card-title" style={{ fontSize: '18px', fontWeight: 800, color: '#081726', margin: 0 }}>{att.title}</h4>
-                    </div>
-                    <span className="destination-card-arrow" style={{ fontSize: '16px' }}>&rarr;</span>
-                  </div>
-                  <p className="destination-card-desc" style={{ fontSize: '14px', lineHeight: 1.55, color: '#64748b', margin: 0 }}>{att.desc}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
+        {/* Top Places to See / Must-Visit Attractions (Unified Executive Component) */}
+        <AttractionsShowcase
+          eyebrow="MUST-VISIT ATTRACTIONS"
+          title="Top Places to See in Ella"
+          subtitle="Explore Ella's most celebrated viewpoints, historic railway landmarks, and waterfalls — click any destination for the full guide."
+          items={attractions}
+          columns={3}
+        />
 
         {/* 3-Column Info Row: Best Scenic Stops, When to Visit, Travel Advice */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', marginBottom: '56px' }}>
