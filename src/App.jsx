@@ -22,6 +22,7 @@ import GuideSigiriyaPage from './pages/GuideSigiriyaPage';
 import GuideSouthCoastPage from './pages/GuideSouthCoastPage';
 import GuideEllaPage from './pages/GuideEllaPage';
 import EllaAttractionDetailPage from './pages/EllaAttractionDetailPage';
+import RegionalGuidePage from './pages/RegionalGuidePage';
 
 export default function App() {
   return (
@@ -56,6 +57,8 @@ export default function App() {
         <Route path="/travel-guide/south-coast" element={<GuideSouthCoastPage />} />
         <Route path="/travel-guide/ella" element={<GuideEllaPage />} />
         <Route path="/travel-guide/ella/:slug" element={<EllaAttractionDetailPage />} />
+        <Route path="/travel-guide/kandy" element={<RegionalGuidePage guideKey="kandy" />} />
+        <Route path="/travel-guide/nuwara-eliya" element={<RegionalGuidePage guideKey="nuwara-eliya" />} />
 
         {/* SEO-Safe Redirects from Any Legacy URLs */}
         <Route path="/index.html" element={<Navigate to="/" replace />} />

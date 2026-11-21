@@ -202,6 +202,26 @@ export const SEO_ROUTES = {
     priority: '0.75',
     changefreq: 'monthly'
   },
+  '/travel-guide/kandy': {
+    title: 'Kandy Travel Guide Sri Lanka | Temple of the Tooth, Gardens & KDH Van Hire',
+    description:
+      'Explore Kandy, Sri Lanka’s sacred cultural capital: Temple of the Tooth, Royal Botanical Gardens, Kandy Lake, and curated private KDH van day trips from Colombo.',
+    keywords:
+      'Kandy travel guide Sri Lanka, Colombo to Kandy KDH van, Temple of the Tooth day trip, Kandy private driver',
+    image: `${SITE_URL}/assets/guide/dest-kandy.jpg`,
+    priority: '0.75',
+    changefreq: 'monthly'
+  },
+  '/travel-guide/nuwara-eliya': {
+    title: 'Nuwara Eliya Travel Guide | Little England Tea Estates & KDH Van Tours',
+    description:
+      'Plan your trip to Nuwara Eliya: emerald Ceylon tea estates, Lake Gregory, Ramboda Falls, Nanu Oya train drops, and private high-roof Toyota KDH transport.',
+    keywords:
+      'Nuwara Eliya travel guide, Kandy to Nuwara Eliya KDH van, Sri Lanka tea plantation tour, Little England Sri Lanka',
+    image: `${SITE_URL}/assets/guide/dest-nuwara-eliya.jpg`,
+    priority: '0.75',
+    changefreq: 'monthly'
+  },
   '/about': {
     title: 'About KDH Van Hire Sri Lanka | Trusted Chauffeur-Driven Van Service',
     description:
